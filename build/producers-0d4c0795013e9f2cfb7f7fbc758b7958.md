@@ -1,0 +1,19 @@
+---
+title: Applications for Composers
+authors:
+  - name: Yewon Kim
+---
+
+# Applications for composers
+
+Potential workflows include collaborative songwriting, composition support, and
+conversational post-production. The LLM may generate symbolic material directly
+or translate intent into calls to specialist music tools.
+
+## Design questions
+
+- What should remain under direct human control?
+- How can a producer inspect and undo each model action?
+- How should authorship, attribution, and training-data provenance be communicated?
+
+**TODO:** Add one composition and one mixing case study with editable outputs.

@@ -1,0 +1,15 @@
+---
+title: Music Perception and Reasoning
+authors:
+  - name: Zachary Novack
+---
+
+# Music perception, understanding, and reasoning
+
+Music-language systems span perceptual questions (“which instruments enter?”),
+semantic description (“what is the mood?”), and multi-step reasoning (“how does
+the arrangement support the chorus?”). These levels require different evidence
+and should not be collapsed into one benchmark score.
+
+**TODO:** Add a running example with an audio clip, a score excerpt, and three
+questions of increasing reasoning depth.

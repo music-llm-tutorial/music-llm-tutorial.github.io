@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Music note">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="url(#bg)"/>
+  <path d="M35 15v28.5c0 5.8-5.2 10.5-11.5 10.5S12 50.1 12 44.5 17.1 35 23.5 35c2.3 0 4.5.5 6.2 1.5V20.2L51 16v10l-16 3.2V15Z" fill="#fff"/>
+  <circle cx="50" cy="43" r="4" fill="#DDD6FE"/>
+  <path d="m38 35 9 6" stroke="#DDD6FE" stroke-width="3" stroke-linecap="round"/>
+</svg>

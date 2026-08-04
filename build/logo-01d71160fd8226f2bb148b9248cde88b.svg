@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">LLMs × Music</title>
+  <desc id="desc">A musical note connected to language model nodes</desc>
+  <defs>
+    <linearGradient id="gradient" x1="18" y1="16" x2="108" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#gradient)"/>
+  <path d="M74 29v55.5c0 10.2-8.8 18.5-19.7 18.5S35 96.5 35 87s8.4-16 19.3-16c4.1 0 7.9.9 10.7 2.6V39.8L98 33v14l-24 5V29Z" fill="white"/>
+  <circle cx="96" cy="73" r="5" fill="#C4B5FD"/>
+  <circle cx="106" cy="91" r="5" fill="#C4B5FD"/>
+  <path d="M76 61 93 71M99 78l5 9" stroke="#C4B5FD" stroke-width="4" stroke-linecap="round"/>
+</svg>
