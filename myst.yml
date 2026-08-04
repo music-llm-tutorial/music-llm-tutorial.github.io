@@ -1,0 +1,50 @@
+version: 1
+
+project:
+  title: "LLMs × Music: Scalable Language Modeling Unlocks Music Applications"
+  description: Online materials for the ISMIR tutorial on large language models and music applications
+  github: https://github.com/music-llm-tutorial/music-llm-tutorial.github.io
+  toc:
+    - file: book/index.md
+    - title: Chapter 0. Introduction
+      children:
+        - file: book/introduction/overview.md
+    - title: Chapter 1. Overview of Large Language Models
+      children:
+        - file: book/llm/foundations.md
+        - file: book/llm/training.md
+        - file: book/llm/capabilities.md
+        - file: book/llm/evaluation.md
+    - title: Chapter 2. LLMs for Music Understanding
+      children:
+        - file: book/understanding/overview.md
+        - file: book/understanding/modalities.md
+        - file: book/understanding/benchmarks.md
+    - title: Chapter 3. LLMs for Listeners
+      children:
+        - file: book/applications/listeners.md
+    - title: Chapter 4. LLMs for Composers
+      children:
+        - file: book/applications/producers.md
+    - title: Chapter 5. LLMs for Educators
+      children:
+        - file: book/applications/performers.md
+    - title: Chapter 6. Conclusion
+      children:
+        - file: book/conclusion.md
+    - title: Appendix
+      children:
+        - file: book/appendix.md
+  exclude:
+    - README.md
+
+site:
+  template: book-theme
+  title: Music × LLM Tutorial
+  options:
+    favicon: asset/favicon.svg
+    logo: asset/logo.png
+    logo_text: Music × LLM Tutorial
+  actions:
+    - title: GitHub
+      url: https://github.com/music-llm-tutorial/music-llm-tutorial.github.io

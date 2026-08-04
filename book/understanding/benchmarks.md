@@ -1,0 +1,20 @@
+---
+title: Benchmarks and Evaluation
+authors:
+  - name: Zachary Novack
+---
+
+# Benchmarks and evaluation
+
+Benchmark design should test whether a model listens, reads, and reasons rather
+than relying on text priors. Candidate test families include captioning,
+question answering, instruction following, and controlled counterfactuals.
+
+## Benchmark checklist
+
+- Is the answer recoverable from the provided musical evidence?
+- Are train/test artists and recordings appropriately separated?
+- Does the metric reward musical accuracy rather than verbosity?
+- Are human listeners given the same evidence as the model?
+
+**TODO:** Insert the tutorial's benchmark comparison table and a small scoring exercise.
