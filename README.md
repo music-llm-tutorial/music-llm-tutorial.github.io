@@ -1,8 +1,8 @@
 # Music × LLM Tutorial
 
-Collaborative Jupyter Book for the ISMIR tutorial **LLMs × Music: Scalable
-Language Modeling Unlocks Music Applications**. Pages may be written in MyST
-Markdown (`.md`) or Jupyter Notebook (`.ipynb`) format.
+> ISMIR 2026 Tutoiral: https://ismir2026.ismir.net/tutorials
+
+Collaborative Jupyter Book for the ISMIR tutorial **LLMs × Music: Scalable Language Modeling Unlocks Music Applications**. Pages may be written in MyST Markdown (`.md`) or Jupyter Notebook (`.ipynb`) format.
 
 ## Book structure
 
