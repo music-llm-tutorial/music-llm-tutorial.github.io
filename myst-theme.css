@@ -1,1 +1,6 @@
-/* No Custom Stylesheet Provided */
+/* User Provided Stylesheet */
+
+/* Remove the default MyST sidebar branding. */
+.myst-made-with-myst {
+  display: none !important;
+}
