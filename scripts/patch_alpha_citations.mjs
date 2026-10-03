@@ -4,9 +4,9 @@
  *
  * MyST book-theme SSR embeds page mdast in HTML (__remixContext). Patching only
  * the companion .json files is not enough — this script updates:
- *   - book/_build/html/*.json
- *   - book/_build/site/content/*.json
- *   - book/_build/html page index.html files (embedded loaderData)
+ *   - _build/html/*.json
+ *   - _build/site/content/*.json
+ *   - _build/html page index.html files (embedded loaderData)
  *
  * In-text cites are forced to bracket form: [BDD+19]
  * Bibliography enumerators become the same alpha labels.
@@ -19,8 +19,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const BOOK = path.join(ROOT, 'book');
 const BIB = path.join(BOOK, 'references.bib');
-const BUILD_HTML = path.join(BOOK, '_build', 'html');
-const BUILD_SITE = path.join(BOOK, '_build', 'site', 'content');
+const BUILD_HTML = path.join(ROOT, '_build', 'html');
+const BUILD_SITE = path.join(ROOT, '_build', 'site', 'content');
 
 function parseAuthors(authorField) {
   if (!authorField) return [];
@@ -93,7 +93,9 @@ function patchCiteTree(page, labelMap) {
     const alpha = labelMap.get(node.label);
     if (!alpha) return;
 
-    node.enumerator = alpha;
+    // book-theme with numbered_references renders parenthetical cites as
+    // bare `enumerator` (ignores children), so brackets must live here.
+    node.enumerator = `[${alpha}]`;
     node.kind = 'parenthetical';
     node.children = [{ type: 'text', value: `[${alpha}]` }];
     changed = true;

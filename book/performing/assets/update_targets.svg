@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="376" viewBox="0 0 900 376" font-family="Helvetica, Arial, sans-serif">
+<rect width="900" height="376" fill="#ffffff"/>
+<rect x="36" y="34" width="828" height="112" rx="6" fill="#fbfbfb" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="58" y="62" font-size="13" fill="#1b1b1b" font-weight="700">WEIGHTS</text>
+<text x="140" y="62" font-size="11.5" fill="#6b6b6b" font-weight="400">changed by training, once, shared by every learner</text>
+<text x="58" y="90" font-size="11.5" fill="#6b6b6b" font-weight="600">domain corpus</text>
+<text x="178" y="90" font-size="12.5" fill="#1b1b1b" font-weight="400">method books, treatises, exam syllabi, teacher feedback, trained in (Harvey does this with case law)</text>
+<text x="58" y="114" font-size="11.5" fill="#6b6b6b" font-weight="600">distil</text>
+<text x="178" y="114" font-size="12.5" fill="#1b1b1b" font-weight="400">from the earlier checkpoint, to recover what fine-tuning erased</text>
+<rect x="36" y="164" width="828" height="160" rx="6" fill="#eeeeee" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="58" y="192" font-size="13" fill="#1b1b1b" font-weight="700">SCAFFOLD</text>
+<text x="150" y="192" font-size="11.5" fill="#6b6b6b" font-weight="400">changed by writing text, every session, per learner</text>
+<text x="58" y="220" font-size="11.5" fill="#6b6b6b" font-weight="600">retrieval</text>
+<text x="178" y="220" font-size="12.5" fill="#1b1b1b" font-weight="400">the same domain corpus, read at run time instead of trained in</text>
+<text x="58" y="244" font-size="11.5" fill="#6b6b6b" font-weight="600">prompt</text>
+<text x="178" y="244" font-size="12.5" fill="#1b1b1b" font-weight="400">tone, feedback depth, when to ask instead of tell</text>
+<text x="58" y="268" font-size="11.5" fill="#6b6b6b" font-weight="600">memory</text>
+<text x="178" y="268" font-size="12.5" fill="#1b1b1b" font-weight="400">which passages keep failing, how this student likes to be spoken to</text>
+<text x="58" y="292" font-size="11.5" fill="#6b6b6b" font-weight="600">tools, hooks</text>
+<text x="178" y="292" font-size="12.5" fill="#1b1b1b" font-weight="400">which analysers may run, what must be checked before a turn ends</text>
+<line x1="36" y1="342" x2="864" y2="342" stroke="#c9c9c9" stroke-width="1"/>
+<text x="36" y="364" font-size="12.5" fill="#1b1b1b" font-weight="600">In a practice agent:</text>
+<text x="164" y="364" font-size="12.5" fill="#6b6b6b" font-weight="400">Neuhaus and the exam syllabus are shared by every learner;  that this student has dragged bar 12 for three weeks is not.</text>
+</svg>

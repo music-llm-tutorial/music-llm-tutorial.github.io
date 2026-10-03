@@ -36,17 +36,17 @@ project:
             - file: book/performing/perceiving_score.md
             - file: book/performing/perceiving_audio.md
             - file: book/performing/perceiving_motion.md
-            - file: book/performing/perceiving_alignment.md
         - file: book/performing/feedback.md
           children:
             - file: book/performing/feedback_language.md
-            - file: book/performing/feedback_systems.md
             - file: book/performing/feedback_data.md
+            - file: book/performing/feedback_demo.ipynb
         - file: book/performing/agentic.md
           children:
             - file: book/performing/agentic_tools.md
             - file: book/performing/agentic_memory.md
             - file: book/performing/agentic_pedagogy.md
+            - file: book/performing/agentic_demo.ipynb
     - title: Chapter 6. Conclusion
       children:
         - file: book/conclusion.md
@@ -60,7 +60,8 @@ site:
   template: book-theme
   title: Music × LLM Tutorial
   options:
-    favicon: asset/favicon.svg
+    style: asset/custom.css
+    favicon: asset/favicon.ico
     logo: asset/logo.png
     logo_text: Music × LLM Tutorial
     numbered_references: true

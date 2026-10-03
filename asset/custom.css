@@ -1,0 +1,13 @@
+/* Bandcamp players are 400x120 natively. MyST's iframe directive reserves a
+   fixed 60%-of-width box, which leaves ~450px of dead space under each player.
+   Override the wrapper for iframes tagged :class: bandcamp. */
+.bandcamp {
+  padding-bottom: 0 !important;
+  height: 120px !important;
+  width: 100% !important;
+  max-width: 700px;
+}
+.bandcamp iframe {
+  position: absolute;
+  height: 120px !important;
+}

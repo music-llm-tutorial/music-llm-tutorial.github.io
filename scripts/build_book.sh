@@ -12,4 +12,6 @@ echo "Installing locked dependencies..."
 uv sync --locked
 echo "Building the book..."
 uv run jupyter book build --html --strict
+echo "Patching BibTeX-style alpha citation labels..."
+node "$REPO_ROOT/scripts/patch_alpha_citations.mjs"
 echo "Build complete: $REPO_ROOT/_build/html"
