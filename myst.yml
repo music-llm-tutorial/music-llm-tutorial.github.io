@@ -42,7 +42,7 @@ site:
   template: book-theme
   title: LLMs × Music
   options:
-    favicon: asset/favicon.svg
+    favicon: asset/favicon.ico
     logo: asset/logo-wordmark.png
     logo_alt: "ISMIR 2026: LLMs × Music"
     style: asset/custom.css
