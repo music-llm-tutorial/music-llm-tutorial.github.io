@@ -1,5 +1,6 @@
 ---
 title: "LLMs × Music"
+thumbnail: ../asset/social-card.png
 ---
 
 :::{div}
