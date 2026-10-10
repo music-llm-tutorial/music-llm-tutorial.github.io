@@ -1,4 +1,4 @@
-# Music × LLM Tutorial
+# LLMs × Music
 
 > ISMIR 2026 Tutoiral: https://ismir2026.ismir.net/tutorials
 
@@ -9,13 +9,13 @@ Collaborative Jupyter Book for the ISMIR tutorial **LLMs × Music: Scalable Lang
 | Chapter | Topic | Presenter |
 |---|---|---|
 | 0 | Introduction | — |
-| 1 | Overview of Large Language Models | Keunwoo Choi |
+| 1 | Overview of Large Language Models | Sang-gil Lee |
 | 2 | LLMs for Music Understanding | Zachary Novack |
 | 3 | LLMs for Listeners | Seungheon Doh |
 | 4 | LLMs for Composers | Yewon Kim |
 | 5 | LLMs for Educators | Huan Zhang |
 | 6 | Conclusion | — |
-| Appendix | Shared resources | — |
+| References | Works cited | — |
 
 ## One-time setup
 

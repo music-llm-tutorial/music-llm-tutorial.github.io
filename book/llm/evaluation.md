@@ -1,7 +1,7 @@
 ---
 title: Evaluating LLMs
 authors:
-  - name: Keunwoo Choi
+  - name: Sang-gil Lee
 ---
 
 # Evaluating LLMs
