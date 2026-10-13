@@ -1,7 +1,7 @@
 ---
 title: Foundations
 authors:
-  - name: Keunwoo Choi
+  - name: Sang-gil Lee
 ---
 
 # Foundations of large language models

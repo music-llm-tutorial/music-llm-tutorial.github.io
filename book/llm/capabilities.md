@@ -1,7 +1,7 @@
 ---
 title: Advanced Capabilities
 authors:
-  - name: Keunwoo Choi
+  - name: Sang-gil Lee
 ---
 
 # Advanced capabilities

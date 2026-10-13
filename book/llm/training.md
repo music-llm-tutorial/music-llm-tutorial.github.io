@@ -1,7 +1,7 @@
 ---
 title: Training Stages
 authors:
-  - name: Keunwoo Choi
+  - name: Sang-gil Lee
 ---
 
 # Pre-training, mid-training, and post-training

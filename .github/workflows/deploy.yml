@@ -31,6 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v3
       - uses: astral-sh/setup-uv@v6
         with:
@@ -39,6 +40,11 @@ jobs:
         run: uv sync --locked
       - name: Build HTML Assets
         run: uv run jupyter book build --html --strict
+      - name: Use absolute URLs for link-preview images
+        # MyST writes og:image as a site-relative path; Slack, X, KakaoTalk, etc. need an absolute URL.
+        run: |
+          find _build/html -name '*.html' -exec sed -i \
+            's#<meta property="og:image" content="/#<meta property="og:image" content="${{ steps.pages.outputs.base_url }}/#' {} +
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
