@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 713" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Timeline of language models and music LLMs, 2017–2026</title>
+<desc id="d">Language models: Transformer 2017; BERT 2018; GPT-2, T5 2019; GPT-3, RAG 2020; WebGPT 2021; Emergent Abilities, Chain-of-Thought 2022; Claude, Gemini, LLaMA, Qwen, ReAct, Toolformer, HuggingGPT, Reflexion, Generative Agents 2023; SWE-agent, MCP 2024; DeepSeek-R1, Qwen3, Gemma 3, Kimi K2, Nemotron 3, Search-R1 2025; GPT-6 Astra, Claude Fable 5, Gemini 4 Argon 2026. Music: LLark, MU-LLaMA, MusiLingo, SALMONN, MusicAgent 2023; ChatMusician, MuChoMusic, PianoJudge 2024; TalkPlay, Amuse, Nota, LLaQo, Music Flamingo, TalkPlay-Tools, LLM2Fx-Tools, CMI-Bench, MusiQAl, MusiXQA, RUListening 2025; MuseAgent-1, MIDI-LLaMA, music metadata LLMs 2026.</desc>
+<text x="347.0" y="18" font-size="12" font-weight="700" letter-spacing="0.08em" text-anchor="end" fill="#607b9a">LANGUAGE MODELS</text>
+<text x="423.0" y="18" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#8f9066">MUSIC</text>
+<line x1="385.0" y1="34" x2="385.0" y2="43.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="61.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2017</text>
+<rect x="241.9" y="42" width="105.1" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="294.4" y="61" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Transformer</text>
+<line x1="385.0" y1="69.0" x2="385.0" y2="85.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="103.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2018</text>
+<rect x="287.8" y="84" width="59.2" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="317.4" y="103" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">BERT</text>
+<line x1="385.0" y1="111.0" x2="385.0" y2="127.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="145.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2019</text>
+<rect x="235.7" y="126" width="63.7" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="267.6" y="145" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">GPT-2</text>
+<rect x="306.4" y="126" width="40.6" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="326.7" y="145" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">T5</text>
+<line x1="385.0" y1="153.0" x2="385.0" y2="169.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="187.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2020</text>
+<rect x="226.4" y="168" width="63.7" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="258.2" y="187" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">GPT-3</text>
+<rect x="297.1" y="168" width="49.9" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="322.0" y="187" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">RAG</text>
+<line x1="385.0" y1="195.0" x2="385.0" y2="211.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="229.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2021</text>
+<rect x="269.2" y="210" width="77.8" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="308.1" y="229" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">WebGPT</text>
+<line x1="385.0" y1="237.0" x2="385.0" y2="253.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="271.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2022</text>
+<rect x="42.2" y="252" width="151.0" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="117.7" y="271" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Emergent Abilities</text>
+<rect x="200.2" y="252" width="146.8" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="273.6" y="271" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Chain-of-Thought</text>
+<line x1="385.0" y1="279.0" x2="385.0" y2="330.0" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="348.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2023</text>
+<rect x="57.1" y="294" width="73.0" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="93.6" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Claude</text>
+<rect x="137.1" y="294" width="68.2" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="171.2" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Gemini</text>
+<rect x="212.3" y="294" width="68.5" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="246.6" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">LLaMA</text>
+<rect x="287.8" y="294" width="59.2" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="317.4" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Qwen</text>
+<rect x="63.3" y="329" width="63.7" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="95.2" y="348" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">ReAct</text>
+<rect x="134.0" y="329" width="95.8" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="181.9" y="348" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Toolformer</text>
+<rect x="236.8" y="329" width="110.2" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="291.9" y="348" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">HuggingGPT</text>
+<rect x="92.6" y="364" width="91.3" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="138.3" y="383" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Reflexion</text>
+<rect x="190.9" y="364" width="156.1" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="269.0" y="383" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Generative Agents</text>
+<rect x="423.0" y="294" width="63.7" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="454.9" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">LLark</text>
+<rect x="493.7" y="294" width="91.6" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="539.5" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MU-LLaMA</text>
+<rect x="592.3" y="294" width="96.1" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="640.3" y="313" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MusiLingo</text>
+<rect x="423.0" y="329" width="87.1" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="466.6" y="348" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">SALMONN</text>
+<rect x="517.1" y="329" width="105.4" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="569.8" y="348" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MusicAgent</text>
+<line x1="385.0" y1="356.0" x2="385.0" y2="424.5" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="442.5" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2024</text>
+<rect x="194.0" y="406" width="96.1" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="242.1" y="425" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">SWE-agent</text>
+<rect x="297.1" y="406" width="49.9" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="322.1" y="425" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">MCP</text>
+<rect x="423.0" y="406" width="119.2" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="482.6" y="425" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">ChatMusician</text>
+<rect x="549.2" y="406" width="110.2" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="604.3" y="425" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MuChoMusic</text>
+<rect x="423.0" y="441" width="110.2" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="478.1" y="460" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">PianoJudge</text>
+<line x1="385.0" y1="450.5" x2="385.0" y2="536.5" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="554.5" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2025</text>
+<rect x="67.5" y="483" width="114.7" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="124.8" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">DeepSeek-R1</text>
+<rect x="189.2" y="483" width="68.5" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="223.4" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Qwen3</text>
+<rect x="264.7" y="483" width="82.3" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="305.8" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Gemma 3</text>
+<rect x="68.4" y="518" width="72.7" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="104.7" y="537" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Kimi K2</text>
+<rect x="148.1" y="518" width="100.6" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="198.4" y="537" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Nemotron 3</text>
+<rect x="255.7" y="518" width="91.3" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="301.3" y="537" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Search-R1</text>
+<rect x="423.0" y="483" width="86.8" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="466.4" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">TalkPlay</text>
+<rect x="516.8" y="483" width="68.5" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="551.0" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">Amuse</text>
+<rect x="592.3" y="483" width="54.4" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="619.5" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">Nota</text>
+<rect x="653.7" y="483" width="68.5" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="687.9" y="502" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">LLaQo</text>
+<rect x="423.0" y="518" width="133.0" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="489.5" y="537" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">Music Flamingo</text>
+<rect x="563.0" y="518" width="133.0" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="629.5" y="537" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">TalkPlay-Tools</text>
+<rect x="423.0" y="553" width="124.0" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="485.0" y="572" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">LLM2Fx-Tools</text>
+<rect x="554.0" y="553" width="96.1" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="602.0" y="572" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">CMI-Bench</text>
+<rect x="657.1" y="553" width="77.5" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="695.9" y="572" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MusiQAl</text>
+<rect x="423.0" y="588" width="82.3" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="464.1" y="607" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MusiXQA</text>
+<rect x="512.3" y="588" width="109.9" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="567.2" y="607" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">RUListening</text>
+<line x1="385.0" y1="562.5" x2="385.0" y2="648.5" stroke="#977a5d" stroke-width="1.5"/>
+<text x="385.0" y="666.5" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">2026</text>
+<rect x="101.9" y="630" width="105.1" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="154.4" y="649" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">GPT-6 Astra</text>
+<rect x="214.0" y="630" width="133.0" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="280.5" y="649" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Claude Fable 5</text>
+<rect x="218.8" y="665" width="128.2" height="28" rx="6" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55"/>
+<text x="282.9" y="684" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">Gemini 4 Argon</text>
+<rect x="423.0" y="630" width="109.9" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="477.9" y="649" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MuseAgent-1</text>
+<rect x="539.9" y="630" width="100.6" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="590.2" y="649" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">MIDI-LLaMA</text>
+<rect x="423.0" y="665" width="128.5" height="28" rx="6" fill="#8f9066" fill-opacity="0.16" stroke="#8f9066" stroke-opacity="0.55"/>
+<text x="487.2" y="684" font-size="15" font-weight="600" text-anchor="middle" fill="#8f9066">Metadata LLMs</text>
+<line x1="385.0" y1="674.5" x2="385.0" y2="709" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M380.0,703 L385.0,711 L390.0,703" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+</svg>
