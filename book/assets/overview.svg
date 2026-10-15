@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 320" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Structure of the tutorial</title>
+<desc id="d">Part I, Foundations: Chapter 1, LLMs and LLM agents, and Chapter 2, LLMs for music understanding. Both lead to Part II, Applications: Chapter 3, LLMs for music listening, for listeners; Chapter 4, LLMs for music creation, for producers; Chapter 5, LLMs for music education, for students. All three lead to the conclusion.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">PART I · FOUNDATIONS</text>
+<rect x="0.8" y="26.75" width="376.5" height="62.5" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16.0" y="50" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#607b9a">CHAPTER 1</text>
+<text x="16.0" y="72" font-size="16" font-weight="700" fill="#607b9a">LLMs and LLM Agents</text>
+<rect x="392.8" y="26.75" width="376.5" height="62.5" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="408.0" y="50" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">CHAPTER 2</text>
+<text x="408.0" y="72" font-size="16" font-weight="700" fill="#8f9066">LLMs for Music Understanding</text>
+<text x="0" y="120" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">PART II · APPLICATIONS</text>
+<line x1="189.0" y1="90" x2="189.0" y2="134" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="581.0" y1="90" x2="581.0" y2="134" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="123.7" y1="134" x2="646.3" y2="134" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="123.7" y1="134" x2="123.7" y2="153" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M118.7,146 L123.7,154 L128.7,146" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="385.0" y1="134" x2="385.0" y2="153" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M380.0,146 L385.0,154 L390.0,146" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="646.3" y1="134" x2="646.3" y2="153" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M641.3,146 L646.3,154 L651.3,146" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="0.8" y="156.75" width="245.8" height="62.5" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16.0" y="180" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">CHAPTER 3 · LISTENER</text>
+<text x="16.0" y="202" font-size="16" font-weight="700" fill="#ab7827">LLMs for Music Listening</text>
+<rect x="262.1" y="156.75" width="245.8" height="62.5" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="277.3" y="180" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">CHAPTER 4 · PRODUCER</text>
+<text x="277.3" y="202" font-size="16" font-weight="700" fill="#ab7827">LLMs for Music Creation</text>
+<rect x="523.4" y="156.75" width="245.8" height="62.5" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="538.7" y="180" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">CHAPTER 5 · STUDENT</text>
+<text x="538.7" y="202" font-size="16" font-weight="700" fill="#ab7827">LLMs for Music Education</text>
+<line x1="123.7" y1="220" x2="123.7" y2="242" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="385.0" y1="220" x2="385.0" y2="242" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="646.3" y1="220" x2="646.3" y2="242" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="123.7" y1="242" x2="646.3" y2="242" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="385.0" y1="242" x2="385.0" y2="263" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M380.0,256 L385.0,264 L390.0,256" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x=".75" y="266.75" width="768.5" height="50.5" rx="8" fill="#977a5d" fill-opacity="0.10" stroke="#977a5d" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="385.0" y="298" font-size="16" font-weight="700" text-anchor="middle" fill="#977a5d">Conclusion</text>
+</svg>
