@@ -766,10 +766,135 @@ article.content .myst-outline a:hover {
 
 /* ---------------------------------------------------------- bibliography */
 
+/* The reference list reads like the body: same size, color, and leading,
+   under a header sized like a section heading, with no full-width rule. */
 .myst-bibliography {
-  border-top: 1px solid var(--ml-border);
+  border-top: none !important;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ml-text);
+}
+
+.myst-bibliography-header {
+  font-size: 1.5em !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.025em;
+  color: var(--ml-text) !important;
+}
+
+.myst-bibliography-list {
+  font-size: inherit !important;
+  line-height: 1.75 !important;
+  color: var(--ml-text) !important;
+}
+
+.myst-bibliography-item {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  margin-bottom: 0.5rem;
+  color: var(--ml-text);
+}
+
+/* In-text citations look the same whether or not the entry has a URL: the
+   theme renders URL-less ones as a blue dotted span instead of a link. */
+article.content cite span.hover-link {
+  color: var(--ml-accent-ink) !important;
+  text-decoration: underline !important;
+  text-decoration-style: solid !important;
+  text-decoration-color: color-mix(in srgb, var(--ml-accent) 45%, transparent) !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 4px !important;
+  border-bottom: none !important;
+}
+
+/* ---------------------------------------------------------- chat transcript */
+
+/* A conversation with a user bubble, a faded trace of the assistant's
+   reasoning and tool calls, and the answer. Usage in MyST:
+   ::::{div} with :class: ml-chat, holding divs with :class: ml-chat-user,
+   ml-chat-trace, and ml-chat-answer. */
+article.content .ml-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--ml-border);
+  border-radius: 12px;
+}
+article.content .ml-chat p { margin: 0; }
+article.content .ml-chat-user {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: 0.6rem 0.95rem;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--ml-gold-tint);
+  color: var(--ml-text);
+}
+article.content .ml-chat-trace {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--ml-border-strong);
+  color: var(--ml-text-faint);
   font-size: 0.875rem;
-  color: var(--ml-text-muted);
+  line-height: 1.6;
+}
+article.content .ml-chat-trace code,
+article.content .ml-chat-trace code * {
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: 0.8125rem !important;
+}
+article.content .ml-chat-trace p { color: var(--ml-text-faint) !important; }
+article.content .ml-chat-trace p:not(:has(code)) { font-style: italic; }
+article.content .ml-chat-answer {
+  align-self: flex-start;
+  max-width: 85%;
+  color: var(--ml-text);
+}
+article.content .ml-chat-user,
+article.content .ml-chat-trace {
+  position: relative;
+  margin-top: 1.1rem;
+}
+article.content .ml-chat-user::before,
+article.content .ml-chat-trace::before {
+  position: absolute;
+  top: -1.35rem;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ml-text-faint);
+}
+article.content .ml-chat-user::before { content: "User"; right: 0.25rem; }
+article.content .ml-chat-trace::before { content: "Assistant"; left: -2px; }
+
+/* ---------------------------------------------------------------- tabs */
+
+/* Tab labels and rules in the key color instead of the theme's blue. */
+article.content .myst-tab-set-row {
+  border-bottom-color: color-mix(in srgb, var(--ml-gold) 25%, transparent) !important;
+}
+article.content .myst-tab-item-header-active {
+  color: var(--ml-gold) !important;
+  border-bottom-color: var(--ml-gold) !important;
+}
+article.content .myst-tab-item-header-inactive {
+  color: color-mix(in srgb, var(--ml-gold) 55%, transparent) !important;
+}
+article.content .myst-tab-item-header-inactive:hover {
+  color: color-mix(in srgb, var(--ml-gold) 80%, transparent) !important;
+}
+article.content .myst-tab-item-body { box-shadow: none !important; }
+article.content .myst-tab-item-text { padding: 0 !important; }
+article.content .myst-tab-item-body .ml-chat {
+  margin-top: 0.75rem;
+  border-color: color-mix(in srgb, var(--ml-gold) 25%, transparent);
 }
 
 /* ------------------------------------------------------------ landing page */
