@@ -27,7 +27,12 @@ project:
         - file: book/applications/listeners.md
     - title: Composition & Co-Creation
       children:
-        - file: book/applications/producers.md
+        - file: book/composers/00_overview.md
+        - file: book/composers/01_prompt_to_artifact.md
+        - file: book/composers/02_turn_based_cocreation.md
+        - file: book/composers/03_realtime_performance.md
+        - file: book/composers/04_agentic_musicmaking.md
+        - file: book/composers/05_wrapup.md
     - title: Feedback & Music Education
       children:
         - file: book/applications/performers.md
