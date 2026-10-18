@@ -1,0 +1,42 @@
+---
+title: Perceiving Audio Performances
+authors:
+  - name: Huan Zhang
+---
+
+# Perceiving audio performances
+
+Audio performance analysis relies on a stack of MIR tasks applied to the waveform: automatic music transcription (AMT) for pitch and onset recovery {cite}`benetos_amt_2019`, F0 estimation for continuous pitch trajectories, beat and tempo tracking, loudness envelope analysis, vibrato and timbre characterization, and source separation in ensemble contexts. Lerch et al. {cite}`lerch_survey_2019` survey the full landscape of performance analysis methods, from signal-level feature extraction through aesthetic judgment; their framework organizes the field into technical correctness, expressive deviation, and quality assessment.
+
+**Piano** has the richest infrastructure. ASAP {cite}`foscarin_asap_2020` and ATEPP {cite}`zhang_atepp_2022` provide score-aligned and transcribed corpora enabling studies of rubato, dynamics, and expressive deviation. Specialized systems address discrete assessment dimensions: PianoJudge {cite}`zhang_pianojudge_2024` benchmarks performance understanding across multiple datasets using audio encoders; pedal technique detection {cite}`liang_pedal_2019` identifies sustain use from audio; PISA {cite}`parmar_pisa_2021` frames skill-level estimation as a graded task; CROCUS {cite}`matsubara_crocus_2021` provides expert critique documents grounding automated assessment in professional language. LLaQo {cite}`zhang_llaqo_2025` synthesizes these into an LLM framework: fine-tuned on expert QA pairs from twelve piano datasets spanning student to competition level, it handles performance-level assessment, technique classification, and natural-language coaching through free-form queries.
+
+**String instruments** add bowing direction, bow pressure, contact point, vibrato, and unfretted intonation as parameters without discrete keyboard equivalents. URMP {cite}`li_urmp_2018` provides multi-track ensemble recordings across eleven instruments with per-instrument audio stems and F0 annotations. Luo et al. {cite}`luo_violin_mistakes_2015` detect pitch intonation and bowing errors in novice violin recordings using HMM-based models. The Violin Etudes dataset {cite}`tamer_etudes_2022` provides F0-annotated recordings of standard etude repertoire for technique-aware pitch analysis. Giraldo et al. {cite}`giraldo_violin_tone_2019` assess tone quality automatically from spectral features, targeting the timbral dimensions that adjudicators attend to. Tamer {cite}`tamer_violin_2024` addresses the label scarcity problem through weak supervision, classifying playing techniques from partial annotations.
+
+**Guitar** carries left-hand technique (hammer-on, pull-off, slide, vibrato) and right-hand technique (pick vs. finger, contact angle, palm muting) as timbral variables. GuitarSet {cite}`xi_guitarset_2018` provides six-string pitch annotations, plucking style labels, and beat positions across multiple playing styles. Chen et al. {cite}`chen_guitar_2015` detect electric guitar playing techniques from F0 sequence patterns in real-world recordings, covering bends, vibrato, and slides. Stefani and Turchet {cite}`stefani_guitar_2025` embed real-time technique recognition in a smart acoustic guitar, demonstrating on-device deployment for five main right-hand techniques. Timbral variation from contact angle and nail shape remain largely uncharacterized in the dataset literature.
+
+**Singing** spans pitch accuracy, vibrato, breath management, tonal quality, and expressive dynamics. Narang and Serra {cite}`narang_singing_2025` address loudness and expressive shaping as learnable targets from audio. TG-Critic {cite}`sun_tgcritic_2023` scores singing quality without a reference recording, using timbre features from the CQT spectrogram. Singing mistake detection {cite}`kumar_singing_mistakes_2026` identifies pitch and rhythm errors by comparing learner and teacher recordings. Audio-language models extend this to generated critique text, though the published work targets synthesised singing rather than learners {cite}`li_svs_feedback_2025`.
+
+**Wind and band instruments** carry breath timing, embouchure control, and air speed as expressive variables absent from piano or guitar. Wu et al. {cite}`wu_assessment_2016` introduced the Florida Band Dataset and a feature-extraction pipeline for objective assessment of wind band performance, covering intonation, dynamics, and rhythmic consistency across student recordings. Trumpet tone quality assessment {cite}`knight_trumpet_2011` targets timbre and stability from audio alone. Flute beginner mistake detection {cite}`han_flute_2014` identifies pitch and rhythm errors in novice recordings using a hierarchical classifier.
+
+**Non-Western instruments** introduce organological and stylistic knowledge that Western-trained models cannot generalize to. Guqin performance analysis {cite}`huang_guqin_2020` classifies six playing techniques on the GQ39 dataset using modal and structural context. Guzheng technique detection {cite}`li_guzheng_2023` applies multi-scale networks with self-attention to multi-label frame-level classification on the GuzhengTech99 dataset. Tabla stroke classification {cite}`rohit_tabla_2021` addresses timing deviation and loudness dynamics in Hindustani vocal accompaniment. These works confirm that performance assessment must be built instrument-by-instrument: feature sets, annotation categories, and evaluation criteria do not transfer across organological traditions.
+
+:::{figure} assets/guzheng_technique.png
+:label: fig-guzheng-technique
+:alt: A guzheng phrase shown four ways: spectrogram segments labelled a to k, Western staff notation, Chinese numbered notation, and a row of playing-technique labels including vibrato, point note, upward and downward portamento, glissando, tremolo, plucks, and overlapping combinations.
+:width: 100%
+
+One guzheng phrase, annotated frame by frame with its playing techniques {cite}`li_guzheng_2023`. None of these labels has a piano equivalent, the phrase needs two notation systems to write down, and the last three segments carry two techniques at once. A model trained on Western conservatory categories has nowhere to put any of it.
+:::
+
+Coverage is uneven by instrument, in the same way as for motion:
+
+| Instrument | Audio resources | State |
+|---|---|---|
+| Piano | ASAP, ATEPP, MAESTRO, PianoJudge, PISA, CROCUS | Saturated; expert critique language already annotated |
+| Violin, cello | URMP, Violin Etudes, novice error and tone-quality sets | Intonation and technique solid; tone quality emerging |
+| Guitar | GuitarSet, technique detection, on-instrument recognition | Technique labels exist; timbre from contact angle uncharacterised |
+| Singing | TG-Critic, mistake detection, VocalCoachBench | Generative feedback active; diagnosis accuracy weak |
+| Wind, band | Florida Band, trumpet tone, flute beginner errors | Pre-deep-learning |
+| Guqin, guzheng, tabla | GQ39, GuzhengTech99, tabla stroke sets | Technique classification only; no assessment layer |
+
+Assessment is conditional on instrument, style, period, and developmental stage. Models that inherit this conditionality from annotated expert data generalize; models that do not conflate skill levels and style contexts.

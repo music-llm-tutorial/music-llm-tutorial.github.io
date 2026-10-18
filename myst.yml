@@ -30,7 +30,23 @@ project:
         - file: book/applications/producers.md
     - title: Feedback & Music Education
       children:
-        - file: book/applications/performers.md
+        - file: book/performing/intro.md
+        - file: book/performing/perceiving.md
+          children:
+            - file: book/performing/perceiving_score.md
+            - file: book/performing/perceiving_audio.md
+            - file: book/performing/perceiving_motion.md
+        - file: book/performing/feedback.md
+          children:
+            - file: book/performing/feedback_language.md
+            - file: book/performing/feedback_data.md
+            - file: book/performing/feedback_demo.ipynb
+        - file: book/performing/agentic.md
+          children:
+            - file: book/performing/agentic_tools.md
+            - file: book/performing/agentic_memory.md
+            - file: book/performing/agentic_pedagogy.md
+            - file: book/performing/agentic_demo.ipynb
     - title: Conclusion
       children:
         - file: book/conclusion.md
@@ -48,6 +64,7 @@ site:
     logo: asset/logo-wordmark.png
     logo_alt: "ISMIR 2026: LLMs × Music"
     style: asset/custom.css
+    numbered_references: true
   actions:
     - title: GitHub
       url: https://github.com/music-llm-tutorial/music-llm-tutorial.github.io
