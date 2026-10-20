@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 848 531" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">An agent as a conversation with two kinds of users</title>
+<desc id="d">Three columns: the tools on the left, the model inside the harness (a dashed box) in the middle, and you on the right. You ask for a 20-minute warm-up set from your folder of house tracks, rising from 120 to 126 BPM, and the harness passes the request to the model with the folder's file list. The model calls get_tempo once per file; the harness runs the calls and adds the results to the conversation: track_01 124, track_02 122, track_07 63, and so on. The model writes: 63 is too slow for house, probably half tempo, re-estimate track_07 in 100 to 160 BPM. It calls get_tempo on track_07 with min_bpm=100 and max_bpm=160, and the result is 126. It then answers with a 20-minute set rising from 120 to 126 BPM that ends on track_07. The answer contains no tool call, so the harness stops the loop and shows the answer to you. Files and values are illustrative.</desc>
+<defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
+<rect x="304" y="26" width="270" height="493.0" rx="14" fill="#977a5d" fill-opacity="0.05" stroke="#977a5d" stroke-opacity="0.55" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text x="0.0" y="14.0" font-size="12" font-weight="700" text-anchor="start" fill="#7b7c55" letter-spacing="0.08em">TOOLS AS “USERS”</text>
+<text x="439.0" y="14.0" font-size="12" font-weight="700" text-anchor="middle" fill="#607b9a" letter-spacing="0.08em">MODEL</text>
+<text x="840.0" y="14.0" font-size="12" font-weight="700" text-anchor="end" fill="#977a5d" letter-spacing="0.08em">YOU, THE USER</text>
+<rect x="706.0" y="34.0" width="134.0" height="82.0" rx="8" fill="#977a5d" fill-opacity="0.1" stroke="#977a5d" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="717.0" y="54.0" font-size="13" text-anchor="start" xml:space="preserve"><tspan fill="#977a5d" font-weight="700">you: </tspan><tspan fill="#977a5d" font-weight="400">A 20-minute</tspan></text>
+<text x="717.0" y="71.0" font-size="13" font-weight="400" text-anchor="start" fill="#977a5d">warm-up set from</text>
+<text x="717.0" y="88.0" font-size="13" font-weight="400" text-anchor="start" fill="#977a5d">my house folder,</text>
+<text x="717.0" y="105.0" font-size="13" font-weight="400" text-anchor="start" fill="#977a5d">120 → 126 BPM.</text>
+<line x1="704.0" y1="56.0" x2="580.0" y2="56.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="316.0" y="46.0" font-size="12" font-weight="700" text-anchor="start" fill="#977a5d" letter-spacing="0.08em">HARNESS</text>
+<text x="316.0" y="62.0" font-size="12" font-weight="400" text-anchor="start" fill="#977a5d">adds the folder's file list</text>
+<rect x="318.0" y="76.0" width="242.0" height="65.0" rx="8" fill="#607b9a" fill-opacity="0.13" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="329.0" y="96.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#607b9a" font-weight="700">get_tempo("track_01.wav")</tspan></text>
+<text x="329.0" y="113.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#607b9a" font-weight="700">get_tempo("track_02.wav")</tspan></text>
+<text x="329.0" y="130.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#607b9a" font-weight="400">… one call per file</tspan></text>
+<line x1="316.0" y1="94.0" x2="202.0" y2="94.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="250.0" y="87.0" font-size="12" font-weight="600" text-anchor="middle" fill="#977a5d">runs the calls</text>
+<rect x="0.0" y="151.0" width="196.0" height="82.0" rx="8" fill="#8f9066" fill-opacity="0.13" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="11.0" y="171.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#7b7c55" font-weight="700">get_tempo:</tspan></text>
+<text x="11.0" y="188.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#7b7c55" font-weight="400">track_01: 124</tspan></text>
+<text x="11.0" y="205.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#7b7c55" font-weight="400">track_02: 122</tspan></text>
+<text x="11.0" y="222.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#7b7c55" font-weight="400">track_07: </tspan><tspan fill="#ab7827" font-weight="700">63</tspan><tspan fill="#7b7c55" font-weight="400">  …</tspan></text>
+<line x1="198.0" y1="197.0" x2="312.0" y2="197.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="250.0" y="190.0" font-size="12" font-weight="600" text-anchor="middle" fill="#977a5d">adds the results</text>
+<rect x="318.0" y="247.0" width="242.0" height="65.0" rx="8" fill="#607b9a" fill-opacity="0.04" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="329.0" y="267.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a" font-style="italic">63 is too slow for house: probably</text>
+<text x="329.0" y="284.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a" font-style="italic">half tempo. Re-estimate track_07</text>
+<text x="329.0" y="301.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a" font-style="italic">in 100–160 BPM.</text>
+<rect x="318.0" y="322.0" width="242.0" height="48.0" rx="8" fill="#607b9a" fill-opacity="0.13" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="329.0" y="342.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#607b9a" font-weight="700">get_tempo("track_07.wav",</tspan></text>
+<text x="329.0" y="359.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#607b9a" font-weight="700">  min_bpm=100, max_bpm=160)</tspan></text>
+<line x1="316.0" y1="340.0" x2="202.0" y2="340.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="250.0" y="333.0" font-size="12" font-weight="600" text-anchor="middle" fill="#977a5d">runs the call</text>
+<rect x="0.0" y="380.0" width="196.0" height="48.0" rx="8" fill="#8f9066" fill-opacity="0.13" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="11.0" y="400.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#7b7c55" font-weight="700">get_tempo:</tspan></text>
+<text x="11.0" y="417.0" font-size="12" text-anchor="start" xml:space="preserve" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"><tspan fill="#7b7c55" font-weight="400">track_07: </tspan><tspan fill="#ab7827" font-weight="700">126</tspan></text>
+<line x1="198.0" y1="409.0" x2="312.0" y2="409.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="250.0" y="402.0" font-size="12" font-weight="600" text-anchor="middle" fill="#977a5d">adds the result</text>
+<rect x="318.0" y="442.0" width="242.0" height="65.0" rx="8" fill="#607b9a" fill-opacity="0.13" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="329.0" y="462.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a">Here's a 20-minute set rising</text>
+<text x="329.0" y="479.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a">from 120 to 126 BPM: track_11,</text>
+<text x="329.0" y="496.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a">track_02, …, track_07.</text>
+<line x1="562.0" y1="473.0" x2="700.0" y2="473.0" stroke="#ab7827" stroke-width="1.8" marker-end="url(#ah-ab7827)"/>
+<text x="646.0" y="465.0" font-size="12" font-weight="700" text-anchor="middle" fill="#ab7827">no tool call: stop</text>
+<rect x="706.0" y="458.0" width="134.0" height="30.0" rx="8" fill="#977a5d" fill-opacity="0.1" stroke="#977a5d" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="773.0" y="478.0" font-size="13" font-weight="700" text-anchor="middle" fill="#977a5d">you</text>
+</svg>
