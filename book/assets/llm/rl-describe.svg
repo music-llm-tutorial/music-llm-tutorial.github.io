@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 778 316" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Reinforcement learning on track descriptions</title>
+<desc id="d">Prompt: an audio file funk.wav and the request 'Describe this track.' Song facts from annotations: funk, E minor, 104 BPM, 4/4, horns. The model writes three descriptions. A: 'Tight funk groove in E minor, 104 BPM in 4/4, with horns.' matches all five facts, reward 1.0. B: 'A funk track around 104 BPM with a synth bass line.' matches funk and tempo, reward 0.4. C: 'A laid-back jazz ballad in E major, led by piano.' matches none, reward 0.0. After the update, the probability of A rises from 0.30 to 0.45, B falls slightly from 0.40 to 0.36 because it is below the group mean of 0.47, and C falls from 0.30 to 0.19. Each description's advantage, its reward minus the mean, is +0.53, -0.07, and -0.47. Illustrative values.</desc>
+<defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
+<rect x="0.0" y="0.0" width="178.0" height="58.0" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="14.0" y="24.0" font-size="14" font-weight="700" text-anchor="start" fill="#7b7c55">♪ funk.wav</text>
+<text x="14.0" y="45.0" font-size="14" font-weight="400" text-anchor="start" fill="#977a5d">Describe this track.</text>
+<text x="232.0" y="14.0" font-size="12" font-weight="700" text-anchor="start" fill="#7b7c55" letter-spacing="0.08em">SONG FACTS (FROM ANNOTATIONS)</text>
+<rect x="232.0" y="26.0" width="64.0" height="26.0" rx="6" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="264.0" y="44.0" font-size="12" font-weight="700" text-anchor="middle" fill="#7b7c55">funk</text>
+<rect x="300.0" y="26.0" width="64.0" height="26.0" rx="6" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="332.0" y="44.0" font-size="12" font-weight="700" text-anchor="middle" fill="#7b7c55">E minor</text>
+<rect x="368.0" y="26.0" width="64.0" height="26.0" rx="6" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="400.0" y="44.0" font-size="12" font-weight="700" text-anchor="middle" fill="#7b7c55">104 BPM</text>
+<rect x="436.0" y="26.0" width="64.0" height="26.0" rx="6" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="468.0" y="44.0" font-size="12" font-weight="700" text-anchor="middle" fill="#7b7c55">4/4</text>
+<rect x="504.0" y="26.0" width="64.0" height="26.0" rx="6" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="536.0" y="44.0" font-size="12" font-weight="700" text-anchor="middle" fill="#7b7c55">horns</text>
+<text x="0.0" y="90.0" font-size="12" font-weight="700" text-anchor="start" fill="#977a5d" letter-spacing="0.08em">MODEL'S DESCRIPTIONS</text>
+<text x="596.0" y="90.0" font-size="12" font-weight="700" text-anchor="middle" fill="#977a5d" letter-spacing="0.08em">REWARD</text>
+<text x="634.0" y="90.0" font-size="12" font-weight="700" text-anchor="start" fill="#977a5d" letter-spacing="0.08em">PROBABILITY</text>
+<line x1="0.0" y1="104.0" x2="770.0" y2="104.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.25"/>
+<text x="0.0" y="129.0" font-size="14" font-weight="700" text-anchor="start" fill="#607b9a">A</text>
+<text x="20.0" y="129.0" font-size="13.5" font-weight="400" text-anchor="start" fill="#607b9a">Tight funk groove in E minor,</text>
+<text x="20.0" y="147.0" font-size="13.5" font-weight="400" text-anchor="start" fill="#607b9a">104 BPM in 4/4, with horns.</text>
+<text x="264.0" y="139.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="332.0" y="139.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="400.0" y="139.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="468.0" y="139.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="536.0" y="139.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="596.0" y="137.0" font-size="16" font-weight="700" text-anchor="middle" fill="#ab7827">1.0</text>
+<text x="596.0" y="154.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">+0.53</text>
+<rect x="634.0" y="118.0" width="63.0" height="12.0" rx="2" fill="#977a5d" fill-opacity="0.18" stroke="#977a5d" stroke-opacity="0.5" stroke-width="1"/>
+<text x="703.0" y="129.0" font-size="12" font-weight="400" text-anchor="start" fill="#977a5d">0.30</text>
+<rect x="634.0" y="135.0" width="94.5" height="12.0" rx="2" fill="#ab7827" fill-opacity="0.45" stroke="#ab7827" stroke-opacity="0.8" stroke-width="1"/>
+<text x="734.5" y="146.0" font-size="12" font-weight="700" text-anchor="start" fill="#ab7827">0.45</text>
+<line x1="0.0" y1="162.0" x2="770.0" y2="162.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.25"/>
+<text x="0.0" y="187.0" font-size="14" font-weight="700" text-anchor="start" fill="#607b9a">B</text>
+<text x="20.0" y="187.0" font-size="13.5" font-weight="400" text-anchor="start" fill="#607b9a">A funk track around 104 BPM</text>
+<text x="20.0" y="205.0" font-size="13.5" font-weight="400" text-anchor="start" fill="#607b9a">with a synth bass line.</text>
+<text x="264.0" y="197.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="332.0" y="197.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="400.0" y="197.0" font-size="17" font-weight="700" text-anchor="middle" fill="#7b7c55">✓</text>
+<text x="468.0" y="197.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="536.0" y="197.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="596.0" y="195.0" font-size="16" font-weight="700" text-anchor="middle" fill="#ab7827">0.4</text>
+<text x="596.0" y="212.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">−0.07</text>
+<rect x="634.0" y="176.0" width="84.0" height="12.0" rx="2" fill="#977a5d" fill-opacity="0.18" stroke="#977a5d" stroke-opacity="0.5" stroke-width="1"/>
+<text x="724.0" y="187.0" font-size="12" font-weight="400" text-anchor="start" fill="#977a5d">0.40</text>
+<rect x="634.0" y="193.0" width="75.6" height="12.0" rx="2" fill="#ab7827" fill-opacity="0.45" stroke="#ab7827" stroke-opacity="0.8" stroke-width="1"/>
+<text x="715.6" y="204.0" font-size="12" font-weight="700" text-anchor="start" fill="#ab7827">0.36</text>
+<line x1="0.0" y1="220.0" x2="770.0" y2="220.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.25"/>
+<text x="0.0" y="245.0" font-size="14" font-weight="700" text-anchor="start" fill="#607b9a">C</text>
+<text x="20.0" y="245.0" font-size="13.5" font-weight="400" text-anchor="start" fill="#607b9a">A laid-back jazz ballad in</text>
+<text x="20.0" y="263.0" font-size="13.5" font-weight="400" text-anchor="start" fill="#607b9a">E major, led by piano.</text>
+<text x="264.0" y="255.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="332.0" y="255.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="400.0" y="255.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="468.0" y="255.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="536.0" y="255.0" font-size="17" font-weight="400" text-anchor="middle" fill="#977a5d" fill-opacity="0.75">✗</text>
+<text x="596.0" y="253.0" font-size="16" font-weight="700" text-anchor="middle" fill="#ab7827">0.0</text>
+<text x="596.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">−0.47</text>
+<rect x="634.0" y="234.0" width="63.0" height="12.0" rx="2" fill="#977a5d" fill-opacity="0.18" stroke="#977a5d" stroke-opacity="0.5" stroke-width="1"/>
+<text x="703.0" y="245.0" font-size="12" font-weight="400" text-anchor="start" fill="#977a5d">0.30</text>
+<rect x="634.0" y="251.0" width="39.9" height="12.0" rx="2" fill="#ab7827" fill-opacity="0.45" stroke="#ab7827" stroke-opacity="0.8" stroke-width="1"/>
+<text x="679.9" y="262.0" font-size="12" font-weight="700" text-anchor="start" fill="#ab7827">0.19</text>
+<line x1="0.0" y1="278.0" x2="770.0" y2="278.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.25"/>
+<rect x="634.0" y="292.0" width="14.0" height="10.0" rx="2" fill="#977a5d" fill-opacity="0.18" stroke="#977a5d" stroke-opacity="0.5" stroke-width="1"/>
+<text x="654.0" y="301.0" font-size="12" font-weight="400" text-anchor="start" fill="#977a5d">before</text>
+<rect x="704.0" y="292.0" width="14.0" height="10.0" rx="2" fill="#ab7827" fill-opacity="0.45" stroke="#ab7827" stroke-opacity="0.8" stroke-width="1"/>
+<text x="724.0" y="301.0" font-size="12" font-weight="600" text-anchor="start" fill="#ab7827">after</text>
+<text x="622.0" y="301.0" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">under each reward: its advantage, reward − group mean 0.47</text>
+</svg>

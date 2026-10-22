@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 778 308" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Next-token prediction</title>
+<desc id="d">The context 'In C major, G7 resolves to' is split into eight tokens and read by the LLM, a decoder-only Transformer in which each position sees itself and earlier positions. It outputs a probability for every token in its vocabulary: C 0.58, the 0.21, a 0.09, Am 0.03 (the deceptive resolution), all other tokens 0.09. Generation samples one token, appends it to the context, and predicts again. Token boundaries and probabilities are illustrative.</desc>
+<defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
+<text x="0.0" y="14.0" font-size="12" font-weight="700" text-anchor="start" fill="#977a5d" letter-spacing="0.08em">CONTEXT</text>
+<rect x="0.0" y="24.0" width="28.5" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="14.3" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">In</text>
+<rect x="34.5" y="24.0" width="26.8" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="47.9" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">C</text>
+<rect x="67.3" y="24.0" width="53.5" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="94.1" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">major</text>
+<rect x="126.8" y="24.0" width="22.0" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="137.8" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">,</text>
+<rect x="154.8" y="24.0" width="27.7" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="168.7" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">G</text>
+<rect x="188.5" y="24.0" width="24.3" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="200.7" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">7</text>
+<rect x="218.8" y="24.0" width="71.8" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="254.8" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">resolves</text>
+<rect x="296.7" y="24.0" width="28.5" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="310.9" y="45.0" font-size="15" font-weight="600" text-anchor="middle" fill="#607b9a">to</text>
+<rect x="335.2" y="24.0" width="26.8" height="32.0" rx="6" fill="#ab7827" fill-opacity="0.1" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="348.6" y="45.0" font-size="15" font-weight="700" text-anchor="middle" fill="#ab7827">C</text>
+<path d="M 2 59 V 64 H 323.2 V 59" fill="none" stroke="#977a5d" stroke-width="1.2"/>
+<line x1="162.6" y1="64.0" x2="162.6" y2="86.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<rect x="0.0" y="90.0" width="325.2" height="50.0" rx="8" fill="#607b9a" fill-opacity="0.16" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="162.6" y="112.0" font-size="16" font-weight="700" text-anchor="middle" fill="#607b9a">LLM</text>
+<text x="162.6" y="130.0" font-size="13" font-weight="400" text-anchor="middle" fill="#607b9a">decoder-only Transformer</text>
+<text x="345.2" y="112.0" font-size="13" font-weight="400" text-anchor="start" fill="#977a5d">each position sees only itself</text>
+<text x="345.2" y="129.0" font-size="13" font-weight="400" text-anchor="start" fill="#977a5d">and earlier positions</text>
+<line x1="162.6" y1="144.0" x2="162.6" y2="168.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="0.0" y="188.0" font-size="12" font-weight="700" text-anchor="start" fill="#977a5d" letter-spacing="0.08em">NEXT-TOKEN PROBABILITIES</text>
+<text x="118.0" y="213.0" font-size="14" font-weight="700" text-anchor="end" fill="#ab7827">C</text>
+<rect x="126.0" y="201.0" width="220.4" height="16.0" rx="3" fill="#ab7827" fill-opacity="0.35" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<text x="352.4" y="214.0" font-size="13" font-weight="600" text-anchor="start" fill="#ab7827">0.58</text>
+<text x="118.0" y="233.0" font-size="14" font-weight="400" text-anchor="end" fill="#607b9a">the</text>
+<rect x="126.0" y="221.0" width="79.8" height="16.0" rx="3" fill="#607b9a" fill-opacity="0.22" stroke="#607b9a" stroke-opacity="0.7" stroke-width="1"/>
+<text x="211.8" y="234.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a">0.21</text>
+<text x="118.0" y="253.0" font-size="14" font-weight="400" text-anchor="end" fill="#607b9a">a</text>
+<rect x="126.0" y="241.0" width="34.2" height="16.0" rx="3" fill="#607b9a" fill-opacity="0.22" stroke="#607b9a" stroke-opacity="0.7" stroke-width="1"/>
+<text x="166.2" y="254.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a">0.09</text>
+<text x="118.0" y="273.0" font-size="14" font-weight="400" text-anchor="end" fill="#607b9a">Am</text>
+<rect x="126.0" y="261.0" width="11.4" height="16.0" rx="3" fill="#607b9a" fill-opacity="0.22" stroke="#607b9a" stroke-opacity="0.7" stroke-width="1"/>
+<text x="143.4" y="274.0" font-size="13" font-weight="400" text-anchor="start" fill="#607b9a">0.03</text>
+<text x="118.0" y="293.0" font-size="14" font-weight="400" text-anchor="end" fill="#977a5d">all other tokens</text>
+<rect x="126.0" y="281.0" width="34.2" height="16.0" rx="3" fill="#977a5d" fill-opacity="0.22" stroke="#977a5d" stroke-opacity="0.7" stroke-width="1"/>
+<text x="166.2" y="294.0" font-size="13" font-weight="400" text-anchor="start" fill="#977a5d">0.09</text>
+<path d="M 390.4 209 H 600 V 40 H 367.0" fill="none" stroke="#ab7827" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ah-ab7827)"/>
+<text x="610.0" y="118.0" font-size="13" font-weight="600" text-anchor="start" fill="#ab7827">sample one token,</text>
+<text x="610.0" y="135.0" font-size="13" font-weight="600" text-anchor="start" fill="#ab7827">append it,</text>
+<text x="610.0" y="152.0" font-size="13" font-weight="600" text-anchor="start" fill="#ab7827">predict again</text>
+</svg>

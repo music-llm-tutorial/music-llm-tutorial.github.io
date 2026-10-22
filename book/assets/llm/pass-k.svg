@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 778 308" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">pass@k and pass^k</title>
+<desc id="d">Line chart over k = 1 to 8 attempts for an agent that completes one task on 60% of its attempts, attempts independent. pass@k, the chance that at least one of k attempts succeeds, rises from 60% at k=1 to 84% at k=2 and 99.9% at k=8. pass^k, the chance that all k attempts succeed, falls from 60% at k=1 to 36% at k=2, 13% at k=4 and 1.7% at k=8.</desc>
+<defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
+<line x1="70.0" y1="250.0" x2="560.0" y2="250.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.5"/>
+<text x="60.0" y="254.0" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">0%</text>
+<line x1="70.0" y1="197.5" x2="560.0" y2="197.5" stroke="#977a5d" stroke-width="1" stroke-opacity="0.18"/>
+<text x="60.0" y="201.5" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">25%</text>
+<line x1="70.0" y1="145.0" x2="560.0" y2="145.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.18"/>
+<text x="60.0" y="149.0" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">50%</text>
+<line x1="70.0" y1="92.5" x2="560.0" y2="92.5" stroke="#977a5d" stroke-width="1" stroke-opacity="0.18"/>
+<text x="60.0" y="96.5" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">75%</text>
+<line x1="70.0" y1="40.0" x2="560.0" y2="40.0" stroke="#977a5d" stroke-width="1" stroke-opacity="0.18"/>
+<text x="60.0" y="44.0" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">100%</text>
+<text x="70.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">1</text>
+<text x="140.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">2</text>
+<text x="210.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">3</text>
+<text x="280.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">4</text>
+<text x="350.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">5</text>
+<text x="420.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">6</text>
+<text x="490.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">7</text>
+<text x="560.0" y="270.0" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">8</text>
+<text x="315.0" y="292.0" font-size="12" font-weight="600" text-anchor="middle" fill="#977a5d">attempts k</text>
+<line x1="70.0" y1="14.0" x2="92.0" y2="14.0" stroke="#4c7bb5" stroke-width="2"/>
+<circle cx="81" cy="14" r="4" fill="#4c7bb5"/>
+<text x="100.0" y="18.0" font-size="12.5" font-weight="600" text-anchor="start" fill="#977a5d">pass@k</text>
+<line x1="170.0" y1="14.0" x2="192.0" y2="14.0" stroke="#b07a1f" stroke-width="2"/>
+<circle cx="181" cy="14" r="4" fill="#b07a1f"/>
+<text x="200.0" y="18.0" font-size="12.5" font-weight="600" text-anchor="start" fill="#977a5d">pass^k</text>
+<polyline points="70.0,124.0 140.0,73.6 210.0,53.4 280.0,45.4 350.0,42.2 420.0,40.9 490.0,40.3 560.0,40.1" fill="none" stroke="#4c7bb5" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="70.0" cy="124.0" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="140.0" cy="73.6" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="210.0" cy="53.4" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="280.0" cy="45.4" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="350.0" cy="42.2" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="420.0" cy="40.9" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="490.0" cy="40.3" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="560.0" cy="40.1" r="4" fill="#4c7bb5" stroke="#fcfaf7" stroke-opacity="0" />
+<polyline points="70.0,124.0 140.0,174.4 210.0,204.6 280.0,222.8 350.0,233.7 420.0,240.2 490.0,244.1 560.0,246.5" fill="none" stroke="#b07a1f" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="70.0" cy="124.0" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="140.0" cy="174.4" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="210.0" cy="204.6" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="280.0" cy="222.8" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="350.0" cy="233.7" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="420.0" cy="240.2" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="490.0" cy="244.1" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<circle cx="560.0" cy="246.5" r="4" fill="#b07a1f" stroke="#fcfaf7" stroke-opacity="0" />
+<text x="574.0" y="44.1" font-size="12.5" font-weight="600" text-anchor="start" fill="#977a5d">pass@k: at least one</text>
+<text x="574.0" y="60.1" font-size="12.5" font-weight="400" text-anchor="start" fill="#977a5d">of k attempts succeeds</text>
+<text x="574.0" y="234.5" font-size="12.5" font-weight="600" text-anchor="start" fill="#977a5d">pass^k: all k</text>
+<text x="574.0" y="250.5" font-size="12.5" font-weight="400" text-anchor="start" fill="#977a5d">attempts succeed</text>
+<text x="550.0" y="238.5" font-size="12" font-weight="400" text-anchor="end" fill="#977a5d">1.7%</text>
+<text x="280.0" y="212.8" font-size="12" font-weight="400" text-anchor="middle" fill="#977a5d">13%</text>
+</svg>
