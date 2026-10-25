@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 778 270" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Training stages</title>
+<desc id="d">A funnel from left to right. Pre-training reads tens of trillions of tokens of web pages, books, code and papers. Mid-training reads up to a few trillion tokens of math, code, textbooks and long documents. Pre- and mid-training produce the base model. Post-training uses millions of examples: supervised fine-tuning on curated examples, then reinforcement learning on reward signals, and produces the instruct or reasoning model. Data shrinks and quality rises from left to right.</desc>
+<defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
+<path d="M 0 22.0 L 225 33.2 L 225 208.5 L 0 222.0 Z" fill="#607b9a" fill-opacity="0.1" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<path d="M 225 33.2 L 410 42.5 L 410 197.4 L 225 208.5 Z" fill="#607b9a" fill-opacity="0.18" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<path d="M 410 42.5 L 600 52.0 L 600 186.0 L 410 197.4 Z" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<line x1="410.0" y1="112.5" x2="600.0" y2="112.5" stroke="#ab7827" stroke-width="1" stroke-opacity="0.55"/>
+<text x="112.5" y="98.0" font-size="16" font-weight="700" text-anchor="middle" fill="#607b9a">Pre-training</text>
+<text x="112.5" y="119.0" font-size="13" font-weight="600" text-anchor="middle" fill="#607b9a">tens of trillions of tokens</text>
+<text x="112.5" y="142.0" font-size="13" font-weight="400" text-anchor="middle" fill="#977a5d">web pages, books,</text>
+<text x="112.5" y="159.0" font-size="13" font-weight="400" text-anchor="middle" fill="#977a5d">code, papers</text>
+<text x="317.5" y="98.0" font-size="16" font-weight="700" text-anchor="middle" fill="#607b9a">Mid-training</text>
+<text x="317.5" y="119.0" font-size="13" font-weight="600" text-anchor="middle" fill="#607b9a">up to a few trillion tokens</text>
+<text x="317.5" y="142.0" font-size="13" font-weight="400" text-anchor="middle" fill="#977a5d">math, code, textbooks,</text>
+<text x="317.5" y="159.0" font-size="13" font-weight="400" text-anchor="middle" fill="#977a5d">long documents</text>
+<text x="505.0" y="73.2" font-size="16" font-weight="700" text-anchor="middle" fill="#ab7827">Post-training</text>
+<text x="505.0" y="94.2" font-size="13" font-weight="600" text-anchor="middle" fill="#ab7827">millions of examples</text>
+<text x="505.0" y="136.5" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#ab7827" font-weight="700">SFT</tspan><tspan fill="#977a5d" font-weight="400">: curated examples</tspan></text>
+<text x="505.0" y="158.5" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#977a5d" font-weight="400">then </tspan><tspan fill="#ab7827" font-weight="700">RL</tspan><tspan fill="#977a5d" font-weight="400">: reward signals</tspan></text>
+<line x1="410.0" y1="6.0" x2="410.0" y2="40.5" stroke="#607b9a" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="404.0" y="12.0" font-size="13" font-weight="700" text-anchor="end" fill="#607b9a">base model</text>
+<line x1="604.0" y1="119.0" x2="634.0" y2="119.0" stroke="#ab7827" stroke-width="1.5" marker-end="url(#ah-ab7827)"/>
+<text x="640.0" y="115.0" font-size="14" font-weight="700" text-anchor="start" fill="#ab7827">instruct /</text>
+<text x="640.0" y="132.0" font-size="14" font-weight="700" text-anchor="start" fill="#ab7827">reasoning model</text>
+<line x1="8.0" y1="246.0" x2="596.0" y2="246.0" stroke="#977a5d" stroke-width="1.5" marker-end="url(#ah-977a5d)"/>
+<text x="10.0" y="238.0" font-size="12" font-weight="600" text-anchor="start" fill="#977a5d">more data, noisier</text>
+<text x="594.0" y="238.0" font-size="12" font-weight="600" text-anchor="end" fill="#977a5d">less data, higher quality</text>
+</svg>
