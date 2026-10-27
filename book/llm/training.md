@@ -25,9 +25,9 @@ illustrative):
 
 | Stage | The same fact, as the model reads it | Learns from |
 |---|---|---|
-| Pre-training | Web page: "…top 10 guitar tricks!! #7: G7 to C always sounds like home, try it on your next song…" | Every token |
-| Mid-training | Textbook: "In C major, the dominant seventh G7 resolves to the tonic: the leading tone B rises to C, and the seventh, F, falls to E." | Every token, in longer, cleaner sequences |
-| Post-training | Conversation. User: "Why does G7 lead to C?" Assistant: "Its B pulls up to C, and its F pulls down to E." | The answer (SFT) or a reward (RL) |
+| Pre‑training | Web page: "…top 10 guitar tricks!! #7: G7 to C always sounds like home, try it on your next song…" | Every token |
+| Mid‑training | Textbook: "In C major, the dominant seventh G7 resolves to the tonic: the leading tone B rises to C, and the seventh, F, falls to E." | Every token, in longer, cleaner sequences |
+| Post‑training | Conversation. User: "Why does G7 lead to C?" Assistant: "Its B pulls up to C, and its F pulls down to E." | The answer (SFT) or a reward (RL) |
 
 (sec-pretraining)=
 ## Pre-training
@@ -243,7 +243,7 @@ slightly less likely.
 Take a prompt $x$ and answers $y_i$ with rewards $r_i$. As a loss, the update is
 roughly the SFT loss on the model's own answers. Each answer's log-probability
 (the sum over its tokens) is multiplied by its advantage, the reward minus the
-group mean $\bar r$:
+group mean $\bar r{:}$
 
 $$
 \mathcal{L}(\theta) \approx -\sum_{i} \left(r_i - \bar r\right) \log p_\theta(y_i \mid x).

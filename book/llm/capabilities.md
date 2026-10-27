@@ -113,18 +113,27 @@ You are a music assistant.
 You may call one or more functions to assist with the user query.
 
 You are provided with function signatures within <tools></tools> XML tags:
-<tools> {"type": "function", "function": {"name": "get_tempo", "description":
-"Estimate the tempo of an audio file in BPM.", "parameters": {"type": "object",
-"properties": {"file": {"type": "string", "description": "Path to an audio
-file"}}, "required": ["file"]}}} </tools>
+<tools>
+{"type": "function", "function": {"name": "get_tempo", "description": "Estimate the tempo of an audio file in BPM.", "parameters": {"type": "object", "properties": {"file": {"type": "string", "description": "Path to an audio file"}}, "required": ["file"]}}}
+</tools>
 
-For each function call, return a json object with function name and arguments
-within <tool_call></tool_call> XML tags: <tool_call> {"name": <function-name>,
-"arguments": <args-json-object>} </tool_call><|im_end|> <|im_start|>user What's
-the tempo of track.wav?<|im_end|> <|im_start|>assistant <tool_call> {"name":
-"get_tempo", "arguments": {"file": "track.wav"}} </tool_call><|im_end|>
-<|im_start|>user <tool_response> {"bpm": 124.0} </tool_response><|im_end|>
-<|im_start|>assistant It's about 124 BPM.<|im_end|> ```
+For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
+<tool_call>
+{"name": <function-name>, "arguments": <args-json-object>}
+</tool_call><|im_end|>
+<|im_start|>user
+What's the tempo of track.wav?<|im_end|>
+<|im_start|>assistant
+<tool_call>
+{"name": "get_tempo", "arguments": {"file": "track.wav"}}
+</tool_call><|im_end|>
+<|im_start|>user
+<tool_response>
+{"bpm": 124.0}
+</tool_response><|im_end|>
+<|im_start|>assistant
+It's about 124 BPM.<|im_end|>
+```
 :::
 
 (sec-agents)=
@@ -173,8 +182,9 @@ would handle this case faster and more predictably [@schluntz_agents_2024]. The
 agent caught the error without that rule but may not catch it on every run,
 because each run samples different tokens ([Evaluating LLMs](#sec-eval-agents)).
 
-The tool can also be a code interpreter, so that each call is a program. The
-exchange below is illustrative, and each program is summarized in words.
+The tool can also be a code interpreter, so that each call is a short Python
+program. In the illustrative exchange below, the prompt lists the dataset's
+files: `labels.csv` and one recording per track in an `audio` folder.
 
 ::::{div}
 :class: ml-chat
@@ -187,30 +197,63 @@ they disagree by a factor of two.
 
 :::{div}
 :class: ml-chat-trace
-`run_python`: estimate each tempo with a beat tracker, divide by the `bpm`
-column → no such column
+Estimate each track's tempo with librosa and divide it by the label.
+
+`run_python`
+
+```python
+import librosa, pandas as pd
+df = pd.read_csv("labels.csv")
+est = []
+for track in df["track"]:
+    y, sr = librosa.load(f"audio/{track}.wav")
+    est.append(librosa.feature.tempo(y=y, sr=sr)[0])
+ratio = pd.Series(est) / df["bpm"]
+```
+
+→ `KeyError: 'bpm'`
 
 There is no bpm column. Look at the columns first.
 
-`run_python`: list the columns → `track, tempo, genre`
+`run_python`
 
-`run_python`: divide each estimate by the `tempo` column and save the flagged
-tracks to `flagged.csv` → 41 of 1,000 flagged: estimate ≈ 2 × label for 29,
-≈ ½ × label for 12
+```python
+print(list(df.columns))
+```
+
+→ `['track', 'tempo', 'genre']`
+
+The labels are in the tempo column, and the estimates are still in memory. Count
+a ratio within 4% of 2 or ½ as a factor of two.
+
+`run_python`
+
+```python
+ratio = pd.Series(est) / df["tempo"]
+double = ratio.between(1.92, 2.08)
+half = ratio.between(0.48, 0.52)
+df[double | half].to_csv("flagged.csv", index=False)
+print(len(df), double.sum(), half.sum())
+```
+
+→ `1000 29 12`
 :::
 
 :::{div}
 :class: ml-chat-answer
-41 of 1,000 labels disagree with the beat tracker by a factor of two: for 29 the
-estimate is double the label, and for 12 it is half. Listen before relabeling
-them. The list is in `flagged.csv`.
+41 of 1,000 labels disagree with librosa's estimate by a factor of two: for 29
+the estimate is double the label, and for 12 it is half. Listen before
+relabeling them. The list is in `flagged.csv`.
 :::
 ::::
 
-Inside the interpreter, librosa [@librosa] reads the audio, and the model sees
-only printed output. A factor of two can be an error in the label or in the
-estimate. It can also be no error at all: listeners themselves often tap at
-different metrical levels of the same excerpt [@mckinney_tempo_2006].
+The harness runs each program and sends back only its printed output or its
+error message. In the first program, librosa [@librosa] loads each recording and
+estimates its tempo; the model itself never hears the audio. The interpreter
+keeps variables between calls, as a notebook does, so the last program reuses
+the estimates. A factor of two can be an error in the label or in the estimate.
+It can also be no error at all: listeners themselves often tap at different
+metrical levels of the same excerpt [@mckinney_tempo_2006].
 
 Other tools look things up. Before estimating anything, the DJ agent could
 identify each file, from its metadata or an audio fingerprint, and look up its

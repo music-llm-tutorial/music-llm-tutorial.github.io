@@ -851,6 +851,19 @@ article.content .ml-chat-trace code * {
 }
 article.content .ml-chat-trace p { color: var(--ml-text-faint) !important; }
 article.content .ml-chat-trace p:not(:has(code)) { font-style: italic; }
+/* Programs in a trace: compact, and in the muted text colour so they stand out
+   from the faded reasoning around them. */
+article.content .ml-chat-trace .myst-code {
+  margin: 0.15rem 0 0.35rem !important;
+  box-shadow: none !important;
+}
+article.content .ml-chat-trace .myst-code-body { padding: 0 !important; }
+article.content .ml-chat-trace .myst-code pre { padding: 0.55rem 0.8rem !important; }
+article.content .ml-chat-trace .myst-code pre code,
+article.content .ml-chat-trace .myst-code pre code * {
+  color: var(--ml-text-muted) !important;
+  line-height: 1.55 !important;
+}
 article.content .ml-chat-answer {
   align-self: flex-start;
   max-width: 85%;

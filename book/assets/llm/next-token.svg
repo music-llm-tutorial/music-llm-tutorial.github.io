@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 778 308" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
 <title id="t">Next-token prediction</title>
 <desc id="d">The context 'In C major, G7 resolves to' is split into eight tokens and read by the LLM, a decoder-only Transformer in which each position sees itself and earlier positions. It outputs a probability for every token in its vocabulary: C 0.58, the 0.21, a 0.09, Am 0.03 (the deceptive resolution), all other tokens 0.09. Generation samples one token, appends it to the context, and predicts again. Token boundaries and probabilities are illustrative.</desc>
+<style>@media (prefers-color-scheme: dark) {
+[fill="#977a5d"] { fill: #a99178 } [stroke="#977a5d"] { stroke: #a99178 }
+[fill="#607b9a"] { fill: #8297af } [stroke="#607b9a"] { stroke: #8297af }
+[fill="#ab7827"] { fill: #d9aa57 } [stroke="#ab7827"] { stroke: #d9aa57 }
+[fill="#7b7c55"], [fill="#8f9066"] { fill: #6f9363 } [stroke="#8f9066"] { stroke: #6f9363 }
+[fill-opacity="0.14"] { fill-opacity: 0.2 }
+}</style>
 <defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
 <text x="0.0" y="14.0" font-size="12" font-weight="700" text-anchor="start" fill="#977a5d" letter-spacing="0.08em">CONTEXT</text>
 <rect x="0.0" y="24.0" width="28.5" height="32.0" rx="6" fill="#607b9a" fill-opacity="0.14" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
