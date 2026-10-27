@@ -109,7 +109,7 @@ decompressing the file would also need [@deletang_compression_2024].
 :::
 
 (sec-icl)=
-## In-context learning and emergence
+## In-context learning and emergent abilities
 
 Pre-training also produces *in-context learning*: the model picks up a task from
 examples in its prompt, with no change to its weights [@brown_gpt3_2020]. In the
@@ -126,8 +126,18 @@ that this prompt is such a list, so the expected continuation of "F major →" i
 "D minor". Examples of parallel minors (C major → C minor) would give F minor.
 
 Nobody explicitly trained the model for in-context learning.
-@bommasani_foundation_2021 called such abilities *emergent*. Larger models do it
-better [@brown_gpt3_2020].
+@bommasani_foundation_2021 called such abilities *emergent*: training induces
+them without anyone building them in. Many papers use the word in a second
+sense, for abilities that appear only at a large enough scale. Such abilities
+include solving certain tasks from a few examples in the prompt, and solving
+problems by writing out steps ([Reasoning](#sec-reasoning))
+[@wei_emergent_2022]. Scale here means the number of weights, the amount of
+training text, and the computation spent on training. As all three grow, the
+loss falls predictably [@kaplan_scaling_2020; @hoffmann_chinchilla_2022]. Larger
+models are also better at in-context learning [@brown_gpt3_2020]. Whether
+abilities appear suddenly with scale is debated: with scores that give partial
+credit to nearly right answers, many apparent jumps become gradual
+[@schaeffer_mirage_2023].
 
 (sec-abilities)=
 ## From base model to assistant
