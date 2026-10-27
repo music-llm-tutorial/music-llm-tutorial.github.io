@@ -60,7 +60,7 @@ groove at 104 BPM."
 :::{table} Scores for the three RL descriptions. BLEU-4 scores the share of one- to four-word sequences in a description that also appear in the reference caption. It lowers the score of descriptions shorter than the reference. ROUGE-1 F1 is the F-measure of shared words.
 :label: tbl-caption-metrics
 
-| Description | Facts matched | BLEU-4 | ROUGE-1 F1 |
+| Description | Facts matched | BLEU‑4 | ROUGE-1 F1 |
 |---|---|---|---|
 | A: "Tight funk groove in E minor, 104 BPM in 4/4, with horns." | 5 of 5 | 0.12 | 0.55 |
 | B: "A funk track around 104 BPM with a synth bass line." | 2 of 5 | 0.08 | 0.38 |
@@ -148,7 +148,7 @@ behind a rival model's reported 86.4% [@gemini_2023]. A comparison holds only
 when every model is run with the same setup.
 
 A score is an estimate. With $n$ questions, the share answered correctly has a
-95% confidence interval of at most about $\pm 1/\sqrt{n}$: ±10 points for 100
+95% confidence interval of at most about $\pm 1/\sqrt{n}{:}$ ±10 points for 100
 questions and ±5 for 400. One large lab's model report lists this interval with
 every benchmark score [@dubey2024llama]. On a music-theory test of 98
 four-option questions, the test's authors reported about 26% for a leading model
