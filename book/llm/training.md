@@ -61,6 +61,22 @@ Before post-training, recent models read tens of trillions of tokens
 or 130,000 tokens, so these models read the equivalent of well over 100 million
 books.
 
+:::{dropdown} Loss spikes
+Partway through a large training run, the loss sometimes jumps up suddenly. Such
+spikes are costly and can make the final model worse [@olmo2_2024]. Training
+saves a copy of the weights, a *checkpoint*, at regular intervals. One large lab
+reported about 20 spikes in its largest run. Each time, it restarted from a
+checkpoint saved shortly before the spike. It also skipped the few hundred
+*batches* around the spike. A batch is the group of text that the model learns
+from in one update of its weights. Training on the same batches from an earlier
+checkpoint caused no spike, so the lab attributed the spikes to particular
+batches meeting a particular state of the weights, not to bad data alone
+[@chowdhery_palm_2023]. Another lab found that spikes grew more frequent in
+larger models. It reduced them by removing passages in which a short sequence of
+tokens repeats many times. It also changed the way the weights are set at the
+start, the design of the network, and the training settings [@olmo2_2024].
+:::
+
 A base model has learned only to continue documents, like the web page and the
 textbook in the table above. Given "Why does G7 lead to C?", it may continue
 with "Why does D7 lead to G?" and more questions like it, as if the request were
@@ -104,7 +120,7 @@ more than a hundred thousand [@dubey2024llama; @nemotron3nano_2025].
 :::
 
 (sec-sft)=
-## Supervised fine-tuning
+## Post-training: supervised fine-tuning
 
 Post-training starts with SFT, also called instruction tuning. It teaches the
 chat format, instruction following, multi-turn dialogue, and the format for
@@ -158,7 +174,7 @@ fine-tuning much cheaper [@hu_lora_2022]. [Chapter
 fine-tuning of an audio LLM in a code notebook.
 
 (sec-rl)=
-## Reinforcement learning
+## Post-training: reinforcement learning
 
 In RL, the model writes its own answers to a prompt, and each answer gets a
 *reward*, a number that scores it. Training makes the higher-scoring answers
@@ -168,8 +184,13 @@ them.
 
 SFT needs a written answer for every prompt. RL needs only a way to score the
 model's own answers, so it also works where full answers are hard to write, such
-as long step-by-step solutions [@deepseek_r1_2025] or descriptions of
-recordings.
+as long step-by-step solutions or descriptions of recordings. Because the model
+learns from its own answers, it can try ways of answering that nobody wrote
+down, and training makes the ones that score well more likely. Trying such
+answers is called *exploration*. In one lab's run, RL was applied directly to a
+base model, with no SFT. Its answers grew steadily longer as it learned to write
+out more steps before answering [@deepseek_r1_2025]
+([Reasoning](#sec-reasoning)).
 
 Start with a request that has one correct answer, the transposition from
 [supervised fine-tuning](#sec-sft): "Transpose C–Am–F–G up a whole step." The
@@ -234,33 +255,46 @@ phrases also appear in A, so the total chance of writing them, A's probability
 plus B's, still rises from 0.70 to 0.81.
 :::
 
-After SFT, three recipes are the most common:
+After SFT, the training signal usually comes from one of two sources:
 
-- *RL with verifiable rewards* (RLVR): a program, the *verifier*, checks each
-  answer against a reference or a rule, such as a known math answer or a test
-  suite for code [@lambert_tulu3_2024; @deepseek_r1_2025]. Both examples above
-  work this way, and [reasoning models](#sec-reasoning) learn to write long
-  step-by-step solutions from such rewards.
-- *RL from human feedback* (RLHF): people compare pairs of answers, a reward
-  model learns to predict their choices, and the LLM is trained to score high on
-  that reward model [@christiano_rlhf_2017; @ouyang2022training].
-- *Direct Preference Optimization* (DPO): it learns from the same pairs as RLHF
-  but trains no separate reward model and samples no new answers, so it is not
-  RL in the strict sense. It makes the preferred answer in each pair more likely
-  relative to the other [@rafailov_dpo_2023].
+- *A check of each answer.* In *RL with verifiable rewards* (RLVR), a program,
+  the *verifier*, checks each answer against a reference or a rule, such as a
+  known math answer or a test suite for code
+  [@lambert_tulu3_2024; @deepseek_r1_2025]. Both examples above work this way,
+  and [reasoning models](#sec-reasoning) learn to write long step-by-step
+  solutions from such rewards.
+- *Choices between two answers.* This signal is relative: it says which answer
+  is better, not how good either one is. In *RL from human feedback* (RLHF),
+  people make the choices, and a reward model learns from those choices to score
+  each answer. A larger gap between two answers' scores means a higher chance
+  that the higher-scoring one is preferred. This is the Bradley–Terry model of
+  paired comparisons [@bradley_terry_1952]. The LLM is then trained with RL to
+  score high on that reward model [@christiano_rlhf_2017; @ouyang2022training].
+  *Direct Preference Optimization* (DPO) learns from the same pairs but trains
+  no separate reward model and samples no new answers, so it is not RL in the
+  strict sense. It makes the preferred answer in each pair more likely relative
+  to the other [@rafailov_dpo_2023].
 
 Many MIR tasks already have verifiers: a key, a tempo, a list of beat times, or
 a timed chord sequence can be scored against annotations with the standard
 metrics in mir_eval [@raffel2014mir_eval].
 
 Training on preferences between pairs of answers, by RLHF or DPO, is often
-called *preference tuning*. In music, one study applied RLHF to a text-to-music
-model that, like an LLM, generates audio tokens one at a time. Its reward model
-learned from 300,000 pairwise preferences given by the model's users
-[@cideron_musicrl_2024]. The preferences can also come from automatic scores.
-Another study applied DPO to a model that both understands and generates audio,
-and picked the preferred output in each pair by how well it matched the prompt
-and how good it sounded [@tian_ualm_2026].
+called *preference tuning*. One early model was fine-tuned with SFT and then
+RLHF. Labelers preferred its answers to those of a model more than 100 times
+larger that had neither step [@ouyang2022training]. In music, one study applied
+RLHF to a text-to-music model that, like an LLM, generates audio tokens one at a
+time. Its reward model learned from 300,000 pairwise preferences given by the
+model's users [@cideron_musicrl_2024]. The preferences can also come from
+automatic scores or from an LLM acting as a judge ([Evaluating
+LLMs](#sec-eval-judges)) [@lambert_tulu3_2024]. Another study applied DPO to a
+model that both understands and generates audio, and picked the preferred output
+in each pair by how well it matched the prompt and how good it sounded
+[@tian_ualm_2026].
+
+Labs often combine both sources. They use verifiers where answers can be
+checked, such as math problems, and preferences for open-ended requests
+[@lambert_tulu3_2024; @deepseek_r1_2025].
 
 :::{dropdown} Reward hacking
 A reward measures only part of an answer's quality, and a model can learn to

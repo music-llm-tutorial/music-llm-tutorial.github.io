@@ -130,9 +130,11 @@ the tempo of track.wav?<|im_end|> <|im_start|>assistant <tool_call> {"name":
 (sec-agents)=
 ## Agents
 
-An *agent* is a model and its harness repeating the tool-call steps above: the
-model reads each result and picks the next call, until it replies without a tool
-call [@schluntz_agents_2024; @openai_agents_guide_2025].
+An *agent* is a model and its harness running the tool-call steps above in a
+loop, with the model directing the work. The model reads each result and decides
+what to do next. When it judges that the task is done, or when it needs to hand
+the task back to you, it replies without a tool call
+[@schluntz_agents_2024; @openai_agents_guide_2025].
 
 :::{figure} ../assets/llm/agent-loop.svg
 :label: fig-agent-loop
