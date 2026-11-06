@@ -55,8 +55,7 @@ musically meaningful systems.
 
 - ![Zachary Novack](../asset/authors/zackary.png) [Zachary Novack](https://zacharynovack.github.io/) {span .ml-affil}`Spotify`
 
-  Zachary Novack is a Research Scientist at Spotify in the Artist First AI-Music
-  Lab. Graduating in 2026 with a PhD from UC San Diego, Zachary’s research has
+  Zachary Novack is a recent PhD graduate from UC San Diego. Zachary’s research has
   focused both on efficient interactive music generation and large scale
   evaluation and benchmarking for LLMs for musical reasoning. He has received
   numerous awards across diverse venues, including oral presentations at ICML,
