@@ -53,7 +53,7 @@ musically meaningful systems.
 :::{div}
 :class: ml-presenters
 
-- ![Zachary Novack](../asset/authors/zackary.png) [Zachary Novack](https://zacharynovack.github.io/) {span .ml-affil}`Spotify`
+- ![Zachary Novack](../asset/authors/zackary.png) [Zachary Novack](https://zacharynovack.github.io/) {span .ml-affil}`UC San Diego`
 
   Zachary Novack is a recent PhD graduate from UC San Diego. Zachary’s research has
   focused both on efficient interactive music generation and large scale
