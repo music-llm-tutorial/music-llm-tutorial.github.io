@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 250" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">How LLMs enrich a music database and serve listeners</title>
+<desc id="d">Raw signals about each track (audio, metadata, lyrics, listening logs) flow into an LLM-enriched music database, which gains coverage, depth, and a natural-language interface. The database then serves two listener-facing applications: search and recommendation. Annotation covers the database, search and recommendation cover the applications.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">SIGNALS</text>
+<text x="285" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">LLM-ENRICHED MUSIC DATABASE</text>
+<text x="575" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">LISTENER</text>
+<!-- signals -->
+<rect x="0.8" y="26.75" width="205" height="42" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="52" font-size="14" font-weight="700" fill="#607b9a">Audio</text>
+<rect x="0.8" y="78.75" width="205" height="42" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="104" font-size="14" font-weight="700" fill="#607b9a">Metadata &amp; lyrics</text>
+<rect x="0.8" y="130.75" width="205" height="42" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="156" font-size="14" font-weight="700" fill="#607b9a">Listening logs &amp; playlists</text>
+<rect x="0.8" y="182.75" width="205" height="42" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="208" font-size="14" font-weight="700" fill="#607b9a">MIR models (tags, key, beat)</text>
+<!-- arrows signals -> db -->
+<line x1="206" y1="47.75" x2="235" y2="47.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="206" y1="99.75" x2="235" y2="99.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="206" y1="151.75" x2="235" y2="151.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="206" y1="203.75" x2="235" y2="203.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="235" y1="47.75" x2="235" y2="203.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="235" y1="125.75" x2="268" y2="125.75" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M260,120.75 L268,125.75 L260,130.75" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<!-- database -->
+<rect x="270.8" y="26.75" width="260" height="198" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="286" y="50" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">ANNOTATION</text>
+<text x="286" y="80" font-size="14" font-weight="700" fill="#8f9066">Coverage</text>
+<text x="286" y="97" font-size="12" fill="#8f9066">a description for every track</text>
+<text x="286" y="128" font-size="14" font-weight="700" fill="#8f9066">Depth</text>
+<text x="286" y="145" font-size="12" fill="#8f9066">sound, context, and world knowledge</text>
+<text x="286" y="176" font-size="14" font-weight="700" fill="#8f9066">Interface</text>
+<text x="286" y="193" font-size="12" fill="#8f9066">queried in language, over many turns</text>
+<text x="286" y="213" font-size="12" fill="#8f9066" font-style="italic">(tools, retrieval, dialogue)</text>
+<!-- arrows db -> apps -->
+<line x1="531" y1="125.75" x2="553" y2="125.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="553" y1="73.75" x2="553" y2="177.75" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="553" y1="73.75" x2="568" y2="73.75" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M560,68.75 L568,73.75 L560,78.75" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="553" y1="177.75" x2="568" y2="177.75" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M560,172.75 L568,177.75 L560,182.75" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<!-- apps -->
+<rect x="570.8" y="42.75" width="198.5" height="62" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="586" y="66" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">SEARCH</text>
+<text x="586" y="88" font-size="14" font-weight="700" fill="#ab7827">"Find me a track that…"</text>
+<rect x="570.8" y="146.75" width="198.5" height="62" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="586" y="170" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">RECOMMENDATION</text>
+<text x="586" y="192" font-size="14" font-weight="700" fill="#ab7827">"What should I hear next?"</text>
+</svg>

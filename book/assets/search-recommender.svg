@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 304" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The LLM as recommender</title>
+<desc id="d">Top, generative recommendation as sequence modeling, p(next tracks | user, history, request). The context is given: the user token for user 1024, three track tokens from her history (0112, 0927, and 0458, which she skipped), and the request 'late-night drive in the rain, no vocals, not too old'. The model generates track tokens 0381 and 0644 and a response, 'Slow piano after 2015, like your Nils Frahm.' Bottom left, where a track token comes from: audio, lyrics, metadata, and a collaborative-filtering embedding are combined into one token for track 0381. Bottom right, the catalog is the vocabulary: every track the model can name is a token learned in training, and a track released today is not a token until the model is retrained.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">GENERATIVE RECOMMENDATION</text>
+<text x="0" y="34" font-size="12" font-style="italic" fill="#77726a">p(next tracks | user, history, request)</text>
+<rect x="560" y="4" width="14" height="12" rx="3" fill="#77726a" fill-opacity="0.12" stroke="#77726a" stroke-opacity="0.6"/>
+<text x="580" y="14.5" font-size="12" fill="#77726a">given (context)</text>
+<rect x="672" y="4" width="14" height="12" rx="3" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6"/>
+<text x="692" y="14.5" font-size="12" fill="#77726a">generated</text>
+<rect x="0" y="58" width="82" height="24" rx="5" fill="#9a6a8f" fill-opacity="0.15" stroke="#9a6a8f" stroke-opacity="0.6" stroke-width="1"/>
+<text x="41" y="74.32" font-size="12" text-anchor="middle" fill="#3d3a35">user 1024</text>
+<rect x="88" y="58" width="58" height="24" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="117" y="74.14" font-size="11.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0112›</text>
+<rect x="152" y="58" width="58" height="24" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="181" y="74.14" font-size="11.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0927›</text>
+<rect x="216" y="58" width="58" height="24" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="245" y="74.14" font-size="11.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0458›</text>
+<text x="245" y="96" font-size="10.5" font-style="italic" text-anchor="middle" fill="#77726a">skipped</text>
+<text x="282" y="74" font-size="13" fill="#77726a">…</text>
+<rect x="302" y="58" width="293.68" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="448.84" y="74.32" font-size="12" font-style="italic" text-anchor="middle" fill="#3d3a35">late-night drive in the rain, no vocals, not too old</text>
+<text x="0" y="132" font-size="14" fill="#ab7827">→</text>
+<rect x="22" y="116" width="58" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="51" y="132.14" font-size="11.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0381›</text>
+<rect x="86" y="116" width="58" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="115" y="132.14" font-size="11.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0644›</text>
+<rect x="150" y="116" width="43.24" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="171.62" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">Slow</text>
+<rect x="198.24" y="116" width="46.48" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="221.48" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">piano</text>
+<rect x="249.72" y="116" width="43.36" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="271.4" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">after</text>
+<rect x="298.08" y="116" width="46.48" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="321.32" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">2015,</text>
+<rect x="349.56" y="116" width="36.64" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="367.88" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">like</text>
+<rect x="391.2" y="116" width="42.88" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="412.64" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">your</text>
+<rect x="439.08" y="116" width="36.64" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="457.4" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">Nils</text>
+<rect x="480.72" y="116" width="56.68" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="509.06" y="132.32" font-size="12" text-anchor="middle" fill="#3d3a35">Frahm.</text>
+<text x="550.4" y="126" font-size="11.5" font-style="italic" fill="#77726a">tracks and the reason,</text>
+<text x="550.4" y="141" font-size="11.5" font-style="italic" fill="#77726a">in one stream</text>
+<text x="0" y="176" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">WHERE A TRACK TOKEN COMES FROM</text>
+<rect x="0.8" y="188.75" width="400" height="106" rx="8" fill="#607b9a" fill-opacity="0.06" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<rect x="16" y="202" width="110" height="18" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="71" y="214.96" font-size="11" text-anchor="middle" fill="#3d3a35">audio</text>
+<polyline points="127,211 160,211 160,244" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="16" y="224" width="110" height="18" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="71" y="236.96" font-size="11" text-anchor="middle" fill="#3d3a35">lyrics</text>
+<polyline points="127,233 160,233 160,244" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="16" y="246" width="110" height="18" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="71" y="258.96" font-size="11" text-anchor="middle" fill="#3d3a35">metadata</text>
+<polyline points="127,255 160,255 160,244" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="16" y="268" width="110" height="18" rx="5" fill="#607b9a" fill-opacity="0.15" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="71" y="280.96" font-size="11" text-anchor="middle" fill="#3d3a35">CF embedding</text>
+<polyline points="127,277 160,277 160,244" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="160" y1="244" x2="214" y2="244" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M208,240.35 L214,244 L208,247.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="216" y="232" width="70" height="24" rx="5" fill="#607b9a" fill-opacity="0.28" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="251" y="248.32" font-size="12" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0381›</text>
+<text x="298" y="240" font-size="11.5" font-style="italic" fill="#77726a">one token,</text>
+<text x="298" y="256" font-size="11.5" font-style="italic" fill="#77726a">all four signals</text>
+<text x="424" y="176" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">THE CATALOG IS THE VOCABULARY</text>
+<rect x="424.8" y="188.75" width="346" height="106" rx="8" fill="#8f9066" fill-opacity="0.06" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<rect x="440" y="202" width="54" height="18" rx="5" fill="#8f9066" fill-opacity="0.15" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<text x="467" y="214.78" font-size="10.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0001›</text>
+<rect x="499" y="202" width="54" height="18" rx="5" fill="#8f9066" fill-opacity="0.15" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<text x="526" y="214.78" font-size="10.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0002›</text>
+<text x="560" y="215" font-size="12" fill="#77726a">…</text>
+<rect x="576" y="202" width="54" height="18" rx="5" fill="#8f9066" fill-opacity="0.15" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<text x="603" y="214.78" font-size="10.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0381›</text>
+<text x="637" y="215" font-size="12" fill="#77726a">…</text>
+<rect x="653" y="202" width="54" height="18" rx="5" fill="#8f9066" fill-opacity="0.15" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<text x="680" y="214.78" font-size="10.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹0644›</text>
+<text x="714" y="215" font-size="12" fill="#77726a">…</text>
+<rect x="440" y="252" width="54" height="18" rx="5" fill="#ab7827" fill-opacity="0.06" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="467" y="264.78" font-size="10.5" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">‹new›</text>
+<text x="504" y="260" font-size="11.5" fill="#ab7827">released today: not a token</text>
+<text x="504" y="276" font-size="11.5" fill="#ab7827">until the model is retrained</text>
+</svg>
