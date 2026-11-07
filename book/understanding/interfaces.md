@@ -4,12 +4,13 @@ authors:
   - name: Zachary Novack
 ---
 
-Music papers often split models into "audio" and "symbolic". For an LLM, a more
-useful question is *what the model sees*: a signal, a picture, or text. That
-choice decides the interface ({numref}`fig-und-routes`). An audio clip needs an
+If you've been around the ISMIR community long enough, music research often split models into "audio"  and "symbolic". For an LLM, a more
+useful demarcation is thinking *what representation the model sees*: a signal, a picture, or text. That
+choice impacts how we construct the interface between music and the LLM ({numref}`fig-und-routes`). 
+<!-- An audio clip needs an
 encoder that turns the signal into vectors the LLM can read. A score image can
 go to any vision-language model. ABC or MusicXML is already text, so any LLM can
-read it with no change at all.
+read it with no change at all. -->
 
 :::{figure} ../assets/understanding/three-routes.svg
 :label: fig-und-routes
@@ -22,8 +23,8 @@ audio-specific component.
 (sec-und-recipe)=
 ## The shared recipe
 
-Models that read audio or images follow the same four steps
-({numref}`fig-und-recipe`).
+For models that read audio or images, modality adaptation follows the same four steps:
+({numref}`fig-und-recipe`)
 
 :::{figure} ../assets/understanding/recipe.svg
 :label: fig-und-recipe
@@ -34,18 +35,17 @@ Encode, adapt, place, train.
 
 1. **Encode.** An encoder turns the input into a sequence of vectors, one per
    short frame of audio or patch of image. Qwen2-Audio's encoder, for example,
-   gives one vector per 40 ms of audio [@chu_qwen2audio_2024]. Some recent
-   models skip the encoder ([](#sec-und-encoders)).
-2. **Adapt.** The encoder's vectors have the wrong size and the wrong meaning
-   for the LLM. An *adapter* maps them into the LLM's token embedding space. It
+   gives one vector per 40 ms of audio [@chu_qwen2audio_2024]. Note some recent
+   models [skip the encoder altogether](#sec-und-encoders).
+2. **Adapt.** Most pretrained encoders emit vectors that have the wrong size
+   for the LLM, and may be direclty hard to use. An *adapter* maps them into the LLM's token embedding space. It
    can be a linear layer or a small MLP, as in LLaVA for images and LLark for
    music [@liu_llava_2023; @gardner2023llark], or a small Transformer that
    compresses many frames into a few vectors, the Q-Former
-   [@li_blip2_2023; @tang_salmonn_2024]. A third option discretizes the audio
-   into codec tokens and adds them to the LLM's vocabulary
+   [@li_blip2_2023; @tang_salmonn_2024]. One may also directly use discrete audio tokens and add them to the LLM's vocabulary
    [@rubenstein_audiopalm_2023; @zhan-etal-2024-anygpt]
    ([](#sec-und-adapters)).
-3. **Place.** The adapted vectors enter the LLM. Many models put them in the
+3. **Sequence Position.** The adapted vectors enter the LLM. Many models put them in the
    input sequence, before the text or interleaved with it, where the LLM's
    self-attention reads them like any other token. Others keep them outside the
    sequence and add cross-attention layers that read them
@@ -54,9 +54,11 @@ Encode, adapt, place, train.
 4. **Train.** The training target is the text answer, with the same
    [next-token loss](#sec-next-token) as any LLM. As in [supervised
    fine-tuning](#sec-sft), only the answer tokens carry loss; the music tokens
-   and the question are context.
+   and the question are context. This is particularly true if the model operates on
+   general music embeddings rather than audio tokens, as the Music LLM then no longer
+   needs to worry about *producing* audio.
 
-Training usually runs in stages. A first stage aligns the new parts on paired
+Training usually runs in stages. The first stage aligns the new parts on paired
 audio and text, often with the encoder and the LLM frozen: BLIP-2 bridges "a
 frozen image encoder and a frozen LLM" [@li_blip2_2023], and MusiLingo keeps its
 music encoder and LLM completely frozen and trains only the adapter
@@ -69,9 +71,9 @@ format, answer accuracy, and how well a caption matches structured metadata
 describes these stages for text LLMs.
 
 (sec-und-recap)=
-## What each route sees
+## What each representation route sees
 
-Each route hands the model different evidence. {numref}`tbl-und-routes` sums
+Each modality hands the model different evidential forms of music. {numref}`tbl-und-routes` sums
 up the three routes and one more: text that describes the music, such as a
 title, an artist, or tags, with no music at all.
 
@@ -81,17 +83,17 @@ title, an artist, or tags, with no music at all.
 
 | Route | What the model sees | Interface | Music-specific training? | Explicit in the input | Must be inferred or is missing |
 |---|---|---|---|---|---|
-| Audio | the sound | audio encoder + adapter, or a light projection | yes | timbre, performance, mix, production | every note, chord, and beat |
-| Score image | the printed page | any vision-language model | no, but notation reading is weak | symbols, layout, bar numbers | the symbols' meaning; how it sounds |
-| Symbolic text | ABC, \*\*kern, MusicXML | the tokenizer | no | pitches, durations, voices, key signature | how it sounds; anything the format omits |
-| Metadata | title, artist, tags | the tokenizer | no | what the world has written about it | the music itself |
+| Audio | music as a time or frequency domain signal | audio encoder + adapter, or a light projection | yes | timbre, performance, mix, production | semantic information like notes, chords, and beats|
+| Score image | symbolic music as images of sheet music | any vision-language model | no, but notation reading may be weak | symbols, layout, bar numbers | the symbols' meaning; how it sounds, timbral features |
+| Symbolic text | ABC, \*\*kern, MusicXML | the tokenizer | no, but may be suboptimal | pitches, durations, voices, key signature | how it sounds; anything the format omits |
+| Metadata | title, artist, tags | the tokenizer | no | general high level information about the music | the music itself, any particular fine-grained features |
 :::
 
-The last row is the baseline people forget. A question about a famous recording
+The last row is important to consider given the internet scale training of powerful frontier LLMs: A question about a famous recording
 can often be answered from its title alone, because the LLM has read about it.
-The [evaluation page](#sec-und-needs-music) returns to this.
+The [evaluation page](#sec-und-needs-music) will return to this concept.
 
-The next three pages take the routes in turn:
+The next three pages take the representation routes in turn:
 
 - [Music as audio](./interfaces_audio.md): waveforms and spectrograms, where
   encoders come from, adapters, and how audio tokens sit next to text.

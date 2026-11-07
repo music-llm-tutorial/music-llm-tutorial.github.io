@@ -130,13 +130,13 @@ per level, come back throughout the chapter:
 
 A model that reads the ABC sees every note spelled out, so question 1 is a
 lookup and question 3 is the hard one. A model that hears the audio must first
-find the notes, so question 1 can be the hard one. Where the work falls depends
-on the representation, and that idea runs through the chapter.
+find the notes, so question 1 can be the hard one. One key thread, if you learn anything from this chapter, is that **where the work falls depends
+on the representation**, and that idea runs throughout as we will see.
 
 (sec-und-roadmap)=
 ## Roadmap
 
-- [How music gets into an LLM](./interfaces.md) describes the shared recipe
+- [How music gets into an LLM](./interfaces.md) details the broad shared recipe of Music LLMs
   (encode, adapt, place in the sequence, train on the next token) and then each
   route in turn: [audio](./interfaces_audio.md), [images of scores and
   spectrograms](./interfaces_images.md), and [text and
