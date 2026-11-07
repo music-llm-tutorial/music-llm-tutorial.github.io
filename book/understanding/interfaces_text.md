@@ -4,7 +4,7 @@ authors:
   - name: Zachary Novack
 ---
 
-When music is written as text, there is no interface to build: the tokenizer
+When music is written as text, there is no interface needed: the tokenizer
 is the interface. Every LLM can read ABC or MusicXML today, and [Chapter
 1](#sec-next-token) shows how a bar of ABC splits into tokens. This
 page compares notation formats, shows how to prompt a text LLM with one, and
@@ -14,7 +14,7 @@ written procedures it can follow.
 (sec-und-formats)=
 ## Notation formats
 
-Three formats cover most of the work on LLMs and symbolic music. Here is the
+Three formats cover most of the work on LLMs and textual representations of symbolic music. Here is the
 reel in each, with the size of each file.
 
 **ABC** is "a system designed to notate music in plain text format", and the
@@ -56,7 +56,7 @@ A `4` is a quarter note and an `8` an eighth; repeated letters move by octave
 (`dd` is D5, `AA` is A2); `L` and `J` open and close a beam; and a `.` means the
 voice is still sounding.
 
-**MusicXML** is the format notation software exports. It spells out every
+**MusicXML** is the format notation software exports (MuseScore, Sibelius, etc.). It spells out every
 attribute in XML. The reel's file, exported by music21, is 7,335 characters, 51
 times the ABC, and its first note alone takes eight lines:
 
@@ -75,11 +75,11 @@ The files carry the same notes, but not the same information. ABC and \*\*kern
 here say nothing about dynamics or instruments, and MusicXML has room for layout,
 lyrics, and articulations. Other formats include MEI, LilyPond, and MIDI events
 written as tokens. Longer files cost more tokens and context, and a format the
-LLM rarely saw in training may be harder for it to read. An ISMIR 2026 paper
-builds a tokenization framework for MusicXML, trains 26 models, and finds that
-"MusicXML-tokenised models outperform MIDI and text-based counterparts on
-understanding and generative tasks" [@poltronieri_notation_2026]. The verbose
-format is not always the worse one.
+LLM rarely saw in training may be harder for it to read. Note that while bespoke symbolic
+tokenization schemes are generally the provenance of dedicated research on symbolic music generation
+or simple understanding tasks, most research
+on LLMs parsing music as text forgo these and instead rely on the strong natural language
+prior of the model itself.
 
 (sec-und-symbolic-llms)=
 ## General LLMs and music LLMs
@@ -141,27 +141,24 @@ A with the bass's A and E, which sit in different lines of the file.
 (sec-und-music-as-code)=
 ## Music as code
 
-Text can also be a program. LLMs write code well ([Chapter
-1](#sec-tool-calls)), and code turns musical questions into computations.
+Text can also be a program. If you haven't been living under a rock the past year, modern frontier LLMs write code quite well ([Chapter
+1](#sec-tool-calls)), and this can be extended to music as well.
 
-**Analysis libraries.** music21 is a Python toolkit for computer-aided
+
+**Analysis libraries.** 
+Chiefly, modern LLMs can interact with music by simply using the wealth of open-source
+libraries for performing music understanding, and using its API as an interface with the music itself.
+`music21`, for example, is a Python toolkit for computer-aided
 musicology [@cuthbert_music21_2010]. It parses ABC, \*\*kern, MusicXML, and MIDI
-into one score object, and its `analyze("key")` runs the Krumhansl–Schmuckler
-key-finding algorithm:
-
-```python
-# pip install music21
-from music21 import converter
-
-score = converter.parse("reel.krn")
-print(score.analyze("key"))   # D major
-```
-
-An LLM that can call this function does not need to find the key in its own
-head. It needs to know which function answers the question, and how to read the
+into one score object.
+An LLM that may call music21's `analyze("key")` function (which runs the Krumhansl–Schmuckler
+key-finding algorithm) does not need to find the key by directly looking at the music at all. It simply needs to know which function answers the question, and how to read the
 result.
 
-**Live-coding languages.** [Strudel](https://strudel.cc) writes music as
+**Live-coding languages.** 
+Modern LLMs can also interact with music *creation* through the space of live-coding languages,
+which are used for interactive music performances.
+[Strudel](https://strudel.cc) writes music as
 patterns in JavaScript. The reel is two patterns played together:
 
 ```javascript
@@ -174,27 +171,25 @@ stack(
 Each pattern divides one *cycle* into eight steps, and brackets split a step in
 two, so `[f#5 d5]` is two eighth notes. `stack` plays the patterns at the same
 time, and `.cpm(15)` sets 15 cycles per minute: four seconds per cycle, two bars
-at 120 BPM. Decomposer goes the other way: it learns to turn MIDI into Strudel
+at 120 BPM. A recent work, Decomposer, showed that LLMs can go the other way: it learns to turn MIDI into Strudel
 programs [@kim_decomposer_2026]. It is trained first on Strudel-Synth, a
 synthetic corpus of programs and the MIDI they render, then with reinforcement
 learning on unpaired MIDI, with rewards for both reconstruction faithfulness and
-code readability. A program is an analysis of its own: `stack` names the voices,
-and a repeated pattern names a repetition.
+code readability.
 
-**Tools and MCP.** A [tool call](#sec-tool-calls) lets an LLM run a function and
-read its result. The Model Context Protocol (MCP) is an open standard for
+**Tools and MCPs.** A [tool call](#sec-tool-calls) lets an LLM run a function and
+read its result, providing another layer of abstraction between the LLM agent and the underlying libraries that support the tool. The Model Context Protocol (MCP) is an open standard for
 connecting LLM applications to tools and data [@anthropic_mcp_2024], so a tool
 written once works with any application that supports it. Third-party MCP
 servers exist for music software. One, for Ableton Live
 ([ableton-mcp](https://github.com/ahujasid/ableton-mcp)), lets an LLM create
-tracks and MIDI clips, load instruments, and change the tempo. With tools like
-these, a text-only LLM can work with music it never hears.
+tracks and MIDI clips, load instruments, and change the tempo. Importantly, this means that
+with tools like these, a text-only LLM (such as Claude) can work with music *it never hears.*
 
 (sec-und-skills)=
 ## Music as procedures
 
-Tools give facts, but the model still has to plan: which analysis to run, in
-what order, and what to check. Two papers from 2026 study this for symbolic
+Tools give the capacity to extract information from music without directly perceiving it, but the model still has to plan around how to use them. Some recent work Two papers from 2026 study this idea of agentic programming for music in the context of symbolic
 music ({numref}`fig-und-paradigms`).
 
 :::{figure} ../assets/understanding/prompt-tool-skill.svg
@@ -222,6 +217,4 @@ to 50.00%. The paper also evaluates on MusicTheoryBench and SSMR-Bench.
 
 The idea matches *agent skills* in general LLM products: folders of
 instructions that an agent loads into its context when a task calls for them
-[@anthropic_agent_skills_2025]. A skill is text, so it costs nothing to run, and
-an expert can read and correct it. For music, a skill is a place to write down
-what a theory teacher would tell a student to check.
+[@anthropic_agent_skills_2025]. 
