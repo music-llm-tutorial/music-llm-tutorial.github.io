@@ -6,9 +6,9 @@ authors:
 
 # Perceiving performance
 
-A performance leaves three records. The score says what the page asked for. Audio says what one player did with it, once. Motion says how the body produced the sound. Each is blind to something the other two see: a score does not say whether the crescendo happened, audio does not say whether the bow ran out, and motion does not say what the page asked for ({ref}`fig-perception-channels`).
+A performance leaves three records. The score says what the composer asked for. Audio shows the auditory output from player. Motion says how the body produced the sound. Each is blind to something the other two see: a score does not say whether the crescendo happened, audio does not say whether the bow ran out, and motion does not say what the page asked for ({ref}`fig-perception-channels`).
 
-A language model receives none of the three directly. The score arrives as tokens, the audio as the output of MIR analysers {cite}`benetos_amt_2019`, {cite}`lerch_survey_2019`, the motion as pose estimates. The model reads what the tools said about the take. What the tools drop, the model never sees.
+A language model receives none of the three directly. The score arrives as tokens, the audio as the output of MIR analysers {cite}`benetos_amt_2019`, {cite}`lerch_survey_2019`, the motion as pose estimates. The model reads what the tools said about the take. 
 
 :::{figure} assets/perception_channels.svg
 :label: fig-perception-channels
