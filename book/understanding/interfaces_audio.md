@@ -56,7 +56,7 @@ looks like noise to the untrained eye, so models that use a spectrogram usually 
 magnitude only, which thus cannot be turned back into the exact waveform
 ({numref}`fig-und-spectrograms`).
 
-Two transformeed versions are common. A *mel spectrogram* merges the frequency bins
+Two transformed versions are common. A *mel spectrogram* merges the frequency bins
 into bands that are narrow at low frequencies and wide at high ones, roughly
 following human pitch perception. Whisper's encoder reads 80 mel bands computed on 25
 ms windows every 10 ms, from audio resampled to 16 kHz [@radford2023robust], and
@@ -323,27 +323,35 @@ Inside the sequence, there is still a choice of order ({numref}`fig-und-interlea
 
 :::{figure} ../assets/understanding/interleave.svg
 :label: fig-und-interleave
-:alt: Three ways to order music and text tokens in one sequence. Prefix: the whole clip, then the text; Qwen2-Audio and LLark work this way. Coarse interleaving: long chunks in time order; Qwen2.5-Omni cuts video and audio into 2-second chunks and ties positions to time with TMRoPE. Fine interleaving: a few tokens of each stream at a time; CosyVoice 2 alternates 5 text and 15 speech tokens, GLM-4-Voice 13 text and 26 speech tokens, and Spirit LM switches at word boundaries.
+:alt: Three ways to order audio and text tokens in one sequence. Prefix: one clip up front, then the question, for single-turn question answering and captioning; Qwen2-Audio, SALMONN and LLark work this way. Coarse interleaving: whole clips placed between turns of text, for multi-turn chat, comparing clips and few-shot examples, as in Audio Flamingo 3's multi-turn, multi-audio chat. Fine interleaving: short text and audio chunks alternate on a shared timeline, for streaming speech and time-aligned audio and video; CosyVoice 2 alternates 5 text and 15 speech tokens, GLM-4-Voice 13 and 26, and Qwen2.5-Omni interleaves video and audio in 2-second chunks.
 
 Three orders for music and text tokens.
 :::
 
-- **Prefix.** The whole clip comes first, then the question. This is the usual
-  setup for answering questions about a clip, and the one the code below uses.
-- **Coarse interleaving.** Streams alternate in long chunks, in time order.
-  Qwen2.5-Omni cuts the representations of video and its audio "into chunks
-  every 2 seconds according to the actual time" [@xu_qwen25omni_2025]. Its
-  TMRoPE position encoding gives each token a position tied to time, and Music
-  Flamingo's RoTE likewise sets the rotation angle "using absolute timestamps
-  rather than token indices" [@ghosh_musicflamingo_2026]. Time-tied positions
-  matter for questions about *when* something happens in a song.
-- **Fine interleaving.** Streams alternate every few tokens, usually so a model
-  can speak while it writes. CosyVoice 2 alternates 5 text tokens with 15 speech
-  tokens at 25 speech tokens per second [@du_cosyvoice2_2024], GLM-4-Voice
-  alternates 13 text and 26 speech tokens at 12.5 per second
-  [@zeng_glm4voice_2024], and Spirit LM switches between speech and text at
-  word boundaries [@nguyen_spiritlm_2025]. These are speech models, but music
-  has the same need when text must stay in step with sound, such as with lyrics.
+- **Prefix.** One clip comes first, then the question. This is the usual setup
+  for single-turn question answering and captioning, as in Qwen2-Audio,
+  SALMONN, and LLark, and the one the code below uses.
+- **Coarse interleaving.** Whole clips sit between turns of text, as in a chat
+  that compares two recordings, or a prompt with few-shot examples. Audio
+  Flamingo 3 trains on "75k multi-turn, multi-audio chat instances" for this
+  [@goel_af3_2025].
+- **Fine interleaving.** Short chunks of text and audio alternate on a shared
+  timeline, so that each piece of text sits next to the sound it describes or
+  accompanies. CosyVoice 2 alternates 5 text tokens with 15 speech tokens at 25
+  speech tokens per second [@du_cosyvoice2_2024], GLM-4-Voice alternates 13
+  text and 26 speech tokens at 12.5 per second [@zeng_glm4voice_2024], and
+  Spirit LM switches between speech and text at word boundaries
+  [@nguyen_spiritlm_2025]. Qwen2.5-Omni does the same for video and its audio,
+  cutting both "into chunks every 2 seconds according to the actual time"
+  [@xu_qwen25omni_2025].
+
+For fine interleaving, positions should follow time, not just token order.
+Qwen2.5-Omni's TMRoPE position encoding gives each token a position tied to
+time, and Music Flamingo's RoTE likewise sets the rotation angle "using absolute
+timestamps rather than token indices" [@ghosh_musicflamingo_2026]. The speech
+models above use fine interleaving to speak while they write. For music, it fits
+time-aligned outputs, such as lyrics, chords, or captions for each section, and
+questions about *when* something happens in a song.
 
 (sec-und-token-budget)=
 ## The token budget

@@ -79,6 +79,41 @@ musical training, and toward questions generated from symbolic data, whose
 answers can be computed.
 Each move answers a weakness of the one before.
 
+(sec-und-score-findings)=
+## What the score benchmarks show
+
+Any VLM can be given a score image ([](#sec-und-score-images)), and the score
+benchmarks in {numref}`tbl-und-benchmarks` agree that reading the notation is
+the weak step.
+
+- **MusiXQA** renders synthetic scores with MusiXTeX and asks questions about
+  their notes, text, layout, and chords [@chen_musixqa_2025]. On optical music
+  recognition, GPT-4o reaches 4.0 on the paper's accuracy measure, against 68.4
+  for a Phi-3-Vision model fine-tuned on the dataset.
+- **WildScore** takes 807 questions about score images that people posted on
+  the r/musictheory subreddit between 2012 and 2022 [@mundada_wildscore_2025].
+  The best model, GPT-4.1-mini, scores 68.31% with the image and 65.76% without
+  it. Several open VLMs score *higher* without the image: LLaVA goes from 32.97%
+  with it to 37.16% without, and InternVL from 39.34% to 45.54%. A direct
+  perception probe, with simple questions such as which clef is shown or how
+  many symbols of a kind appear, on 50 images, finds that GPT-4.1-mini perceives
+  the relevant symbols correctly in 52% of cases, InternVL in 38%, and LLaVA in
+  26%.
+- **MSU-Bench** asks 1,800 questions about 150 complete scores by Bach,
+  Beethoven, Chopin, Debussy, and others, at four levels: onset information,
+  notation and notes, chords and harmony, and texture and form
+  [@dai_msubench_2026]. It gives LLMs the score as ABC text and VLMs the score as
+  a PDF. The best zero-shot result with ABC is 49.44%; the best with images is
+  24.22%. The authors name localization, finding the right bar, as one of "two
+  persistent challenges" for VLMs.
+- **SSMR-Bench** generates sheet-music questions from music-theory rules as
+  programs, with 1,600 text and 1,600 visual questions [@wang_ssmr_2025]. Because
+  the answers are computed, they can serve as rewards: after reinforcement
+  learning, Qwen2.5-VL-7B rises from 41.81 to 70.56 on the visual questions.
+
+The WildScore result leads to the next question: when the image adds nothing,
+the model answers from the question alone.
+
 (sec-und-needs-music)=
 ## Does the question need the music?
 
@@ -163,7 +198,7 @@ to pay for; dividing by the number of tokens is a common alternative. This
 sketch shows the idea, not the paper's exact implementation.
 
 The same problem appears in other modalities. WildScore's open VLMs often score
-higher *without* the score image ([](#sec-und-score-findings)), and HumMusQA
+higher *without* the score image (above), and HumMusQA
 reports that a model "exploits cues in the questions", with Gemini 2.5 Flash
 reaching 42.7% with no audio against 25% chance [@weck_hummusqa_2026]. For
 images, DatBench queries VLMs with only the text of each question and discards
