@@ -87,10 +87,10 @@ answered without the music. In the notation of the
 [overview](#sec-und-problem), a good question has
 
 $$
-p_\theta(y \mid m, q) \gg p_\theta(y \mid q),
+p_\theta(a \mid m, q) \gg p_\theta(a \mid q),
 $$
 
-where $y$ is the correct answer. Many questions fail this test. A question such
+where $a$ is the correct answer. Many questions fail this test. A question such
 as "Which instrument starts the piece?" with the options *acoustic guitar*,
 *synthesizer*, *rueful tune*, and *vocals* can be narrowed down without hearing
 anything: "rueful tune" is not an instrument at all.

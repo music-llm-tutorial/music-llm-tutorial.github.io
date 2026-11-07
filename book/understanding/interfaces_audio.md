@@ -4,20 +4,20 @@ authors:
   - name: Zachary Novack
 ---
 
-Most music reaches listeners as sound, and most music LLMs read audio. This page
+Most music reaches listeners as sound, and most modern Music LLMs read audio. This page
 follows the reel from its waveform to the tokens an LLM reads, then runs it
 through an open audio LLM.
 
 (sec-und-signal)=
-## From waveform to spectrogram
+## From waveform to tokens
 
 A digital recording is a *waveform*: a list of air-pressure values, sampled
 tens of thousands of times per second. The reel file has 22,050 samples per
 second, so its eight seconds hold about 176,000 numbers
 ({numref}`fig-und-waveform`). A three-minute stereo song at the CD rate of
-44,100 Hz holds about 16 million. An LLM's context window counts tokens in the
-thousands to the hundreds of thousands, so one token per sample is out of the
-question. Every audio LLM first compresses the signal.
+44,100 Hz holds about 16 million. This direct approach would thus pose intractable
+to efficient language modeling, where an LLM would need to process millions of samples
+individually in its context. Every audio LLM thus first compresses the signal.
 
 :::{figure} ../assets/understanding/reel_waveform.png
 :label: fig-und-waveform
@@ -26,23 +26,46 @@ question. Every audio LLM first compresses the signal.
 The reel's waveform, with a 12 ms zoom. Each dot in the zoom is one sample.
 :::
 
-The first step is usually a *spectrogram*. The short-time Fourier transform
-(STFT) cuts the signal into short overlapping windows and measures how much of
-each frequency each window contains. The result is a complex number per
-frequency and time: its *magnitude* says how strong the frequency is, and its
-*phase* says where in its cycle the wave is. Magnitude carries most of what
-listeners hear, and phase looks like noise to the eye, so most models keep the
-magnitude only ({numref}`fig-und-spectrograms`).
+The compression has up to three parts ({numref}`fig-und-pipeline`). An
+optional *pre-transform* rearranges the waveform with a fixed signal processing formula, with
+nothing learned. A learned *encoder* turns the result into a much shorter
+sequence, of continuous vectors or of discrete codes. An *adapter* maps that
+sequence into the LLM's token embedding space. Models differ in which parts
+they keep.
 
-Two warped versions are common. A *mel spectrogram* merges the frequency bins
+:::{figure} ../assets/understanding/audio-pipeline.svg
+:label: fig-und-pipeline
+:alt: Stages between a waveform and the LLM, with three example models. Stages: waveform; an optional pre-transform with no learned weights; a learned encoder; its output, continuous vectors or discrete codes; an adapter; the LLM. Qwen2-Audio: 16 kHz waveform, 128-band log-mel spectrogram, Whisper-based encoder, vectors at 25 per second, a linear layer, Qwen-7B. AnyGPT for music: 32 kHz waveform, no pre-transform, EnCodec encoder with residual vector quantization, four codes per frame at 50 frames per second, new rows in the embedding table, LLaMA-2 7B. Gemma 4 12B: 16 kHz waveform cut into 40 ms chunks, no learned encoder, 640 numbers per chunk, projected directly into the LLM.
+
+From waveform to LLM. The pre-transform is optional, and some models skip the
+encoder too. Qwen2-Audio's linear adapter is as implemented in `transformers`.
+:::
+
+(sec-und-pretransforms)=
+## Optional pre-transforms
+
+A pre-transform is a deterministic, generally non-learned function of the waveform. It builds an
+inductive bias into the model before learning starts.
+
+**Spectrograms.** The short-time Fourier transform (STFT) cuts the signal into
+short overlapping windows and measures how much of each frequency each window
+contains. The result is a complex number per frequency and time: its
+*magnitude* says how strong the frequency is, and its *phase* says where in its
+cycle the wave is. While magnitude carries most of what listeners hear,  phase
+looks like noise to the untrained eye, so models that use a spectrogram usually keep the
+magnitude only, which thus cannot be turned back into the exact waveform
+({numref}`fig-und-spectrograms`).
+
+Two transformeed versions are common. A *mel spectrogram* merges the frequency bins
 into bands that are narrow at low frequencies and wide at high ones, roughly
-following pitch perception. Whisper uses 80 mel bands computed on 25 ms windows
-every 10 ms, from audio resampled to 16 kHz [@radford2023robust], and
-Qwen2-Audio uses 128 bands with the same window and hop
+following human pitch perception. Whisper's encoder reads 80 mel bands computed on 25
+ms windows every 10 ms, from audio resampled to 16 kHz [@radford2023robust], and
+Qwen2-Audio's reads 128 bands with the same window and hop
 [@chu_qwen2audio_2024]. A *constant-Q transform* (CQT) spaces its bins
 geometrically, so each bin can be one semitone. In the CQT panel, the reel's
-notes sit on a piano-roll-like grid. MERT uses a CQT as one of its training
-targets [@li_mert_2024].
+notes sit on a piano-roll-like grid. A pre-transform can also serve as a
+training target on top of an input: MERT learns to predict a CQT of the audio
+it cannot see [@li_mert_2024].
 
 :::{figure} ../assets/understanding/reel_spectrograms.png
 :label: fig-und-spectrograms
@@ -70,21 +93,61 @@ cqt = librosa.cqt(y, sr=sr, hop_length=512, fmin=librosa.note_to_hz("C2"),
 cqt_db = librosa.amplitude_to_db(np.abs(cqt), ref=np.max)
 ```
 
-A spectrogram is smaller than the waveform but still large: 128 mel bands every
-10 ms is 12,800 numbers per second. The encoder's job is to summarize it.
+**Rearrangements that keep the waveform.** Other pre-transforms keep (almost)
+all the information and only shorten the sequence by making it wider. A
+*polyphase* split sends every $M$-th sample to one of $M$ channels, so the
+sequence becomes $M$ times shorter and $M$ times wider, and nothing is lost.
+Cutting the signal into non-overlapping frames of $M$ samples is the same
+reshape: Gemma 4 12B's 40 ms chunks of 16 kHz audio are frames of 640 samples,
+which become 640-dimensional vectors [@gemma4_2026]. A *pseudo-quadrature
+mirror filter* (PQMF) bank instead splits the signal into $M$ frequency bands,
+each decimated by $M$. PQMFs and polyphase filters are not common pre-transforms
+in music-language modeling, but they are of a similar class of signal-processing
+operations that are valid for pre-tranformation.
+
+Whether to pre-transform is a design choice, not a requirement
+({numref}`tbl-und-pretransforms`). Many encoders read a mel spectrogram, but
+neural audio codecs such as EnCodec read the raw waveform directly
+[@DBLP:journals/tmlr/DefossezCSA23; @li_mert_2024], and so does Jukebox
+[@dhariwal2020jukebox]. A lossy pre-transform is fine for a model that only
+needs to *understand* audio. Models that must rebuild the waveform from their own
+representation, such as codecs, read the waveform or a rearrangement
+that keeps it, because a magnitude spectrogram has lost the phase.
+
+:::{table} Pre-transforms and encoders in models on this page.
+:label: tbl-und-pretransforms
+:align: left
+
+| Model or encoder | Pre-transform | Learned encoder | Output |
+|---|---|---|---|
+| Whisper; Qwen2-Audio | log-mel, 80 or 128 bands | Transformer encoder | vectors; 25 per second in Qwen2-Audio |
+| AuT (Qwen3-Omni) | 128-band mel | trained from scratch | vectors, 12.5 per second |
+| Gemma 4 E2B, E4B | mel filterbank | 305M Conformer encoder | vectors |
+| Inkling | dMel (quantized mel) | none; a light-weight embedding layer | vectors |
+| Jukebox (in LLark) | none | Jukebox-5B | 4,800-dim vectors at 345 Hz |
+| EnCodec, DAC | none | convolutional codec with RVQ | discrete codes |
+| Gemma 4 12B | 40 ms frames | none | 640 numbers per frame |
+:::
 
 (sec-und-encoders)=
-## Where the encoder comes from
+## The encoder
 
-An *audio encoder* is a neural network that turns the spectrogram (or the
-waveform) into a sequence of vectors, each summarizing a short stretch of time.
-Audio LLMs get their encoder in one of three ways ({numref}`fig-und-encoders`).
+An *audio encoder* is a neural network that turns the waveform, or its
+pre-transform, into a *much* shorter, more semantically meaningful sequence. Each step of the output summarizes a
+short stretch of time. The output can be *continuous vectors*, or *discrete
+codes* from a fixed codebook.
+
+(sec-und-continuous-encoders)=
+### Continuous encoders
+
+Audio LLMs may get a continuous encoder in one of three ways
+({numref}`fig-und-encoders`).
 
 :::{figure} ../assets/understanding/encoders.svg
 :label: fig-und-encoders
 :alt: Three columns. Borrowed encoders: Whisper, trained for speech recognition on 680,000 hours, used by Qwen2-Audio and SALMONN; MERT, self-supervised on music, used by MusiLingo and MU-LLaMA; Jukebox, a music generation model, used by LLark; CLAP, trained to match audio and text, retrained as AF-CLAP for Audio Flamingo 2. Encoders trained for the LLM: AF-Whisper in Audio Flamingo 3, which starts from Whisper large-v3 and is trained on audio captions; AuT in Qwen3-Omni, trained from scratch on 20 million hours and producing 12.5 tokens per second. No encoder: Gemma 4 12B cuts 16 kHz audio into 40 ms chunks of 640 numbers and projects them directly; Inkling feeds dMel spectrogram features through a light-weight embedding layer. An arrow below runs from reusing outside knowledge to making fewer fixed choices about the input.
 
-Three sources of audio encoders.
+Three sources of continuous audio encoders.
 :::
 
 **Borrowed encoders.** The first music LLMs reused an encoder trained for
@@ -101,27 +164,24 @@ something else, often frozen.
   EnCodec, and a CQT [@li_mert_2024]. It comes in sizes from 95M to 330M parameters.
   MusiLingo uses MERT-v1-330M [@deng_musilingo_2024], and MU-LLaMA uses a frozen
   MERT encoder [@liu_music_2024].
-- Jukebox is a music *generation* model [@dhariwal2020jukebox]. LLark takes the
-  output of layer 36 of Jukebox-5B's encoder, 4,800-dimensional vectors at
-  345 Hz, and mean-pools them in 100 ms frames, so the LLM gets 10 vectors per
-  second [@gardner2023llark].
-- CLAP is trained to match audio with text descriptions [@wu2023large].
+- Jukebox is a music *generation* model that works on the raw waveform
+  [@dhariwal2020jukebox]. LLark takes the output of layer 36 of Jukebox-5B's
+  encoder, 4,800-dimensional vectors at 345 Hz, and mean-pools them in 100 ms
+  frames, so the LLM gets 10 vectors per second [@gardner2023llark].
+<!-- - CLAP is trained to match audio with text descriptions [@wu2023large].
   Audio Flamingo 2 trains its own version, AF-CLAP, on 8,037,712 ten-second
-  audio–caption pairs [@ghosh_af2_2025].
+  audio–caption pairs [@ghosh_af2_2025]. -->
 
 A borrowed encoder brings what it learned from its own training data, but it
 was not built for the LLM. Whisper's training targets are transcripts, which say
-little about harmony or timbre. Two ISMIR 2026 papers probe what contrastive
-encoders capture. One finds that LAION-CLAP aligns relatively well with
-human-perceived timbre semantics, but that current language–audio embeddings
-capture them only partially, and reverb more consistently than equalization
-[@deng_timbre_2026]. Another adds album reviews from AllMusic, turned into
-captions, as extra training text for a music CLAP model, with the largest
-retrieval gains on a benchmark of human-written captions
-[@alonso_allmusiccaps_2026].
+little about harmony or timbre. Such encoders' training data may vary wildly from
+the data used to adapt an LLM to its music representation, potentially kneecapping
+the overall performance.
 
 **Encoders trained for the LLM.** Newer models train the encoder as part of the
-LLM project. Audio Flamingo 3 starts from Whisper large-v3, attaches a text
+LLM project. Audio Flamingo 2 trains its own version of CLAP, AF-CLAP, on 8,037,712 ten-second
+audio–caption pairs [@ghosh_af2_2025].
+Audio Flamingo 3 starts from Whisper large-v3, attaches a text
 decoder, and trains the pair to generate audio captions, to get AF-Whisper
 [@goel_af3_2025]. Qwen3-Omni replaces Whisper with AuT, an encoder of about 0.6B
 parameters trained from scratch on 20 million hours of supervised audio. It
@@ -131,28 +191,53 @@ about 80 ms each [@qwen3omni_2025].
 **No encoder.** In 2026, two model families dropped the audio encoder. Gemma 4
 12B segments raw 16 kHz audio into 40 ms chunks, which gives 640-dimensional
 vectors that are "projected directly into the LLM embedding space"
-[@gemma4_2026]. Images get the
-same treatment: 48×48 RGB patches pass through a single matrix multiplication
-instead of a 550M-parameter vision encoder. The smaller Gemma 4 models, E2B and
-E4B, still use a 305M-parameter audio encoder. Inkling, an open-weights
-mixture-of-experts model with 975B total and 41B active parameters, inputs
-audio as dMel spectrograms, a quantized mel representation, and passes them
-through "a light-weight embedding layer" processed jointly with text tokens
-[@thinkingmachines_inkling_2026]. Its announcement does not state the frame
-length.
+[@gemma4_2026]. Images get the same treatment: 48×48 RGB patches pass through a
+single matrix multiplication instead of a 550M-parameter vision encoder. Note that the
+smaller Gemma 4 models, E2B and E4B, still use a 305M-parameter audio encoder.
+Inkling, an open-weights mixture-of-experts model with 975B total and 41B active
+parameters, inputs audio as dMel spectrograms, a quantized mel representation,
+and passes them through "a light-weight embedding layer" processed jointly with
+text tokens [@thinkingmachines_inkling_2026]. Without an encoder, the pre-transform is the only fixed
+choice left: a reshape for Gemma 4 12B, a quantized mel spectrogram for
+Inkling.
 
 The three columns trade borrowed knowledge for flexibility. A borrowed encoder
 works with little paired data, but it fixes the sample rate, the frame rate,
-and the clip length it was trained on. An encoder-free model makes almost no
-such choices, but the LLM itself must learn to hear, which takes far more data
+ the clip length it was trained on, and its knowledge cutoff. An encoder-free model makes almost no
+such choices, but the LLM itself must learn to hear, which may take far more data
 and compute.
+
+(sec-und-codecs)=
+### Discrete encoders: codecs and tokenizers
+
+A *neural audio codec* is an encoder–decoder trained to compress a waveform into a discrete collections of codes and
+rebuild it. Its encoder reads the raw waveform and outputs a
+vector per downsampled frame, and *residual vector quantization* (RVQ) replaces each vector
+with a few codes: the first codebook picks the nearest entry, the next codebook
+quantizes what is left over, and so on. EnCodec outputs 75 frames per second at
+24 kHz [@DBLP:journals/tmlr/DefossezCSA23]; as MERT uses it, each frame becomes
+8 codes [@li_mert_2024]. DAC compresses 44.1 kHz audio about 90 times, at 86
+frames per second [@kumar2023high]. The decoder turns codes back into sound, so
+the same codes serve for listening and for generating.
+
+Codes are tokens, so an LLM can read them with no continuous vectors at all.
+AnyGPT tokenizes music with an EnCodec model at 32 kHz and 50 frames per second,
+with four codebooks of 2,048 codes each, on a LLaMA-2 7B backbone
+[@zhan-etal-2024-anygpt]. Discrete tokens need not come from a codec. AudioPaLM
+takes its tokens from speech models such as w2v-BERT, whose tokens come at 25
+per second from a vocabulary of 1,024 [@rubenstein_audiopalm_2023]. Because
+the audio is ordinary tokens, the same LLM can also *generate* audio ([Chapter
+1](#sec-next-token) describes this briefly). The cost is length: a codec keeps
+the detail needed to rebuild the waveform (inherently, it is what one would call an *acoustic* representation), and if each of EnCodec's 8 codes per
+frame became its own token, one second would take 600 tokens.
 
 (sec-und-adapters)=
 ## Adapters
 
-The encoder's vectors do not match the LLM's token embeddings in size or in
-meaning, so an *adapter* translates them. There are three main designs
-({numref}`fig-und-adapters`).
+The encoder's output often does not match the LLM's token embeddings in size or in
+meaning, so an *adapter* translates it. For continuous vectors there are two
+main designs ({numref}`fig-und-adapters`); for discrete codes, the adapter can be just
+an embedding table.
 
 :::{figure} ../assets/understanding/adapters.svg
 :label: fig-und-adapters
@@ -166,7 +251,8 @@ per window.
 MLP, to every encoder vector. LLaVA connects an image encoder to an LLM with
 "a trainable projection matrix" [@liu_llava_2023], and LLark's projection module
 "is parameterized by a single linear projection layer" [@gardner2023llark].
-MusiLingo adds a temporal compression step after its linear layer
+Qwen2-Audio's adapter, as implemented in `transformers`, is a single linear
+layer too. MusiLingo adds a temporal compression step after its linear layer
 [@deng_musilingo_2024]. With projection, the number of tokens grows with the
 length of the audio.
 
@@ -184,29 +270,22 @@ tokens [@alayrac_flamingo_2022].
 
 A Q-Former controls the token budget, but it has to decide what to keep before
 the LLM sees the question. Projection keeps everything and leaves the choice to
-the LLM's attention, at the cost of more tokens.
+the LLM's attention, at the cost of more tokens. Note that Q-Forming has largely
+fallen out of fashion, as the desire for more fine-grained detailed information
+for music-LLMs has taken precedence over length concerns.
 
-**Codec tokens.** A third option skips continuous vectors. A neural audio codec
-compresses the waveform into a few discrete codes per frame with *residual
-vector quantization*: EnCodec produces 75 frames per second at 24 kHz
-[@DBLP:journals/tmlr/DefossezCSA23], and DAC compresses 44.1 kHz audio about 90
-times, at 86 frames per second [@kumar2023high]. The codes become new tokens in
-the LLM's vocabulary. AudioPaLM expands PaLM-2's embedding matrix with audio
-tokens, at 25 per second from a vocabulary of 1,024 for one of its tokenizers
-[@rubenstein_audiopalm_2023]. AnyGPT tokenizes music with an EnCodec variant at
-32 kHz and 50 frames per second, with four codebooks of 2,048 codes each
-[@zhan-etal-2024-anygpt]. Because audio is now ordinary tokens, the same LLM can
-also *generate* audio ([Chapter 1](#sec-next-token) describes this briefly), but
-a codec's codes are made to rebuild the waveform, so a second of music costs
-many tokens.
+**New rows in the embedding table.** For discrete codes, each
+code gets its own row in the LLM's embedding table, like a new word.
+AudioPaLM "expand[s] the size of the embeddings matrix", and the new audio
+embeddings "are freshly initialized and must be trained"
+[@rubenstein_audiopalm_2023]. GLM-4-Voice expands GLM-4's vocabulary with speech
+tokens in the same way [@zeng_glm4voice_2024], and MIDI-LLM does it for MIDI
+events ([](#sec-und-symbolic-llms)). Practically, this is just a discrete version of the
+continuous projection.
 
-MU-LLaMA does something different again. Its adapter does not put tokens in the
-sequence: after a 1D convolution and dense blocks, its output is "multiplied to
-the queries in the multi-headed attention" in the last layers of LLaMA-2
-[@liu_music_2024].
 
 (sec-und-conditioning)=
-## Where the music sits
+## What sequence is the music in, and where?
 
 Once adapted, the music has to reach the LLM's computation. There are two
 places to put it ({numref}`fig-und-cross-self`).
@@ -222,8 +301,7 @@ cross-attention).
 **In the sequence.** The adapted tokens are placed in the input next to the
 text, and the LLM's ordinary self-attention reads them. Every layer can mix
 music and text, and nothing in the LLM changes except its inputs. LLaVA, LLark,
-and Qwen2-Audio work this way. The cost is context: every music token takes a
-place in the window.
+and Qwen2-Audio work this way. The cost is growing self attention context.
 
 **Beside the sequence.** Flamingo freezes the LLM and inserts new *gated
 cross-attention* layers between its layers [@alayrac_flamingo_2022]. Text tokens
@@ -233,7 +311,10 @@ $\alpha$ is a learned scalar that starts at 0, so at the start of training the
 model is exactly the original LLM. Audio Flamingo uses these layers with a CLAP-
 based feature extractor and 7-second sliding windows, up to 16 windows or 33.25
 seconds [@kong2024audio_flamingo]. Audio Flamingo 2 keeps the design and extends
-it to 30 windows, five minutes of audio [@ghosh_af2_2025].
+it to 30 windows, five minutes of audio [@ghosh_af2_2025]. Note that like Q-Forming,
+cross-attention conditioning has fallen out of practice given the larger support (both
+in terms of growing scientific research and practical engineering developments) for pure
+decoder-only models.
 
 (sec-und-interleaving)=
 ### Prefix, coarse, and fine interleaving
@@ -262,12 +343,13 @@ Three orders for music and text tokens.
   alternates 13 text and 26 speech tokens at 12.5 per second
   [@zeng_glm4voice_2024], and Spirit LM switches between speech and text at
   word boundaries [@nguyen_spiritlm_2025]. These are speech models, but music
-  has the same need when text must stay in step with sound, as with lyrics.
+  has the same need when text must stay in step with sound, such as with lyrics.
 
 (sec-und-token-budget)=
 ## The token budget
 
-The adapter and the encoder set how many tokens a minute of music costs, and
+The pre-transform, the encoder, and the adapter together set how many tokens a
+minute of music costs, and
 that sets how much music fits in a context window. {numref}`tbl-und-budget`
 lists the rates of the models on this page.
 
@@ -282,6 +364,7 @@ lists the rates of the models on this page.
 | Qwen3-Omni (AuT encoder) | 12.5 | 2,250 |
 | Qwen2-Audio, Qwen2.5-Omni (40 ms frames) | 25 | 4,500 |
 | Gemma 4 12B (raw 40 ms chunks) | 25 | 4,500 |
+| EnCodec at 24 kHz, if each of 8 codes per frame is a token | 600 | 108,000 |
 :::
 
 Longer audio needs a longer context. Audio Flamingo 3 had a context of 8,192
@@ -327,7 +410,7 @@ answer = processor.batch_decode(
 print(answer)
 ```
 
-The audio becomes 200 placeholder tokens in the prompt, ahead of the question,
+<!-- The audio becomes 200 placeholder tokens in the prompt, ahead of the question,
 and the model replaces their embeddings with the adapted encoder outputs: the
 prefix layout of {numref}`fig-und-interleave`. The count follows from the
 processor's arithmetic. The mel spectrogram has 100 frames per second; the
@@ -341,7 +424,7 @@ def qwen2_audio_tokens(seconds):
     return (after_conv - 2) // 2 + 1         # stride-2 pooling: one token per 40 ms
 
 qwen2_audio_tokens(8), qwen2_audio_tokens(30)   # (200, 750)
-```
+``` -->
 
 Try the three questions from the [overview](#sec-und-example) on the reel, and
 then ask the same questions with no audio at all. The [evaluation

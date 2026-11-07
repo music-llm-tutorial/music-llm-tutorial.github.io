@@ -28,22 +28,28 @@ For models that read audio or images, modality adaptation follows the same four 
 
 :::{figure} ../assets/understanding/recipe.svg
 :label: fig-und-recipe
-:alt: Four steps shared by audio, image and text routes. Encode: turn audio into a sequence of vectors, or skip the encoder. Adapt: map those vectors to the LLM's embedding size with a projection, a Q-Former, or codec tokens added to the vocabulary. Place: put the music tokens in the LLM's input as a prefix, interleaved with text, or read them through cross-attention. Train: next-token loss on the text answer. Training usually runs in stages: align on captions, instruction-tune on questions and answers, and optionally reinforcement learning with verifiable rewards.
+:alt: Four steps shared by audio and image routes. Encode: an optional fixed pre-transform such as a spectrogram, then a learned encoder that outputs continuous vectors or discrete codes, or no encoder at all. Adapt: map vectors to the LLM's embedding size with a projection or a Q-Former, or give each discrete code a new row in the LLM's embedding table. Position: put the music tokens in the LLM's input as a prefix, interleaved with text, or read them through cross-attention. Train: next-token loss on the text answer. Training usually runs in stages: align on captions, instruction-tune on questions and answers, and optionally reinforcement learning with verifiable rewards.
 
 Encode, adapt, place, train.
 :::
 
-1. **Encode.** An encoder turns the input into a sequence of vectors, one per
-   short frame of audio or patch of image. Qwen2-Audio's encoder, for example,
-   gives one vector per 40 ms of audio [@chu_qwen2audio_2024]. Note some recent
-   models [skip the encoder altogether](#sec-und-encoders).
+1. **Encode.** A learned encoder turns the input into a much shorter sequence,
+   one step per short frame of audio or patch of image. Its input can be the raw
+   waveform or a fixed, *optional* pre-transform of it, such as a mel
+   spectrogram ([](#sec-und-pretransforms)). Its output is either continuous
+   vectors or discrete codes. Qwen2-Audio's encoder, for example, gives one
+   vector per 40 ms of audio [@chu_qwen2audio_2024], while a neural audio codec
+   gives a few discrete codes per frame
+   [@DBLP:journals/tmlr/DefossezCSA23]. Note some recent models [skip the
+   encoder altogether](#sec-und-encoders).
 2. **Adapt.** Most pretrained encoders emit vectors that have the wrong size
    for the LLM, and may be direclty hard to use. An *adapter* maps them into the LLM's token embedding space. It
    can be a linear layer or a small MLP, as in LLaVA for images and LLark for
    music [@liu_llava_2023; @gardner2023llark], or a small Transformer that
    compresses many frames into a few vectors, the Q-Former
-   [@li_blip2_2023; @tang_salmonn_2024]. One may also directly use discrete audio tokens and add them to the LLM's vocabulary
-   [@rubenstein_audiopalm_2023; @zhan-etal-2024-anygpt]
+   [@li_blip2_2023; @tang_salmonn_2024]. Discrete codes need no projection:
+   each one is simply added to the LLM's vocabulary as a new row in its
+   embedding table [@rubenstein_audiopalm_2023; @zhan-etal-2024-anygpt]
    ([](#sec-und-adapters)).
 3. **Sequence Position.** The adapted vectors enter the LLM. Many models put them in the
    input sequence, before the text or interleaved with it, where the LLM's

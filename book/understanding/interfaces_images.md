@@ -4,19 +4,18 @@ authors:
   - name: Zachary Novack
 ---
 
-Any vision-language model (VLM) can look at a picture of a score. No music
-training is needed to send one: the image goes through the same route as a
+Any vision-language model (VLM) can in theory look at a picture of a score. No music
+training is needed to send one, as the image goes through the same route as a
 photo. This makes score images the cheapest way to give music to a frontier
-model, and one of the hardest for the model to use.
+model, yet one of the hardest for the model to use.
 
 (sec-und-score-images)=
 ## Scores as images
 
 A score image can be rendered from a file, as in {numref}`fig-und-score`, or
-scanned or photographed from paper. Either way, the image holds symbols, not
-notes. To answer "what key is this in?", a model has to find the key signature,
-read the clefs, and connect noteheads to staff positions, which is the job of
-optical music recognition. Scores are dense: one bar of piano music can hold
+scanned or photographed from paper. To answer "what key is this in?", a model has to find the key signature,
+read the clefs, and connect noteheads to staff positions, which is traditionally the job of
+optical music recognition. Scores can also be quite dense: one bar of piano music can hold
 dozens of small symbols whose meaning depends on their exact vertical position
 and on symbols elsewhere on the page, such as the clef and key signature at the
 start of the line.
@@ -32,14 +31,14 @@ pixel patches through a single matrix multiplication [@gemma4_2026]; and Inkling
 encodes 40×40 pixel patches "using a four-layer hMLP"
 [@thinkingmachines_inkling_2026].
 
-Resolution matters for scores. A notehead is a few pixels tall, and a VLM that
+Like frame rate for audio, resolution matters for scores. A notehead is a few pixels tall, and a VLM that
 shrinks a page to a fixed size can lose the difference between a line and a
 space. Native-resolution encoders such as Qwen2.5-VL's keep more detail, but
 spend more tokens: Qwen2.5-VL's preprocessing resizes the reel's score image
 from 1,507×555 to 1,512×560 pixels, and it becomes 1,080 image tokens, one per
 28×28 pixels.
 
-(sec-und-score-findings)=
+<!-- (sec-und-score-findings)=
 ## What VLMs read on a score
 
 Several benchmarks test VLMs on scores, and they agree that reading the notation
@@ -77,7 +76,7 @@ The WildScore result is a warning that returns on the [evaluation
 page](#sec-und-needs-music): when the image adds nothing, the model answers from
 the question. [Chapter 5](../performing/perceiving_score.md) covers score
 formats and the performance markings a score carries, such as dynamics and
-articulation, and how current systems handle them.
+articulation, and how current systems handle them. -->
 
 (sec-und-qwen25-vl)=
 ## Asking a VLM about the score
