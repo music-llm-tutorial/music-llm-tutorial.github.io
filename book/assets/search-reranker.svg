@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 376" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The LLM as reranker</title>
+<desc id="d">Top row: user 1024's request ('late-night drive in the rain, no vocals, not too old', favorites Bill Evans and Nils Frahm) goes to an LLM that rewrites it into a text query, 'slow, sparse piano, nocturnal', and a filter, vocals = none and year at least 2015. These go to a text-to-music retriever, which scores audio, and a metadata filter over the record. Middle: five candidates with their records and retriever scores. Lo-fi track 0207 (2021, no vocals, chill, Rhodes and drum machine) scores 0.82; dream-pop track 0930 (2022, vocals) scores 0.80 and is removed by the filter; jazz track 0381 (2019, no vocals, nocturnal, piano trio) scores 0.79; jazz track 0112 (1959) scores 0.77 and is removed by the year filter; ambient track 0644 (2017, no vocals, calm, solo piano) scores 0.74. The LLM reranks the survivors by reading their rows and the profile: 0381 first, 0644 second, 0207 third. Bottom: the answer with its reason, and a note that the LLM never hears the audio.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">REQUEST</text>
+<rect x="0.8" y="26.75" width="176" height="72" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="14" y="46" font-size="12" font-style="italic" fill="#ab7827">“late-night drive in the</text>
+<text x="14" y="62" font-size="12" font-style="italic" fill="#ab7827">rain, no vocals, not too old”</text>
+<text x="14" y="86" font-size="10.5" fill="#9a6a8f">user 1024 · Bill Evans, Nils Frahm</text>
+<line x1="177" y1="62" x2="204" y2="62" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M198,58.35 L204,62 L198,65.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="206" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">1 · LLM REWRITES</text>
+<rect x="206.8" y="26.75" width="270" height="72" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="220" y="46" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">query</text>
+<text x="280" y="46" font-size="12" font-style="italic" fill="#8f9066">“slow, sparse piano, nocturnal”</text>
+<text x="220" y="68" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">filter</text>
+<text x="280" y="68" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">vocals = none</text>
+<text x="280" y="84" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">year ≥ 2015</text>
+<line x1="477" y1="62" x2="504" y2="62" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M498,58.35 L504,62 L498,65.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="506" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">2 · RETRIEVE</text>
+<rect x="506.8" y="26.75" width="264" height="72" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="520" y="46" font-size="12.5" font-weight="700" fill="#607b9a">Text-to-music retriever</text>
+<text x="520" y="61" font-size="11" fill="#607b9a">scores the audio against the query</text>
+<text x="520" y="79" font-size="12.5" font-weight="700" fill="#607b9a">Metadata filter</text>
+<text x="520" y="93" font-size="11" fill="#607b9a">exact, over the record</text>
+<text x="0" y="122" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">CANDIDATES AND THEIR RECORDS</text>
+<rect x="0.8" y="130" width="580" height="21" rx="0" fill="#ab7827" fill-opacity="0.14"/>
+<rect x="0.8" y="130" width="580" height="126" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1.2"/>
+<text x="6" y="144" font-size="10.5" font-weight="700" fill="#ab7827">track</text>
+<text x="60" y="144" font-size="10.5" font-weight="700" fill="#ab7827">genre</text>
+<text x="132" y="144" font-size="10.5" font-weight="700" fill="#ab7827">year</text>
+<text x="176" y="144" font-size="10.5" font-weight="700" fill="#ab7827">vocals</text>
+<text x="228" y="144" font-size="10.5" font-weight="700" fill="#ab7827">mood</text>
+<text x="300" y="144" font-size="10.5" font-weight="700" fill="#ab7827">instruments</text>
+<text x="450" y="144" font-size="10.5" font-weight="700" fill="#ab7827">retriever</text>
+<text x="512" y="144" font-size="10.5" font-weight="700" fill="#ab7827">filter</text>
+<line x1="0.8" y1="151" x2="580.8" y2="151" stroke="#ab7827" stroke-width="0.8" stroke-opacity="0.45"/>
+<text x="6" y="165.5" font-size="11" fill="#3d3a35">#0207</text>
+<text x="60" y="165.5" font-size="11" fill="#3d3a35">lo-fi</text>
+<text x="132" y="165.5" font-size="11" fill="#3d3a35">2021</text>
+<text x="176" y="165.5" font-size="11" fill="#3d3a35">none</text>
+<text x="228" y="165.5" font-size="11" fill="#3d3a35">chill</text>
+<text x="300" y="165.5" font-size="11" fill="#3d3a35">Rhodes, drum machine</text>
+<text x="450" y="165.5" font-size="11" font-family="Menlo, Consolas, monospace" fill="#3d3a35">.82</text>
+<text x="512" y="165.5" font-size="11" fill="#77726a">pass</text>
+<line x1="0.8" y1="172" x2="580.8" y2="172" stroke="#ab7827" stroke-width="0.8" stroke-opacity="0.45"/>
+<text x="6" y="186.5" font-size="11" fill="#77726a">#0930</text>
+<text x="60" y="186.5" font-size="11" fill="#77726a">dream pop</text>
+<text x="132" y="186.5" font-size="11" fill="#77726a">2022</text>
+<text x="176" y="186.5" font-size="11" fill="#b5543c">yes</text>
+<text x="228" y="186.5" font-size="11" fill="#77726a">dreamy</text>
+<text x="300" y="186.5" font-size="11" fill="#77726a">synths, voice</text>
+<text x="450" y="186.5" font-size="11" font-family="Menlo, Consolas, monospace" fill="#77726a">.80</text>
+<text x="512" y="186.5" font-size="11" fill="#b5543c">✗ vocals</text>
+<line x1="4" y1="182.5" x2="500" y2="182.5" stroke="#77726a" stroke-width="1" stroke-opacity="0.7"/>
+<line x1="0.8" y1="193" x2="580.8" y2="193" stroke="#ab7827" stroke-width="0.8" stroke-opacity="0.45"/>
+<text x="6" y="207.5" font-size="11" fill="#3d3a35">#0381</text>
+<text x="60" y="207.5" font-size="11" fill="#3d3a35">jazz</text>
+<text x="132" y="207.5" font-size="11" fill="#3d3a35">2019</text>
+<text x="176" y="207.5" font-size="11" fill="#3d3a35">none</text>
+<text x="228" y="207.5" font-size="11" fill="#3d3a35">nocturnal</text>
+<text x="300" y="207.5" font-size="11" fill="#3d3a35">piano trio</text>
+<text x="450" y="207.5" font-size="11" font-family="Menlo, Consolas, monospace" fill="#3d3a35">.79</text>
+<text x="512" y="207.5" font-size="11" fill="#77726a">pass</text>
+<line x1="0.8" y1="214" x2="580.8" y2="214" stroke="#ab7827" stroke-width="0.8" stroke-opacity="0.45"/>
+<text x="6" y="228.5" font-size="11" fill="#77726a">#0112</text>
+<text x="60" y="228.5" font-size="11" fill="#77726a">jazz</text>
+<text x="132" y="228.5" font-size="11" fill="#b5543c">1959</text>
+<text x="176" y="228.5" font-size="11" fill="#77726a">none</text>
+<text x="228" y="228.5" font-size="11" fill="#77726a">nocturnal</text>
+<text x="300" y="228.5" font-size="11" fill="#77726a">piano trio</text>
+<text x="450" y="228.5" font-size="11" font-family="Menlo, Consolas, monospace" fill="#77726a">.77</text>
+<text x="512" y="228.5" font-size="11" fill="#b5543c">✗ year</text>
+<line x1="4" y1="224.5" x2="500" y2="224.5" stroke="#77726a" stroke-width="1" stroke-opacity="0.7"/>
+<line x1="0.8" y1="235" x2="580.8" y2="235" stroke="#ab7827" stroke-width="0.8" stroke-opacity="0.45"/>
+<text x="6" y="249.5" font-size="11" fill="#3d3a35">#0644</text>
+<text x="60" y="249.5" font-size="11" fill="#3d3a35">ambient</text>
+<text x="132" y="249.5" font-size="11" fill="#3d3a35">2017</text>
+<text x="176" y="249.5" font-size="11" fill="#3d3a35">none</text>
+<text x="228" y="249.5" font-size="11" fill="#3d3a35">calm</text>
+<text x="300" y="249.5" font-size="11" fill="#3d3a35">solo piano</text>
+<text x="450" y="249.5" font-size="11" font-family="Menlo, Consolas, monospace" fill="#3d3a35">.74</text>
+<text x="512" y="249.5" font-size="11" fill="#77726a">pass</text>
+<text x="610" y="122" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">3 · LLM RERANKS</text>
+<rect x="610.8" y="130.75" width="160" height="126" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="624" y="150" font-size="11.5" fill="#8f9066">reads each row</text>
+<text x="624" y="165" font-size="11.5" fill="#8f9066">and the profile</text>
+<circle cx="632" cy="186" r="8" fill="#8f9066" fill-opacity="0.25"/>
+<text x="632" y="190" font-size="11" font-weight="700" text-anchor="middle" fill="#8f9066">1</text>
+<text x="646" y="190" font-size="11.5" font-weight="700" fill="#8f9066">#0381</text>
+<text x="690" y="190" font-size="10.5" fill="#8f9066">piano trio</text>
+<circle cx="632" cy="208" r="8" fill="#8f9066" fill-opacity="0.25"/>
+<text x="632" y="212" font-size="11" font-weight="700" text-anchor="middle" fill="#8f9066">2</text>
+<text x="646" y="212" font-size="11.5" font-weight="700" fill="#8f9066">#0644</text>
+<text x="690" y="212" font-size="10.5" fill="#8f9066">solo piano</text>
+<circle cx="632" cy="230" r="8" fill="#8f9066" fill-opacity="0.25"/>
+<text x="632" y="234" font-size="11" font-weight="700" text-anchor="middle" fill="#8f9066">3</text>
+<text x="646" y="234" font-size="11.5" font-weight="700" fill="#8f9066">#0207</text>
+<text x="690" y="234" font-size="10.5" fill="#8f9066">drum machine</text>
+<polyline points="638,99 638,112 290,112 290,129" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M286.35,123 L290,129 L293.65,123" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="581" y1="193" x2="609" y2="193" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M603,189.35 L609,193 L603,196.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="690" y1="257" x2="690" y2="285" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M686.35,279 L690,285 L693.65,279" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="0.8" y="284.75" width="770" height="50" rx="8" fill="#ab7827" fill-opacity="0.06" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="14" y="304" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">ANSWER + REASON</text>
+<text x="14" y="323" font-size="12.5" font-style="italic" fill="#3d3a35">#0381: “A 2019 piano trio with no vocals, slow and nocturnal, close to the Bill Evans you play.”</text>
+<text x="0" y="360" font-size="11.5" fill="#77726a">The LLM never hears the audio. It reads the retriever’s scores and the rows: two tracks with the same row are the same track to it.</text>
+</svg>

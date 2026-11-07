@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 778 273" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
 <title id="t">Supervised fine-tuning on a chat template</title>
 <desc id="d">A two-turn conversation written as one token sequence in one open model family's chat template. System and user turns, and the assistant role headers, are context: the model reads them but gets no loss on them. The assistant replies 'D–Bm–G–A' and 'D major', each with its end-of-turn token &lt;|im_end|&gt;, are trained with the next-token loss.</desc>
+<style>@media (prefers-color-scheme: dark) {
+[fill="#977a5d"] { fill: #a99178 } [stroke="#977a5d"] { stroke: #a99178 }
+[fill="#607b9a"] { fill: #8297af } [stroke="#607b9a"] { stroke: #8297af }
+[fill="#ab7827"] { fill: #d9aa57 } [stroke="#ab7827"] { stroke: #d9aa57 }
+[fill="#7b7c55"], [fill="#8f9066"] { fill: #6f9363 } [stroke="#8f9066"] { stroke: #6f9363 }
+[fill-opacity="0.14"] { fill-opacity: 0.2 }
+}</style>
 <defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
 <rect x="1.0" y="1.0" width="500.0" height="262.0" rx="10" fill="#607b9a" fill-opacity="0.05" stroke="#607b9a" stroke-opacity="0.35" stroke-width="1"/>
 <text x="18.0" y="30.0" font-size="13.5" font-weight="400" fill="#607b9a" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" textLength="97.5" lengthAdjust="spacingAndGlyphs" xml:space="preserve">&lt;|im_start|&gt;</text>

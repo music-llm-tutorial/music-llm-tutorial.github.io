@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 314" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Agentic music recommendation</title>
+<desc id="d">User 1024's request, 'Something for a late-night drive in the rain, no vocals, and not too old', then 'more upbeat' and a skip of track 3, enter an LLM. The LLM plans: the situation and taste become a text query ('slow, sparse piano'), the facts become a filter (vocals = none, year at least 2015), and the rest stays as context. It keeps a listener state: her profile (Bill Evans, Nils Frahm), what she stated (no vocals, then upbeat), and her history (10 plays, 1 skip). It calls four tools over the music database: a text-to-music retriever, a metadata filter over the record, a collaborative-filtering model over listening logs, and the records of candidates. It reranks the candidates by reading their records and returns a ranked list with a reason ('#0381: 2019, piano trio, no vocals'). The listener replies, and the loop continues.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">REQUEST, THEN CONVERSATION</text>
+<rect x="0.8" y="26.75" width="200" height="130" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="50" font-size="12" font-style="italic" fill="#ab7827">“Something for a late-night</text>
+<text x="16" y="68" font-size="12" font-style="italic" fill="#ab7827">drive in the rain, no vocals,</text>
+<text x="16" y="86" font-size="12" font-style="italic" fill="#ab7827">and not too old.”</text>
+<text x="16" y="112" font-size="12" font-style="italic" fill="#ab7827">“more upbeat”</text>
+<text x="16" y="130" font-size="12" font-style="italic" fill="#ab7827">skips track 3</text>
+<text x="16" y="150" font-size="11" fill="#ab7827">user 1024, over several turns</text>
+<line x1="201" y1="70" x2="240" y2="70" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M234,66.35 L240,70 L234,73.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="242" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">LLM</text>
+<rect x="242.8" y="26.75" width="236" height="250" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="258" y="50" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">PLAN</text>
+<text x="258" y="68" font-size="12" font-style="italic" fill="#8f9066">query → “slow, sparse piano”</text>
+<text x="258" y="84" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">filter → vocals=none, year≥2015</text>
+<text x="258" y="100" font-size="12" font-style="italic" fill="#8f9066">situation, taste → context</text>
+<text x="258" y="128" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">LISTENER STATE</text>
+<text x="258" y="146" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">profile: Evans, Frahm</text>
+<text x="258" y="162" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">stated:  no vocals, upbeat</text>
+<text x="258" y="178" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">history: 10 plays, 1 skip</text>
+<text x="258" y="210" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">RERANK &amp; EXPLAIN</text>
+<text x="258" y="228" font-size="12" fill="#8f9066">order candidates by reading their</text>
+<text x="258" y="244" font-size="12" fill="#8f9066">rows against the whole request;</text>
+<text x="258" y="260" font-size="12" fill="#8f9066">the reason is the evidence used</text>
+<text x="520" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">TOOLS · MUSIC DATABASE</text>
+<rect x="520.8" y="26.75" width="248" height="48" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="536" y="46" font-size="13" font-weight="700" fill="#607b9a">Text-to-music retriever</text>
+<text x="536" y="63" font-size="11" fill="#607b9a">joint embedding over audio</text>
+<line x1="479" y1="50" x2="516" y2="50" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M510,46.35 L516,50 L510,53.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="520.8" y="86.75" width="248" height="48" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="536" y="106" font-size="13" font-weight="700" fill="#607b9a">Metadata filter</text>
+<text x="536" y="123" font-size="11" fill="#607b9a">exact constraints over the record</text>
+<line x1="479" y1="110" x2="516" y2="110" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M510,106.35 L516,110 L510,113.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="520.8" y="146.75" width="248" height="48" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="536" y="166" font-size="13" font-weight="700" fill="#607b9a">Collaborative filtering</text>
+<text x="536" y="183" font-size="11" fill="#607b9a">who else listened to what</text>
+<line x1="479" y1="170" x2="516" y2="170" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M510,166.35 L516,170 L510,173.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="520.8" y="206.75" width="248" height="48" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="536" y="226" font-size="13" font-weight="700" fill="#607b9a">Records of candidates</text>
+<text x="536" y="243" font-size="11" fill="#607b9a">read by the LLM, never heard</text>
+<line x1="516" y1="230" x2="480" y2="230" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M486,226.35 L480,230 L486,233.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="560" y="275" font-size="11" fill="#977a5d">candidates + records come back</text>
+<line x1="242" y1="230" x2="205" y2="230" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M211,226.35 L205,230 L211,233.65" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="0.8" y="206.75" width="200" height="48" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="226" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">RANKED LIST + REASON</text>
+<text x="16" y="244" font-size="11" font-style="italic" fill="#ab7827">“#0381: 2019, piano trio, no vocals”</text>
+<line x1="100" y1="206" x2="100" y2="158" stroke="#977a5d" stroke-width="1.5" stroke-dasharray="4 3"/>
+<path d="M96.35,164 L100,158 L103.65,164" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="106" y="186" font-size="11" fill="#977a5d">next turn</text>
+<text x="0" y="300" font-size="11" fill="#977a5d">Search is this loop run once from a request. Recommendation is the same loop with a listener state and listening logs added.</text>
+</svg>

@@ -321,15 +321,21 @@ inside it, with MIR models as the tools for recommendation and for mixing
 a photo, a phrase, or a clip into chord progressions to build on, and won a
 best paper award at CHI [@kim_amuse_2025]. A design space drawn from 184 live music
 agents maps where such systems are used, how musicians interact with them, and
-what they are built on [@kim_livemusicagents_2026]. For students, **LLaQo** answers
-questions about their own performance [@zhang_llaqo_2025], and **MuseAgent-1**
-reasons jointly over a score and a recording of it [@zhao_museagent_2026].
-(Chapters 3 to 5)
+what they are built on [@kim_livemusicagents_2026]. For performers, **LLaQo** and
+similar models answer questions about a player's recording and critique it
+[@zhang_llaqo_2025; @wang_singmd_2025; @bianchi_profvlm_2026; @zheng_voicecoach_2026],
+and **MuseAgent-1** and **MusicTutor** call score, transcription and pitch tools on
+each take [@zhao_museagent_2026; @cheng_musictutor_2026]. Other agents take teaching
+roles [@hu_musicscaffold_2025; @jin_teachable_agent_2025], but memory across weeks
+and a teaching policy remain largely untested in music. (Chapters 3 to 5)
 
 Benchmarks have followed the models, and they keep asking whether the models
 listen. **MuChoMusic** found that audio-language models often answer from the
 question rather than the audio [@weck_muchomusic_2024]. **PianoJudge** asked whether audio
 encoders can judge a piano performance as a teacher would [@zhang_pianojudge_2024].
+**VocalCoachBench** asked the same of singing: 18 vocal trainers annotated 515
+recordings, and fewer than 7% of the models' diagnoses strictly match the
+experts' [@bang_vocalcoachbench_2026].
 **CMI-Bench** recast standard MIR tasks, from key detection to beat tracking, as
 instructions and scored LLMs with the field's usual metrics; they still trail
 supervised models by a wide margin [@ma_cmibench_2025]. **RUListening** rewrote

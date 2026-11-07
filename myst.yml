@@ -22,9 +22,12 @@ project:
         - file: book/understanding/overview.md
         - file: book/understanding/modalities.md
         - file: book/understanding/benchmarks.md
-    - title: Music Listening
+    - title: Music Listening with LLMs
       children:
-        - file: book/applications/listeners.md
+        - file: book/listening/introduction.md
+        - file: book/listening/annotation.md
+        - file: book/listening/search-recommendation.md
+        - file: book/listening/limitations.md
     - title: Composition & Co-Creation
       children:
         - file: book/composers/00_overview.md

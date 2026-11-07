@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 848 531" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
 <title id="t">An agent as a conversation with two kinds of users</title>
 <desc id="d">Three columns: the tools on the left, the model inside the harness (a dashed box) in the middle, and you on the right. You ask for a 20-minute warm-up set from your folder of house tracks, rising from 120 to 126 BPM, and the harness passes the request to the model with the folder's file list. The model calls get_tempo once per file; the harness runs the calls and adds the results to the conversation: track_01 124, track_02 122, track_07 63, and so on. The model writes: 63 is too slow for house, probably half tempo, re-estimate track_07 in 100 to 160 BPM. It calls get_tempo on track_07 with min_bpm=100 and max_bpm=160, and the result is 126. It then answers with a 20-minute set rising from 120 to 126 BPM that ends on track_07. The answer contains no tool call, so the harness stops the loop and shows the answer to you. Files and values are illustrative.</desc>
+<style>@media (prefers-color-scheme: dark) {
+[fill="#977a5d"] { fill: #a99178 } [stroke="#977a5d"] { stroke: #a99178 }
+[fill="#607b9a"] { fill: #8297af } [stroke="#607b9a"] { stroke: #8297af }
+[fill="#ab7827"] { fill: #d9aa57 } [stroke="#ab7827"] { stroke: #d9aa57 }
+[fill="#7b7c55"], [fill="#8f9066"] { fill: #6f9363 } [stroke="#8f9066"] { stroke: #6f9363 }
+[fill-opacity="0.14"] { fill-opacity: 0.2 }
+}</style>
 <defs><marker id="ah-607b9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#607b9a"/></marker><marker id="ah-8f9066" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f9066"/></marker><marker id="ah-977a5d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#977a5d"/></marker><marker id="ah-ab7827" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ab7827"/></marker></defs>
 <rect x="304" y="26" width="270" height="493.0" rx="14" fill="#977a5d" fill-opacity="0.05" stroke="#977a5d" stroke-opacity="0.55" stroke-width="1.3" stroke-dasharray="6 4"/>
 <text x="0.0" y="14.0" font-size="12" font-weight="700" text-anchor="start" fill="#7b7c55" letter-spacing="0.08em">TOOLS AS “USERS”</text>

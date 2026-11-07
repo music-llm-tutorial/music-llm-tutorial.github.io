@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 298" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Captioning and metadata imputation as sequence modeling</title>
+<desc id="d">Two rows of tokens. Captioning: given an audio chip and the instruction 'Write a caption.', the model generates 'A sparse piano trio, brushed drums.' one token at a time, each conditioned on the ones before: p(caption | audio, instruction). Metadata imputation: the database row is written out as tokens, genre jazz and year 2019 given as context, and the model generates the missing values, mood nocturnal and instruments piano trio: p(missing fields | audio, known fields). The completed row goes back into the database with the generated cells highlighted.</desc>
+<rect x="560" y="4" width="14" height="12" rx="3" fill="#77726a" fill-opacity="0.12" stroke="#77726a" stroke-opacity="0.6"/>
+<text x="580" y="14" font-size="11.5" fill="#77726a">given (context)</text>
+<rect x="672" y="4" width="14" height="12" rx="3" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6"/>
+<text x="692" y="14" font-size="11.5" fill="#77726a">generated</text>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">CAPTIONING</text>
+<text x="0" y="34" font-size="12" font-style="italic" fill="#77726a">p(caption | audio, instruction)</text>
+<rect x="0.8" y="62" width="70" height="24" rx="5" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<polyline points="8.8,74.0 11.3,74.8 13.7,75.9 16.2,75.3 18.6,72.3 21.1,69.6 23.5,70.0 26.0,74.1 28.4,78.7 30.9,79.8 33.3,76.5 35.8,71.4 38.3,68.8 40.7,70.3 43.2,74.1 45.6,76.7 48.1,76.4 50.5,74.6 53.0,73.8 55.4,74.5 57.9,75.2 60.3,73.9 62.8,71.2" fill="none" stroke="#8f9066" stroke-opacity="0.85" stroke-width="1.2"/>
+<rect x="76.8" y="62" width="121.5" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="137.6" y="78.32" font-size="12" text-anchor="middle" fill="#77726a">Write a caption.</text>
+<rect x="204.3" y="62" width="20.7" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="214.7" y="78.32" font-size="12" text-anchor="middle" fill="#3d3a35">A</text>
+<rect x="231.0" y="62" width="54.3" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="258.2" y="78.32" font-size="12" text-anchor="middle" fill="#3d3a35">sparse</text>
+<rect x="291.4" y="62" width="47.6" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="315.2" y="78.32" font-size="12" text-anchor="middle" fill="#3d3a35">piano</text>
+<rect x="345.0" y="62" width="47.6" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="368.8" y="78.32" font-size="12" text-anchor="middle" fill="#3d3a35">trio,</text>
+<rect x="398.6" y="62" width="61.0" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="429.1" y="78.32" font-size="12" text-anchor="middle" fill="#3d3a35">brushed</text>
+<rect x="465.6" y="62" width="54.3" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="492.8" y="78.32" font-size="12" text-anchor="middle" fill="#3d3a35">drums.</text>
+<path d="M214.7,61 Q236.4,47 255.2,60" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M250.2,56 L255.2,60 L249.2,62" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M258.2,61 Q286.7,47 312.2,60" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M307.2,56 L312.2,60 L306.2,62" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M315.2,61 Q342.0,47 365.8,60" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M360.8,56 L365.8,60 L359.8,62" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M368.8,61 Q398.9,47 426.1,60" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M421.1,56 L426.1,60 L420.1,62" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M429.1,61 Q460.9,47 489.8,60" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M484.8,56 L489.8,60 L483.8,62" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<text x="531.9200000000001" y="78" font-size="11.5" font-style="italic" fill="#77726a">→ open vocabulary, relations</text>
+<text x="0" y="128" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">METADATA IMPUTATION</text>
+<text x="0" y="148" font-size="12" font-style="italic" fill="#77726a">p(missing fields | audio, known fields)</text>
+<rect x="0.8" y="176" width="70" height="24" rx="5" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<polyline points="8.8,188.0 11.3,188.8 13.7,189.9 16.2,189.3 18.6,186.3 21.1,183.6 23.5,184.0 26.0,188.1 28.4,192.7 30.9,193.8 33.3,190.5 35.8,185.4 38.3,182.8 40.7,184.3 43.2,188.1 45.6,190.7 48.1,190.4 50.5,188.6 53.0,187.8 55.4,188.5 57.9,189.2 60.3,187.9 62.8,185.2" fill="none" stroke="#8f9066" stroke-opacity="0.85" stroke-width="1.2"/>
+<rect x="76.8" y="176" width="54.3" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="104.0" y="192.32" font-size="12" text-anchor="middle" fill="#77726a">genre:</text>
+<rect x="137.1" y="176" width="40.9" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="157.6" y="192.32" font-size="12" text-anchor="middle" fill="#77726a">jazz</text>
+<rect x="184.0" y="176" width="47.6" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="207.8" y="192.32" font-size="12" text-anchor="middle" fill="#77726a">year:</text>
+<rect x="237.6" y="176" width="40.9" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="258.0" y="192.32" font-size="12" text-anchor="middle" fill="#77726a">2019</text>
+<rect x="284.5" y="176" width="47.6" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="308.3" y="192.32" font-size="12" text-anchor="middle" fill="#77726a">mood:</text>
+<rect x="338.1" y="176" width="74.5" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="375.3" y="192.32" font-size="12" text-anchor="middle" fill="#3d3a35">nocturnal</text>
+<rect x="418.6" y="176" width="94.6" height="24" rx="5" fill="#77726a" fill-opacity="0.08" stroke="#77726a" stroke-opacity="0.6" stroke-width="1"/>
+<text x="465.9" y="192.32" font-size="12" text-anchor="middle" fill="#77726a">instruments:</text>
+<rect x="519.2" y="176" width="47.6" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="543.0" y="192.32" font-size="12" text-anchor="middle" fill="#3d3a35">piano</text>
+<rect x="572.8" y="176" width="40.9" height="24" rx="5" fill="#ab7827" fill-opacity="0.28" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="593.2" y="192.32" font-size="12" text-anchor="middle" fill="#3d3a35">trio</text>
+<path d="M375.3,175 Q459.2,161 540.0,174" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M535.0,170 L540.0,174 L534.0,176" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M543.0,175 Q568.1,161 590.2,174" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<path d="M585.2,170 L590.2,174 L584.2,176" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1"/>
+<text x="0" y="236" font-size="11.5" font-style="italic" fill="#77726a">the same row, back in the database</text>
+<rect x="160.8" y="263" width="80" height="19" fill="#ab7827" fill-opacity="0.22"/>
+<rect x="240.8" y="263" width="100" height="19" fill="#ab7827" fill-opacity="0.22"/>
+<rect x="0.8" y="244" width="340" height="19" fill="#ab7827" fill-opacity="0.14"/>
+<rect x="0.8" y="244" width="340" height="38" fill="none" stroke="#ab7827" stroke-opacity="0.7" stroke-width="1.2"/>
+<line x1="0.8" y1="263" x2="340.8" y2="263" stroke="#ab7827" stroke-opacity="0.45" stroke-width="0.8"/>
+<line x1="50.8" y1="244" x2="50.8" y2="282" stroke="#ab7827" stroke-opacity="0.45" stroke-width="0.8"/>
+<line x1="110.8" y1="244" x2="110.8" y2="282" stroke="#ab7827" stroke-opacity="0.45" stroke-width="0.8"/>
+<line x1="160.8" y1="244" x2="160.8" y2="282" stroke="#ab7827" stroke-opacity="0.45" stroke-width="0.8"/>
+<line x1="240.8" y1="244" x2="240.8" y2="282" stroke="#ab7827" stroke-opacity="0.45" stroke-width="0.8"/>
+<text x="5.8" y="257.5" font-size="10.5" font-weight="700" fill="#ab7827">track</text>
+<text x="55.8" y="257.5" font-size="10.5" font-weight="700" fill="#ab7827">genre</text>
+<text x="115.8" y="257.5" font-size="10.5" font-weight="700" fill="#ab7827">year</text>
+<text x="165.8" y="257.5" font-size="10.5" font-weight="700" fill="#ab7827">mood</text>
+<text x="245.8" y="257.5" font-size="10.5" font-weight="700" fill="#ab7827">instruments</text>
+<text x="5.8" y="276.5" font-size="11" fill="#ab7827">#0381</text>
+<text x="55.8" y="276.5" font-size="11" fill="#ab7827">jazz</text>
+<text x="115.8" y="276.5" font-size="11" fill="#ab7827">2019</text>
+<text x="165.8" y="276.5" font-size="11" fill="#ab7827">nocturnal</text>
+<text x="245.8" y="276.5" font-size="11" fill="#ab7827">piano trio</text>
+<line x1="200" y1="205" x2="200" y2="224" stroke="#77726a" stroke-width="1.2"/>
+<path d="M196.9,218.9 L200,224 L203.1,218.9" fill="none" stroke="#77726a" stroke-width="1.2"/>
+</svg>

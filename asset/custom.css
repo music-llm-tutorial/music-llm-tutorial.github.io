@@ -270,7 +270,7 @@ body {
  */
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Overview of Large Language Models and Agents"]),
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="LLM-powered Music Understanding"]),
-.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening"]),
+.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening with LLMs"]),
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Composition & Co-Creation"]),
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Feedback & Music Education"]) {
   counter-increment: ml-chapter;
@@ -279,7 +279,7 @@ body {
 
 /* Part labels above the first chapter of each part. */
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Overview of Large Language Models and Agents"])::before,
-.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening"])::before,
+.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening with LLMs"])::before,
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Conclusion"])::before {
   display: block;
   margin: 1.5rem 0 0.375rem;
@@ -294,7 +294,7 @@ body {
   content: "Part I · Foundations";
 }
 
-.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening"])::before {
+.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening with LLMs"])::before {
   content: "Part II · Applications";
 }
 
@@ -851,6 +851,19 @@ article.content .ml-chat-trace code * {
 }
 article.content .ml-chat-trace p { color: var(--ml-text-faint) !important; }
 article.content .ml-chat-trace p:not(:has(code)) { font-style: italic; }
+/* Programs in a trace: compact, and in the muted text colour so they stand out
+   from the faded reasoning around them. */
+article.content .ml-chat-trace .myst-code {
+  margin: 0.15rem 0 0.35rem !important;
+  box-shadow: none !important;
+}
+article.content .ml-chat-trace .myst-code-body { padding: 0 !important; }
+article.content .ml-chat-trace .myst-code pre { padding: 0.55rem 0.8rem !important; }
+article.content .ml-chat-trace .myst-code pre code,
+article.content .ml-chat-trace .myst-code pre code * {
+  color: var(--ml-text-muted) !important;
+  line-height: 1.55 !important;
+}
 article.content .ml-chat-answer {
   align-self: flex-start;
   max-width: 85%;
