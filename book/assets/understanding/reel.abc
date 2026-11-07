@@ -1,0 +1,10 @@
+X:1
+T:Reel in D (running example)
+M:4/4
+L:1/8
+Q:1/4=120
+K:D
+V:1
+|: d2fd A2FA | d2fd e2cA :|
+V:2 clef=bass
+|: D,2A,2 D,2A,2 | D,2A,2 A,,2E,2 :|
