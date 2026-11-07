@@ -24,7 +24,7 @@ Two foundation chapters lead into three applications, one for each kind of music
 ### Part II · Applications
 
 - 3 · [Music Listening with LLMs](../listening/introduction.md) — conditioned music annotation, search and recommendation over an LLM-enriched music database, and open problems
-- 4 · [Composition & Co-Creation](../applications/producers.md) — human-AI collaborative songwriting, composition support tools, and conversational post-production
+- 4 · [LLMs for Creators](../composers/overview.md) — music making through suggestions, real-time music co-creation, and agentic music making
 - 5 · [Feedback & Music Education](../applications/performers.md) — multimodal understanding of performances, assessment and coaching, and interactive music education
 
 ### Wrap-up
