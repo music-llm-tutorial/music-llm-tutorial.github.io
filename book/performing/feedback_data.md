@@ -39,7 +39,7 @@ A rare counter-example is intentional release of imperfect performance. Sturm's 
 
 ## Challenge 3. Processing: alignment that survives error
 
-Score following, beat tracking, and DTW-style alignment assume the performer is roughly trying to play what is on the page {cite}`nakamura_hmm_alignment_2015`. Learners do not: they play wrong notes, restart phrases, skip bars, and sit on a fermata while thinking. Unified models such as RUMAA {cite}`chang_rumaa_2025` argue that alignment and mistake detection must happen at the same level: pipelines that separate "clean alignment" from "error catching" fail exactly on the recordings coaching systems receive. Until alignment is robust to imperfect play, score-grounded feedback {cite}`zhao_museagent_2026` will cite the wrong measure at the worst moments.
+Score following, beat tracking, and DTW-style alignment assume the performer is roughly trying to play what is on the page {cite}`nakamura_alignment_2017`. Learners do not: they play wrong notes, restart phrases, skip bars, and sit on a fermata while thinking. Unified models such as RUMAA {cite}`chang_rumaa_2025` argue that alignment and mistake detection must happen at the same level: pipelines that separate "clean alignment" from "error catching" fail exactly on the recordings coaching systems receive. Until alignment is robust to imperfect play, score-grounded feedback {cite}`zhao_museagent_2026` will cite the wrong measure at the worst moments.
 
 ## Challenge 4. When we talks about performance, what are we really talking about? 
 

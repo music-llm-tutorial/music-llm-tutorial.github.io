@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 360" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Audio-text LLMs versus supervised models on CMI-Bench</title>
+<desc id="d">Dumbbell chart, one row per task, score on each task's own metric from 0 to 100. Open output: captioning (MusicCaps, METEOR) LLM 22.5, supervised 22.4. Categories: tagging (MagnaTagATune, ROC-AUC) 81.2 vs 92.0; genre (GTZAN, accuracy) 72.1 vs 83.9; instrument (NSynth, accuracy) 58.4 vs 78.2. Measurements: key (GiantSteps, weighted score) 9.5 vs 74.3; beat (GTZAN-Rhythm, F-measure) 23.7 vs 88.3. Data from CMI-Bench.</desc>
+<circle cx="236" cy="10" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="246" y="14" font-size="12" fill="#3d3a35">best audio-text LLM</text>
+<circle cx="392" cy="10" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<text x="402" y="14" font-size="12" fill="#3d3a35">supervised model</text>
+<text x="770" y="14" font-size="12" font-weight="700" text-anchor="end" fill="#77726a">LLM − supervised</text>
+<line x1="230.0" y1="46" x2="230.0" y2="302" stroke="#e4e1db" stroke-width="1"/>
+<text x="230.0" y="318" font-size="11" text-anchor="middle" fill="#77726a">0</text>
+<line x1="347.5" y1="46" x2="347.5" y2="302" stroke="#e4e1db" stroke-width="1"/>
+<text x="347.5" y="318" font-size="11" text-anchor="middle" fill="#77726a">25</text>
+<line x1="465.0" y1="46" x2="465.0" y2="302" stroke="#e4e1db" stroke-width="1"/>
+<text x="465.0" y="318" font-size="11" text-anchor="middle" fill="#77726a">50</text>
+<line x1="582.5" y1="46" x2="582.5" y2="302" stroke="#e4e1db" stroke-width="1"/>
+<text x="582.5" y="318" font-size="11" text-anchor="middle" fill="#77726a">75</text>
+<line x1="700.0" y1="46" x2="700.0" y2="302" stroke="#e4e1db" stroke-width="1"/>
+<text x="700.0" y="318" font-size="11" text-anchor="middle" fill="#77726a">100</text>
+<text x="465.0" y="338" font-size="11.5" text-anchor="middle" fill="#77726a">score on each task's own metric (0–100)</text>
+<text x="0" y="46" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#77726a">OPEN OUTPUT</text>
+<text x="0" y="70" font-size="13" font-weight="700" fill="#3d3a35">Captioning</text>
+<text x="88" y="70" font-size="11.5" fill="#77726a">MusicCaps · METEOR</text>
+<line x1="335.28" y1="66" x2="335.75" y2="66" stroke="#77726a" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="335.28" cy="70" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<circle cx="335.75" cy="62" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="770" y="70" font-size="12" text-anchor="end" fill="#3d3a35">+0.1</text>
+<line x1="0" y1="84" x2="770" y2="84" stroke="#e4e1db" stroke-width="1"/>
+<text x="0" y="100" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#77726a">CATEGORIES</text>
+<text x="0" y="124" font-size="13" font-weight="700" fill="#3d3a35">Tagging</text>
+<text x="88" y="124" font-size="11.5" fill="#77726a">MagnaTagATune · ROC-AUC</text>
+<line x1="611.64" y1="120" x2="662.4" y2="120" stroke="#77726a" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="662.4" cy="120" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<circle cx="611.64" cy="120" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="770" y="124" font-size="12" text-anchor="end" fill="#3d3a35">−10.8</text>
+<text x="0" y="160" font-size="13" font-weight="700" fill="#3d3a35">Genre</text>
+<text x="88" y="160" font-size="11.5" fill="#77726a">GTZAN · accuracy</text>
+<line x1="568.87" y1="156" x2="624.3299999999999" y2="156" stroke="#77726a" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="624.3299999999999" cy="156" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<circle cx="568.87" cy="156" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="770" y="160" font-size="12" text-anchor="end" fill="#3d3a35">−11.8</text>
+<text x="0" y="196" font-size="13" font-weight="700" fill="#3d3a35">Instrument</text>
+<text x="88" y="196" font-size="11.5" fill="#77726a">NSynth · accuracy</text>
+<line x1="504.48" y1="192" x2="597.54" y2="192" stroke="#77726a" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="597.54" cy="192" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<circle cx="504.48" cy="192" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="770" y="196" font-size="12" text-anchor="end" fill="#3d3a35">−19.8</text>
+<line x1="0" y1="210" x2="770" y2="210" stroke="#e4e1db" stroke-width="1"/>
+<text x="0" y="226" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#77726a">MEASUREMENTS</text>
+<text x="0" y="250" font-size="13" font-weight="700" fill="#3d3a35">Key</text>
+<text x="88" y="250" font-size="11.5" fill="#77726a">GiantSteps · weighted</text>
+<line x1="274.65" y1="246" x2="579.21" y2="246" stroke="#77726a" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="579.21" cy="246" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<circle cx="274.65" cy="246" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="770" y="250" font-size="12" text-anchor="end" fill="#3d3a35">−64.8</text>
+<text x="0" y="286" font-size="13" font-weight="700" fill="#3d3a35">Beat</text>
+<text x="88" y="286" font-size="11.5" fill="#77726a">GTZAN-Rhythm · F-measure</text>
+<line x1="341.39" y1="282" x2="645.01" y2="282" stroke="#77726a" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="645.01" cy="282" r="5" fill="#3f78b5" stroke="#ffffff" stroke-width="2"/>
+<circle cx="341.39" cy="282" r="5" fill="#ab7827" stroke="#ffffff" stroke-width="2"/>
+<text x="770" y="286" font-size="12" text-anchor="end" fill="#3d3a35">−64.6</text>
+</svg>

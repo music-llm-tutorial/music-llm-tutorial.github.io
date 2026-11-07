@@ -119,7 +119,7 @@
 }
 
 @article{achiam2023gpt,
-  title={Gpt-4 technical report},
+  title={{GPT-4} Technical Report},
   author={Achiam, Josh and Adler, Steven and Agarwal, Sandhini and Ahmad, Lama and Akkaya, Ilge and Aleman, Florencia Leoni and Almeida, Diogo and Altenschmidt, Janko and Altman, Sam and Anadkat, Shyamal and others},
   journal={arXiv preprint arXiv:2303.08774},
   year={2023}
@@ -167,11 +167,15 @@
   organization={IEEE}
 }
 
-@article{gardner2023llark,
-  title={LLark: A Multimodal Foundation Model for Music},
-  author={Gardner, Josh and Durand, Simon and Stoller, Daniel and Bittner, Rachel M},
-  journal={arXiv preprint arXiv:2310.07160},
-  year={2023}
+@inproceedings{gardner2023llark,
+  title={{LLark}: A Multimodal Instruction-Following Language Model for Music},
+  author={Gardner, Joshua P. and Durand, Simon and Stoller, Daniel and Bittner, Rachel M.},
+  booktitle={Proceedings of the 41st International Conference on Machine Learning},
+  series={Proceedings of Machine Learning Research},
+  volume={235},
+  pages={15037--15082},
+  year={2024},
+  url={https://proceedings.mlr.press/v235/gardner24a.html}
 }
 
 @inproceedings{doh2023lp,
@@ -251,11 +255,12 @@
   year={2018}
 }
 
-@article{radford2019language,
-  title={Language models are unsupervised multitask learners},
-  author={Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya and others},
-  journal={OpenAI blog},
-  year={2019}
+@techreport{radford2019language,
+  title = {Language Models are Unsupervised Multitask Learners},
+  author = {Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya},
+  institution = {OpenAI},
+  year = {2019},
+  url = {https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf},
 }
 
 @inproceedings{engel2017neural,
@@ -442,7 +447,7 @@ doi = {10.48550/arXiv.1608.04868}
 	title = {{SALMONN}: {Towards} {Generic} {Hearing} {Abilities} for {Large} {Language} {Models}},
 	url = {https://openreview.net/forum?id=14rn7HpKVk},
 	booktitle = {The {Twelfth} {International} {Conference} on {Learning} {Representations}},
-	author = {Tang, Changli and Yu, Wenyi and Sun, Guangzhi and Chen, Xianzhao and Tan, Tian and Li, Wei and Lu, Lu and MA, Zejun and Zhang, Chao},
+	author = {Tang, Changli and Yu, Wenyi and Sun, Guangzhi and Chen, Xianzhao and Tan, Tian and Li, Wei and Lu, Lu and Ma, Zejun and Zhang, Chao},
 	year = {2024},
 }
 
@@ -843,8 +848,8 @@ booktitle = {ACM International Conference on Architectural Support for Programmi
 
 
 @inproceedings{raffel2014mir_eval,
-  title={{MIR\_EVAL}: A Transparent Implementation of Common MIR Metrics.},
-  author={Raffel, Colin and McFee, Brian and Humphrey, Eric J and Salamon, Justin and Nieto, Oriol and Liang, Dawen and Ellis, Daniel PW and Raffel, C Colin},
+  title={{mir\_eval}: A Transparent Implementation of Common {MIR} Metrics},
+  author={Raffel, Colin and McFee, Brian and Humphrey, Eric J and Salamon, Justin and Nieto, Oriol and Liang, Dawen and Ellis, Daniel PW},
   booktitle={International Society for Music Information Retrieval (ISMIR)},
   year={2014}
 }
@@ -1358,7 +1363,7 @@ booktitle = {ACM International Conference on Architectural Support for Programmi
 }
 
 @software{librosa,
-  author       = {McFee, Brian and et al.},
+  author       = {McFee, Brian and others},
   title        = {librosa/librosa: 0.10.1},
   month        = aug,
   year         = 2023,
@@ -1515,8 +1520,9 @@ year={2021}
 
 @inproceedings{Vaswani2017AttentionIA,
   title={Attention is All you Need},
-  author={Ashish Vaswani and Noam M. Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
-  booktitle={Neural Information Processing Systems (NeurIPS)},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  booktitle={Advances in Neural Information Processing Systems},
+  volume={30},
   year={2017},
 }
 
@@ -2081,10 +2087,11 @@ year={2022}}
 }
 
 @article{dubey2024llama,
-  title={The Llama 3 herd of models},
-  author={Dubey, Abhimanyu and Jauhri, Abhinav and Pandey, Abhinav and Kadian, Abhishek and Al-Dahle, Ahmad and Letman, Aiesha and Mathur, Akhil and Schelten, Alan and Yang, Amy and Fan, Angela and others},
-  journal={arXiv:2407.21783},
-  year={2024}
+  title={The {Llama} 3 Herd of Models},
+  author={Grattafiori, Aaron and Dubey, Abhimanyu and Jauhri, Abhinav and Pandey, Abhinav and Kadian, Abhishek and Al-Dahle, Ahmad and Letman, Aiesha and Mathur, Akhil and Schelten, Alan and Vaughan, Alex and Yang, Amy and Fan, Angela and others},
+  journal={arXiv preprint arXiv:2407.21783},
+  year={2024},
+  url={https://arxiv.org/abs/2407.21783},
 }
 
 @article{su2024roformer,
@@ -2528,7 +2535,7 @@ title = {Instrumental Gestural Mapping Strategies as Expressivity Determinants i
 
 @article{manco2023song,
   title={The Song Describer Dataset: A corpus of audio captions for music-and-language evaluation},
-  author={Manco, Ilaria and Weck, Benno and Doh, Seungheon and Won, Minz and Zhang, Yixiao and Bodganov, Dmitry and Wu, Yusong and Chen, Ke and Tovstogan, Philip and Benetos, Emmanouil and others},
+  author={Manco, Ilaria and Weck, Benno and Doh, Seungheon and Won, Minz and Zhang, Yixiao and Bogdanov, Dmitry and Wu, Yusong and Chen, Ke and Tovstogan, Philip and Benetos, Emmanouil and others},
   journal={arXiv preprint arXiv:2311.10057},
   year={2023}
 }
@@ -2720,7 +2727,7 @@ pages="133--142",
 }
 
 @inproceedings{yuan_chatmusician_2024,
-  author    = {Yuan, Ruibin and Lin, Hanfeng and Wang, Yi and Tian, Zeyue and Wu, Shuicheng and Shen, Tianhao and Zhang, Ge and Wu, Yixiao and Liu, Cong and Zhou, Ziyang and others},
+  author    = {Yuan, Ruibin and Lin, Hanfeng and Wang, Yi and Tian, Zeyue and Wu, Shangda and Shen, Tianhao and Zhang, Ge and Wu, Yuhang and Liu, Cong and Zhou, Ziya and others},
   title     = {{ChatMusician}: Understanding and Generating Music Intrinsically with {LLM}},
   booktitle = {Findings of the Association for Computational Linguistics: ACL 2024},
   pages     = {6252--6271},
@@ -2728,7 +2735,7 @@ pages="133--142",
 }
 
 @inproceedings{hawthorne_maestro_2019,
-  author    = {Hawthorne, Curtis and Stasyuk, Andriy and Roberts, Adam and Simon, Ian and Huang, Cheng-Zhi Anna and Dieleman, Sander and Eck, Douglas},
+  author    = {Hawthorne, Curtis and Stasyuk, Andriy and Roberts, Adam and Simon, Ian and Huang, Cheng-Zhi Anna and Dieleman, Sander and Elsen, Erich and Engel, Jesse and Eck, Douglas},
   title     = {Enabling Factorized Piano Music Modeling and Generation with the {MAESTRO} Dataset},
   booktitle = {International Conference on Learning Representations (ICLR)},
   year      = {2019},
@@ -2741,14 +2748,16 @@ pages="133--142",
   volume    = {21},
   number    = {2},
   pages     = {522--535},
-  year      = {2018},
+  year      = {2019},
+  doi       = {10.1109/TMM.2018.2856090},
 }
 
 @inproceedings{xi_guitarset_2018,
-  author    = {Xi, Qingyang and Bitteur, Jeffrey and McFee, Brian and Bello, Juan Pablo},
+  author    = {Xi, Qingyang and Bittner, Rachel M. and Pauwels, Johan and Ye, Xuzhou and Bello, Juan Pablo},
   title     = {{GuitarSet}: A Dataset for Guitar Transcription},
-  booktitle = {International Society for Music Information Retrieval (ISMIR)},
+  booktitle = {Proceedings of the 19th International Society for Music Information Retrieval Conference (ISMIR)},
   year      = {2018},
+  doi       = {10.5281/zenodo.1492448},
 }
 
 @article{li_svs_feedback_2025,
@@ -2758,19 +2767,15 @@ pages="133--142",
   year    = {2025},
 }
 
-@incollection{cheng_musictutor_2026,
-  author    = {Cheng, Tengteng and Li, Xueyi and Guo, Teng and Luo, Weiqi},
+@inproceedings{cheng_musictutor_2026,
+  author    = {Cheng, Tengteng and Li, Xueyi and Guo, Teng and Hou, Mingliang and Liu, Zitao and Luo, Weiqi},
   title     = {{MusicTutor}: Facilitating Goal-Oriented Singing Practice via Multi-agent Tutoring Framework},
+  booktitle = {Artificial Intelligence in Education (AIED)},
+  series    = {Lecture Notes in Computer Science},
   publisher = {Springer},
+  pages     = {369--383},
   year      = {2026},
   doi       = {10.1007/978-3-032-29755-6_25},
-}
-
-@inproceedings{nakamura_hmm_alignment_2015,
-  author    = {Nakamura, Eita and Yoshii, Kazuyoshi and Sagayama, Shigeki},
-  title     = {Performance Error Detection and Post-Processing for Fast and Accurate Symbolic Music Alignment},
-  booktitle = {International Society for Music Information Retrieval (ISMIR)},
-  year      = {2015},
 }
 
 @inproceedings{nakamura_alignment_2017,
@@ -2831,6 +2836,7 @@ pages="133--142",
   booktitle = {Proceedings of the 26th International Society for Music Information Retrieval Conference (ISMIR)},
   pages     = {631--637},
   year      = {2025},
+  doi       = {10.5281/zenodo.17811448},
 }
 
 @inproceedings{hassein_bey_what_song_now_2025,
@@ -2863,11 +2869,12 @@ pages="133--142",
 }
 
 @inproceedings{tang_notagpt_2025,
-  author    = {Tang, Mingzhi and Li, Ji and Li, Lingyu and Zhang, Zilin and Tian, Jun and Li, Li and Zhang, Ping and Wang, Ping},
-  title     = {{Nota}: Multimodal Music Notation Understanding for Visual Large Language Model},
+  author    = {Tang, Mingni and Li, Jiajia and Yang, Lu and Zhang, Zhiqiang and Tian, Jinhao and Li, Zuchao and Zhang, Lefei and Wang, Ping},
+  title     = {{NOTA}: Multimodal Music Notation Understanding for Visual Large Language Model},
   booktitle = {Findings of the Association for Computational Linguistics: NAACL 2025},
   pages     = {7160--7173},
   year      = {2025},
+  doi       = {10.18653/v1/2025.findings-naacl.399},
 }
 
 % ── Score perception ───────────────────────────────────────────────────────────
@@ -2962,21 +2969,6 @@ pages="133--142",
   title   = {{ABC-Eval}: Benchmarking Large Language Models on Symbolic Music Understanding and Instruction Following},
   journal = {arXiv preprint arXiv:2509.23350},
   year    = {2025},
-}
-
-@techreport{walshaw_abc_2011,
-  author      = {Walshaw, Chris},
-  title       = {The abc Music Standard 2.1},
-  institution = {abcnotation.com},
-  year        = {2011},
-  url         = {https://abcnotation.com/wiki/abc:standard:v2.1},
-}
-
-@inproceedings{wu_tunesformer_2023,
-  author    = {Wu, Shangda and Li, Xiaobing and Yu, Feng and Sun, Maosong},
-  title     = {{TunesFormer}: Forming Irish Tunes with Control Codes by Bar Patching},
-  booktitle = {Proceedings of the 2nd Workshop on Human-Centric Music Information Retrieval (HCMIR) at ISMIR},
-  year      = {2023},
 }
 
 @article{zhao_adversarial_2024,
@@ -3119,6 +3111,7 @@ pages="133--142",
   booktitle = {Proceedings of the 26th International Society for Music Information Retrieval Conference (ISMIR)},
   year      = {2025},
   doi       = {10.5281/zenodo.17706469},
+  url       = {https://arxiv.org/abs/2506.12285},
 }
 
 @inproceedings{grauman_egoexo4d_2024,
@@ -3169,10 +3162,10 @@ pages="133--142",
 }
 
 @article{narang_singing_2025,
-  author  = {Narang, Jyoti and Serra, Xavier},
+  author  = {Narang, Jyoti and Tamer, Nazif Can and De La Vega, Viviana and Serra, Xavier},
   title   = {Automatic Estimation of Singing Voice Musical Dynamics},
   journal = {arXiv preprint arXiv:2410.20540},
-  year    = {2025},
+  year    = {2024},
 }
 
 @article{benetos_amt_2019,
@@ -3205,47 +3198,6 @@ pages="133--142",
   title     = {Score-informed Networks for Music Performance Assessment},
   booktitle = {Proceedings of the 21st International Society for Music Information Retrieval Conference (ISMIR)},
   year      = {2020},
-}
-
-@article{gupta_leaderboard_2020,
-  author  = {Gupta, Chitralekha and Li, Haizhou and Wang, Ye},
-  title   = {Automatic Leaderboard: Evaluation of Singing Quality Without a Standard Reference},
-  journal = {IEEE/ACM Transactions on Audio, Speech, and Language Processing},
-  volume  = {28},
-  pages   = {13--26},
-  year    = {2020},
-}
-
-@inproceedings{gupta_twin_2020,
-  author    = {Gupta, Chitralekha and Huang, Lin and Li, Haizhou},
-  title     = {Automatic Rank-Ordering of Singing Vocals with Twin-Neural Network},
-  booktitle = {Proceedings of the 21st International Society for Music Information Retrieval Conference (ISMIR)},
-  year      = {2020},
-}
-
-@inproceedings{zhang_singing_metric_2021,
-  author    = {Zhang, Huan and Jiang, Yiliang and Jiang, Tao and Peng, Hu},
-  title     = {Learn by Referencing: Towards Deep Metric Learning for Singing Assessment},
-  booktitle = {Proceedings of the 22nd International Society for Music Information Retrieval Conference (ISMIR)},
-  pages     = {825--832},
-  year      = {2021},
-}
-
-@article{pati_assessment_2018,
-  author  = {Pati, Kumar Ashis and Gururani, Siddharth and Lerch, Alexander},
-  title   = {Assessment of Student Music Performances Using Deep Neural Networks},
-  journal = {Applied Sciences},
-  volume  = {8},
-  number  = {4},
-  pages   = {507},
-  year    = {2018},
-}
-
-@inproceedings{seshadri_contrastive_2021,
-  author    = {Seshadri, Pavan and Lerch, Alexander},
-  title     = {Improving Music Performance Assessment with Contrastive Learning},
-  booktitle = {Proceedings of the 22nd International Society for Music Information Retrieval Conference (ISMIR)},
-  year      = {2021},
 }
 
 @inproceedings{knight_trumpet_2011,
@@ -3299,14 +3251,6 @@ pages="133--142",
   pages     = {631--641},
   publisher = {ACM},
   doi       = {10.1145/3795011.3795040},
-}
-
-@inproceedings{gao_vocal_coaching_2026,
-  author    = {Gao, Tianyu and Dai, Shuqi and Dannenberg, Roger B. and Huang, Zhiyong and Dong, Jin Song and Dueck, Jocelyn},
-  title     = {Learning to Sing with Your Own Voice: Designing and Evaluating Generative {AI}-Assisted Vocal Coaching},
-  booktitle = {Proceedings of the 27th International Society for Music Information Retrieval Conference (ISMIR)},
-  year      = {2026},
-  url       = {https://ismir2026program.ismir.net/poster_26.html},
 }
 
 @article{bang_vocalcoachbench_2026,
@@ -4236,19 +4180,21 @@ pages="133--142",
 }
 
 @misc{anthropic_context_engineering_2025,
-  author       = {{Anthropic}},
+  author       = {Rajasekaran, Prithvi and Dixon, Ethan and Ryan, Carly and Hadfield, Jeremy},
   title        = {Effective Context Engineering for {AI} Agents},
-  howpublished = {\url{https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents}},
-  note         = {Anthropic Engineering blog, 30 September 2025},
+  howpublished = {Anthropic Engineering blog},
+  month        = sep,
   year         = {2025},
+  url          = {https://www.anthropic.com/research/effective-context-engineering-for-ai-agents},
 }
 
 @misc{anthropic_writing_tools_2025,
-  author       = {{Anthropic}},
-  title        = {Writing Effective Tools for {AI} Agents, Using {AI} Agents},
-  howpublished = {\url{https://www.anthropic.com/engineering/writing-tools-for-agents}},
-  note         = {Anthropic Engineering blog, 11 September 2025},
+  author       = {Aizawa, Ken},
+  title        = {Writing Effective Tools for Agents — with Agents},
+  howpublished = {Anthropic Engineering blog},
+  month        = sep,
   year         = {2025},
+  url          = {https://www.anthropic.com/research/writing-tools-for-agents},
 }
 
 @misc{anthropic_agent_skills_2025,
@@ -4323,16 +4269,6 @@ pages="133--142",
   doi       = {10.5281/zenodo.12729828},
 }
 
-@inproceedings{mullerschon_playability_2025,
-  author    = {M{\"u}llersch{\"o}n, Manuel and Klapuri, Anssi and Rodr{\'i}guez, Marcelo and Cardin, Christian},
-  title     = {Playability Prediction in Digital Guitar Learning Using Interpretable Student and Song Representations},
-  booktitle = {Proceedings of the 26th International Society for Music Information Retrieval Conference (ISMIR)},
-  pages     = {631--637},
-  year      = {2025},
-  doi       = {10.5281/zenodo.17811448},
-}
-
-
 @article{shannon_prediction_1951,
   author = {Shannon, Claude E.},
   title = {Prediction and Entropy of Printed {English}},
@@ -4374,11 +4310,39 @@ pages="133--142",
   year = {2020},
 }
 
+@article{kaplan_scaling_2020,
+  author = {Kaplan, Jared and McCandlish, Sam and Henighan, Tom and Brown, Tom B. and Chess, Benjamin and Child, Rewon and Gray, Scott and Radford, Alec and Wu, Jeffrey and Amodei, Dario},
+  title = {Scaling Laws for Neural Language Models},
+  journal = {arXiv preprint arXiv:2001.08361},
+  year = {2020},
+  url = {https://arxiv.org/abs/2001.08361},
+}
+
+@article{chowdhery_palm_2023,
+  author = {Chowdhery, Aakanksha and Narang, Sharan and Devlin, Jacob and Bosma, Maarten and Mishra, Gaurav and Roberts, Adam and Barham, Paul and Chung, Hyung Won and Sutton, Charles and Gehrmann, Sebastian and others},
+  title = {{PaLM}: Scaling Language Modeling with Pathways},
+  journal = {Journal of Machine Learning Research},
+  volume = {24},
+  number = {240},
+  pages = {1--113},
+  year = {2023},
+  url = {https://jmlr.org/papers/v24/22-1144.html},
+}
+
+@article{olmo2_2024,
+  author = {{Team OLMo} and Walsh, Pete and Soldaini, Luca and Groeneveld, Dirk and Lo, Kyle and others},
+  title = {2 {OLMo} 2 Furious},
+  journal = {arXiv preprint arXiv:2501.00656},
+  year = {2024},
+  url = {https://arxiv.org/abs/2501.00656},
+}
+
 @article{wei_emergent_2022,
   author = {Wei, Jason and Tay, Yi and Bommasani, Rishi and Raffel, Colin and Zoph, Barret and Borgeaud, Sebastian and Yogatama, Dani and Bosma, Maarten and Zhou, Denny and Metzler, Donald and others},
   title = {Emergent Abilities of Large Language Models},
-  journal = {arXiv preprint arXiv:2206.07682},
+  journal = {Transactions on Machine Learning Research},
   year = {2022},
+  url = {https://arxiv.org/abs/2206.07682},
 }
 
 @inproceedings{wei_cot_2022,
@@ -4392,7 +4356,7 @@ pages="133--142",
 }
 
 @inproceedings{schick_toolformer_2023,
-  author = {Schick, Timo and Dwivedi-Yu, Jane and Dess{\`\i}, Roberto and Raileanu, Roberta and Lomeli, Maria and Zettlemoyer, Luke and Cancedda, Nicola and Scialom, Thomas},
+  author = {Schick, Timo and Dwivedi-Yu, Jane and Dess{\`\i}, Roberto and Raileanu, Roberta and Lomeli, Maria and Hambro, Eric and Zettlemoyer, Luke and Cancedda, Nicola and Scialom, Thomas},
   title = {Toolformer: Language Models Can Teach Themselves to Use Tools},
   booktitle = {Advances in Neural Information Processing Systems},
   volume = {36},
@@ -4408,11 +4372,15 @@ pages="133--142",
   url = {https://arxiv.org/abs/2210.03629},
 }
 
-@article{ye_incontext_instruction_2023,
+@inproceedings{ye_incontext_instruction_2023,
   author = {Ye, Seonghyeon and Hwang, Hyeonbin and Yang, Sohee and Yun, Hyeongu and Kim, Yireun and Seo, Minjoon},
-  title = {In-Context Instruction Learning},
-  journal = {arXiv preprint arXiv:2302.14691},
-  year = {2023},
+  title = {Investigating the Effectiveness of Task-Agnostic Prefix Prompt for Instruction Following},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {38},
+  number = {17},
+  pages = {19386--19394},
+  year = {2024},
+  doi = {10.1609/aaai.v38i17.29909},
 }
 
 @misc{openai_o1_2024,
@@ -4431,11 +4399,24 @@ pages="133--142",
   year = {2024},
 }
 
-@article{deepseek_r1_2025,
+@article{deepseek_v3_2024,
   author = {{DeepSeek-AI}},
-  title = {{DeepSeek-R1}: Incentivizing Reasoning Capability in {LLMs} via Reinforcement Learning},
-  journal = {arXiv preprint arXiv:2501.12948},
+  title = {{DeepSeek-V3} Technical Report},
+  journal = {arXiv preprint arXiv:2412.19437},
+  year = {2024},
+  url = {https://arxiv.org/abs/2412.19437},
+}
+
+@article{deepseek_r1_2025,
+  author = {Guo, Daya and others},
+  title = {{DeepSeek-R1} Incentivizes Reasoning in {LLMs} through Reinforcement Learning},
+  journal = {Nature},
+  volume = {645},
+  number = {8081},
+  pages = {633--638},
   year = {2025},
+  doi = {10.1038/s41586-025-09422-z},
+  url = {https://doi.org/10.1038/s41586-025-09422-z},
 }
 
 @article{doh_talkplay_2025,
@@ -4498,7 +4479,7 @@ pages="133--142",
 
 @article{huang_pandora_2025,
   author = {Huang, Yanjia and Li, Renjie and Tu, Zhengzhong},
-  title = {{PANDORA}: Diffusion Policy Learning for Dexterous Robotic Piano Playing with a Train-Only {LLM} Expressiveness Reward},
+  title = {{PANDORA}: Diffusion Policy Learning for Dexterous Robotic Piano Playing},
   journal = {arXiv preprint arXiv:2503.14545},
   year = {2025},
 }
@@ -4511,10 +4492,11 @@ pages="133--142",
 }
 
 @article{wu_midillm_2025,
-  author = {Wu, Shih-Lun and Kim, Yoon and Huang, Cheng-Zhi Anna},
-  title = {{MIDI-LLM}: Adapting Large Language Models for Text-to-{MIDI} Music Generation},
+  author = {Wu, Shih-Lun and Carlton, Dave and Miyakawa, Ryan and Kim, Yoon and Donahue, Chris and Huang, Cheng-Zhi Anna},
+  title = {{MIDI-LLM}: Improving Text-to-{MIDI} Music Generation via Adapting Large Language Models},
   journal = {arXiv preprint arXiv:2511.03942},
   year = {2025},
+  url = {https://arxiv.org/abs/2511.03942},
 }
 
 @article{xing_cocomposer_2025,
@@ -4621,7 +4603,7 @@ pages="133--142",
 }
 
 @article{yang_qwen3_2025,
-  author = {Yang, An and others},
+  author = {Yang, An and Li, Anfeng and Yang, Baosong and Zhang, Beichen and Hui, Binyuan and Zheng, Bo and Yu, Bowen and others},
   title = {{Qwen3} Technical Report},
   journal = {arXiv preprint arXiv:2505.09388},
   year = {2025},
@@ -4696,6 +4678,22 @@ pages="133--142",
   booktitle = {International Conference on Machine Learning (ICML)},
   year = {2024},
   url = {https://arxiv.org/abs/2402.01030},
+}
+
+@inproceedings{rein_gpqa_2024,
+  author = {Rein, David and Hou, Betty Li and Stickland, Asa Cooper and Petty, Jackson and Pang, Richard Yuanzhe and Dirani, Julien and Michael, Julian and Bowman, Samuel R.},
+  title = {{GPQA}: A Graduate-Level {Google}-Proof {Q\&A} Benchmark},
+  booktitle = {Conference on Language Modeling (COLM)},
+  year = {2024},
+  url = {https://arxiv.org/abs/2311.12022},
+}
+
+@misc{openai_swebench_verified_2024,
+  author = {{OpenAI}},
+  title = {Introducing {SWE-bench} Verified},
+  year = {2024},
+  howpublished = {OpenAI blog},
+  url = {https://openai.com/index/introducing-swe-bench-verified/},
 }
 
 @inproceedings{jimenez_swebench_2024,
@@ -4793,9 +4791,10 @@ pages="133--142",
 @misc{schluntz_agents_2024,
   author = {Schluntz, Erik and Zhang, Barry},
   title = {Building Effective Agents},
-  howpublished = {Anthropic engineering blog},
+  howpublished = {Anthropic Engineering blog},
+  month = dec,
   year = {2024},
-  url = {https://www.anthropic.com/engineering/building-effective-agents},
+  url = {https://www.anthropic.com/research/building-effective-agents},
 }
 
 @misc{openai_agents_guide_2025,
@@ -4894,3 +4893,644 @@ pages="133--142",
   journal = {arXiv preprint arXiv:2508.13992},
   year = {2025},
 }
+
+@article{bommasani_foundation_2021,
+  author = {Bommasani, Rishi and Hudson, Drew A. and Adeli, Ehsan and Altman, Russ and Arora, Simran and von Arx, Sydney and Bernstein, Michael S. and Bohg, Jeannette and Bosselut, Antoine and Brunskill, Emma and others},
+  title = {On the Opportunities and Risks of Foundation Models},
+  journal = {arXiv preprint arXiv:2108.07258},
+  year = {2021},
+  url = {https://arxiv.org/abs/2108.07258},
+}
+
+@inproceedings{deletang_compression_2024,
+  author = {Del{\'e}tang, Gr{\'e}goire and Ruoss, Anian and Duquenne, Paul-Ambroise and Catt, Elliot and Genewein, Tim and Mattern, Christopher and Grau-Moya, Jordi and Wenliang, Li Kevin and Aitchison, Matthew and Orseau, Laurent and others},
+  title = {Language Modeling Is Compression},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2024},
+  url = {https://arxiv.org/abs/2309.10668},
+}
+
+@inproceedings{li_othello_2023,
+  author = {Li, Kenneth and Hopkins, Aspen K. and Bau, David and Vi{\'e}gas, Fernanda and Pfister, Hanspeter and Wattenberg, Martin},
+  title = {Emergent World Representations: Exploring a Sequence Model Trained on a Synthetic Task},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2023},
+  url = {https://arxiv.org/abs/2210.13382},
+}
+
+@inproceedings{vafa_worldmodel_2024,
+  author = {Vafa, Keyon and Chen, Justin Y. and Rambachan, Ashesh and Kleinberg, Jon and Mullainathan, Sendhil},
+  title = {Evaluating the World Model Implicit in a Generative Model},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2024},
+  url = {https://arxiv.org/abs/2406.03689},
+}
+
+@inproceedings{chan_burstiness_2022,
+  author = {Chan, Stephanie C. Y. and Santoro, Adam and Lampinen, Andrew K. and Wang, Jane X. and Singh, Aaditya and Richemond, Pierre H. and McClelland, James and Hill, Felix},
+  title = {Data Distributional Properties Drive Emergent In-Context Learning in Transformers},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2022},
+  url = {https://arxiv.org/abs/2205.05055},
+}
+
+@inproceedings{schaeffer_mirage_2023,
+  author = {Schaeffer, Rylan and Miranda, Brando and Koyejo, Sanmi},
+  title = {Are Emergent Abilities of Large Language Models a Mirage?},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2023},
+  url = {https://arxiv.org/abs/2304.15004},
+}
+
+@inproceedings{goel_af3_2025,
+  author = {Ghosh, Sreyan and Goel, Arushi and Kim, Jaehyeon and Kumar, Sonal and Kong, Zhifeng and Lee, Sang-gil and Yang, Chao-Han Huck and Duraiswami, Ramani and Manocha, Dinesh and Valle, Rafael and Catanzaro, Bryan},
+  title = {Audio {Flamingo} 3: Advancing Audio Intelligence with Fully Open Large Audio Language Models},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2025},
+  url = {https://papers.neurips.cc/paper_files/paper/2025/hash/3babb6b453cb59d87cb58a1219ef914b-Abstract-Conference.html},
+}
+
+@article{nemotron3nano_2025,
+  author = {{NVIDIA}},
+  title = {{Nemotron 3 Nano}: Open, Efficient Mixture-of-Experts Hybrid {Mamba}-{Transformer} Model for Agentic Reasoning},
+  journal = {arXiv preprint arXiv:2512.20848},
+  year = {2025},
+  url = {https://arxiv.org/abs/2512.20848},
+}
+
+@article{lambert_tulu3_2024,
+  author = {Lambert, Nathan and Morrison, Jacob and Pyatkin, Valentina and Huang, Shengyi and Ivison, Hamish and Brahman, Faeze and Miranda, Lester James V. and Liu, Alisa and Dziri, Nouha and Lyu, Shane and others},
+  title = {{T{\"u}lu} 3: Pushing Frontiers in Open Language Model Post-Training},
+  journal = {arXiv preprint arXiv:2411.15124},
+  year = {2024},
+  url = {https://arxiv.org/abs/2411.15124},
+}
+
+@article{olmo3_2025,
+  author = {{Team Olmo}},
+  title = {{Olmo} 3},
+  journal = {arXiv preprint arXiv:2512.13961},
+  year = {2025},
+  url = {https://arxiv.org/abs/2512.13961},
+}
+
+@inproceedings{penedo_fineweb_2024,
+  author = {Penedo, Guilherme and Kydl{\'i}{\v{c}}ek, Hynek and Ben Allal, Loubna and Lozhkov, Anton and Mitchell, Margaret and Raffel, Colin and Von Werra, Leandro and Wolf, Thomas},
+  title = {The {FineWeb} Datasets: Decanting the Web for the Finest Text Data at Scale},
+  booktitle = {Advances in Neural Information Processing Systems, Datasets and Benchmarks Track},
+  year = {2024},
+  url = {https://arxiv.org/abs/2406.17557},
+}
+
+@article{hoffmann_chinchilla_2022,
+  author = {Hoffmann, Jordan and Borgeaud, Sebastian and Mensch, Arthur and Buchatskaya, Elena and Cai, Trevor and Rutherford, Eliza and de Las Casas, Diego and Hendricks, Lisa Anne and Welbl, Johannes and Clark, Aidan and others},
+  title = {Training Compute-Optimal Large Language Models},
+  journal = {arXiv preprint arXiv:2203.15556},
+  year = {2022},
+  url = {https://arxiv.org/abs/2203.15556},
+}
+
+@misc{openai_instruction_following_2022,
+  author = {{OpenAI}},
+  title = {Aligning Language Models to Follow Instructions},
+  howpublished = {OpenAI blog},
+  month = jan,
+  year = {2022},
+  url = {https://openai.com/index/instruction-following/},
+}
+
+@article{hu_minicpm_2024,
+  author = {Hu, Shengding and Tu, Yuge and Han, Xu and He, Chaoqun and Cui, Ganqu and Long, Xiang and Zheng, Zhi and Fang, Yewei and Huang, Yuxiang and Zhao, Weilin and others},
+  title = {{MiniCPM}: Unveiling the Potential of Small Language Models with Scalable Training Strategies},
+  journal = {arXiv preprint arXiv:2404.06395},
+  year = {2024},
+  url = {https://arxiv.org/abs/2404.06395},
+}
+
+@inproceedings{yu_dapo_2025,
+  author = {Yu, Qiying and Zhang, Zheng and Zhu, Ruofei and Yuan, Yufeng and Zuo, Xiaochen and Yue, Yu and Dai, Weinan and Fan, Tiantian and Liu, Gaohong and Liu, Lingjun and others},
+  title = {{DAPO}: An Open-Source {LLM} Reinforcement Learning System at Scale},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2025},
+  url = {https://arxiv.org/abs/2503.14476},
+}
+
+@article{qwen25_2024,
+  author = {{Qwen Team}},
+  title = {{Qwen2.5} Technical Report},
+  journal = {arXiv preprint arXiv:2412.15115},
+  year = {2024},
+  url = {https://arxiv.org/abs/2412.15115},
+}
+
+@inproceedings{zhou_lima_2023,
+  author = {Zhou, Chunting and Liu, Pengfei and Xu, Puxin and Iyer, Srini and Sun, Jiao and Mao, Yuning and Ma, Xuezhe and Efrat, Avia and Yu, Ping and Yu, Lili and others},
+  title = {{LIMA}: Less Is More for Alignment},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2023},
+  url = {https://arxiv.org/abs/2305.11206},
+}
+
+@article{gouyon_tempo_2006,
+  author = {Gouyon, Fabien and Klapuri, Anssi and Dixon, Simon and Alonso, Miguel and Tzanetakis, George and Uhle, Christian and Cano, Pedro},
+  title = {An Experimental Comparison of Audio Tempo Induction Algorithms},
+  journal = {IEEE Transactions on Audio, Speech, and Language Processing},
+  volume = {14},
+  number = {5},
+  pages = {1832--1844},
+  year = {2006},
+}
+
+@article{bradley_terry_1952,
+  author = {Bradley, Ralph Allan and Terry, Milton E.},
+  title = {Rank Analysis of Incomplete Block Designs: {I}. The Method of Paired Comparisons},
+  journal = {Biometrika},
+  volume = {39},
+  number = {3/4},
+  pages = {324--345},
+  year = {1952},
+  doi = {10.1093/biomet/39.3-4.324},
+}
+
+@inproceedings{christiano_rlhf_2017,
+  author = {Christiano, Paul F. and Leike, Jan and Brown, Tom and Martic, Miljan and Legg, Shane and Amodei, Dario},
+  title = {Deep Reinforcement Learning from Human Preferences},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2017},
+  url = {https://arxiv.org/abs/1706.03741},
+}
+
+@inproceedings{cideron_musicrl_2024,
+  author = {Cideron, Geoffrey and Girgin, Sertan and Verzetti, Mauro and Vincent, Damien and Kastelic, Matej and Borsos, Zal{\'a}n and McWilliams, Brian and Ungureanu, Victor and Bachem, Olivier and Pietquin, Olivier and others},
+  title = {{MusicRL}: Aligning Music Generation to Human Preferences},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year = {2024},
+  url = {https://arxiv.org/abs/2402.04229},
+}
+
+@misc{anthropic_aaif_2025,
+  author = {{Anthropic}},
+  title = {Donating the {Model Context Protocol} and Establishing the {Agentic AI Foundation}},
+  howpublished = {Anthropic news},
+  month = dec,
+  year = {2025},
+  url = {https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation},
+}
+
+@misc{mcp_python_sdk,
+  author = {{Model Context Protocol}},
+  title = {{MCP} {Python} {SDK}},
+  howpublished = {GitHub repository},
+  year = {2026},
+  url = {https://github.com/modelcontextprotocol/python-sdk},
+}
+
+@inproceedings{sennrich_bpe_2016,
+  author = {Sennrich, Rico and Haddow, Barry and Birch, Alexandra},
+  title = {Neural Machine Translation of Rare Words with Subword Units},
+  booktitle = {Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year = {2016},
+  url = {https://arxiv.org/abs/1508.07909},
+}
+
+@inproceedings{tian_ualm_2026,
+  author = {Tian, Jinchuan and Lee, Sang-gil and Kong, Zhifeng and Ghosh, Sreyan and Goel, Arushi and others},
+  title = {{UALM}: Unified Audio Language Model for Understanding, Generation and Reasoning},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2026},
+  url = {https://arxiv.org/abs/2510.12000},
+}
+
+@article{pearce_idyom_2018,
+  author = {Pearce, Marcus T.},
+  title = {Statistical Learning and Probabilistic Prediction in Music Cognition: Mechanisms of Stylistic Enculturation},
+  journal = {Annals of the New York Academy of Sciences},
+  volume = {1423},
+  number = {1},
+  pages = {378--395},
+  year = {2018},
+  doi = {10.1111/nyas.13654},
+}
+
+@inproceedings{maynez_faithfulness_2020,
+  author = {Maynez, Joshua and Narayan, Shashi and Bohnet, Bernd and McDonald, Ryan},
+  title = {On Faithfulness and Factuality in Abstractive Summarization},
+  booktitle = {Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  pages = {1906--1919},
+  year = {2020},
+  url = {https://aclanthology.org/2020.acl-main.173},
+}
+
+@article{ji_hallucination_2023,
+  author = {Ji, Ziwei and Lee, Nayeon and Frieske, Rita and Yu, Tiezheng and Su, Dan and Xu, Yan and Ishii, Etsuko and Bang, Ye Jin and Madotto, Andrea and Fung, Pascale},
+  title = {Survey of Hallucination in Natural Language Generation},
+  journal = {ACM Computing Surveys},
+  volume = {55},
+  number = {12},
+  pages = {248:1--248:38},
+  year = {2023},
+  url = {https://arxiv.org/abs/2202.03629},
+}
+
+@article{kalai_hallucinate_2025,
+  author = {Kalai, Adam Tauman and Nachum, Ofir and Vempala, Santosh S. and Zhang, Edwin},
+  title = {Why Language Models Hallucinate},
+  journal = {arXiv preprint arXiv:2509.04664},
+  year = {2025},
+  url = {https://arxiv.org/abs/2509.04664},
+}
+
+@article{amodei_safety_2016,
+  author = {Amodei, Dario and Olah, Chris and Steinhardt, Jacob and Christiano, Paul and Schulman, John and Man{\'e}, Dan},
+  title = {Concrete Problems in {AI} Safety},
+  journal = {arXiv preprint arXiv:1606.06565},
+  year = {2016},
+  url = {https://arxiv.org/abs/1606.06565},
+}
+
+@misc{openai_atlas_injection_2025,
+  author = {{OpenAI}},
+  title = {Continuously Hardening {ChatGPT Atlas} against Prompt Injection Attacks},
+  howpublished = {OpenAI blog},
+  year = {2025},
+  month = dec,
+  url = {https://openai.com/index/hardening-atlas-against-prompt-injection},
+}
+
+@inproceedings{carlini_memorization_2023,
+  author = {Carlini, Nicholas and Ippolito, Daphne and Jagielski, Matthew and Lee, Katherine and Tram{\`e}r, Florian and Zhang, Chiyuan},
+  title = {Quantifying Memorization Across Neural Language Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2023},
+  url = {https://arxiv.org/abs/2202.07646},
+}
+
+@inproceedings{lee_dedup_2022,
+  author = {Lee, Katherine and Ippolito, Daphne and Nystrom, Andrew and Zhang, Chiyuan and Eck, Douglas and Callison-Burch, Chris and Carlini, Nicholas},
+  title = {Deduplicating Training Data Makes Language Models Better},
+  booktitle = {Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  pages = {8424--8445},
+  year = {2022},
+  doi = {10.18653/v1/2022.acl-long.577},
+  url = {https://aclanthology.org/2022.acl-long.577},
+}
+
+@inproceedings{min_demonstrations_2022,
+  author = {Min, Sewon and Lyu, Xinxi and Holtzman, Ari and Artetxe, Mikel and Lewis, Mike and Hajishirzi, Hannaneh and Zettlemoyer, Luke},
+  title = {Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?},
+  booktitle = {Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year = {2022},
+  url = {https://arxiv.org/abs/2202.12837},
+}
+
+@inproceedings{hendrycks_mmlu_2021,
+  author = {Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+  title = {Measuring Massive Multitask Language Understanding},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2021},
+  url = {https://arxiv.org/abs/2009.03300},
+}
+
+@article{chen_codex_2021,
+  author = {Chen, Mark and Tworek, Jerry and Jun, Heewoo and Yuan, Qiming and Pinto, Henrique Ponde de Oliveira and Kaplan, Jared and Edwards, Harri and Burda, Yuri and Joseph, Nicholas and Brockman, Greg and others},
+  title = {Evaluating Large Language Models Trained on Code},
+  journal = {arXiv preprint arXiv:2107.03374},
+  year = {2021},
+  url = {https://arxiv.org/abs/2107.03374},
+}
+
+@inproceedings{chiang_arena_2024,
+  author = {Chiang, Wei-Lin and Zheng, Lianmin and Sheng, Ying and Angelopoulos, Anastasios Nikolas and Li, Tianle and Li, Dacheng and Zhu, Banghua and Zhang, Hao and Jordan, Michael I. and Gonzalez, Joseph E. and Stoica, Ion},
+  title = {Chatbot Arena: An Open Platform for Evaluating {LLMs} by Human Preference},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year = {2024},
+  url = {https://arxiv.org/abs/2403.04132},
+}
+
+@inproceedings{zheng_judge_2023,
+  author = {Zheng, Lianmin and Chiang, Wei-Lin and Sheng, Ying and Zhuang, Siyuan and Wu, Zhanghao and Zhuang, Yonghao and Lin, Zi and Li, Zhuohan and Li, Dacheng and Xing, Eric P. and others},
+  title = {Judging {LLM}-as-a-Judge with {MT-Bench} and {Chatbot Arena}},
+  booktitle = {Advances in Neural Information Processing Systems, Datasets and Benchmarks Track},
+  year = {2023},
+  url = {https://arxiv.org/abs/2306.05685},
+}
+
+@inproceedings{yao_taubench_2024,
+  author = {Yao, Shunyu and Shinn, Noah and Razavi, Pedram and Narasimhan, Karthik},
+  title = {$\tau$-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2025},
+  url = {https://arxiv.org/abs/2406.12045},
+}
+
+@inproceedings{white_livebench_2025,
+  author = {White, Colin and Dooley, Samuel and Roberts, Manley and Pal, Arka and Feuer, Ben and Jain, Siddhartha and Shwartz-Ziv, Ravid and Jain, Neel and Saifullah, Khalid and Dey, Sreemanti and others},
+  title = {{LiveBench}: A Challenging, Contamination-Limited {LLM} Benchmark},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2025},
+  url = {https://arxiv.org/abs/2406.19314},
+}
+
+@article{mckinney_tempo_2006,
+  author = {McKinney, Martin F. and Moelants, Dirk},
+  title = {Ambiguity in Tempo Perception: What Draws Listeners to Different Metrical Levels?},
+  journal = {Music Perception},
+  volume = {24},
+  number = {2},
+  pages = {155--166},
+  year = {2006},
+}
+
+@inproceedings{dubois_lcalpaca_2024,
+  author = {Dubois, Yann and Galambosi, Bal{\'a}zs and Liang, Percy and Hashimoto, Tatsunori B.},
+  title = {Length-Controlled {AlpacaEval}: A Simple Way to Debias Automatic Evaluators},
+  booktitle = {Conference on Language Modeling (COLM)},
+  year = {2024},
+  url = {https://arxiv.org/abs/2404.04475},
+}
+
+@inproceedings{yue_rlvr_2025,
+  author = {Yue, Yang and Chen, Zhiqi and Lu, Rui and Zhao, Andrew and Wang, Zhaokai and Yue, Yang and Song, Shiji and Huang, Gao},
+  title = {Does Reinforcement Learning Really Incentivize Reasoning Capacity in {LLMs} Beyond the Base Model?},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2025},
+  url = {https://arxiv.org/abs/2504.13837},
+}
+
+@article{greshake_injection_2023,
+  author = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  title = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
+  journal = {arXiv preprint arXiv:2302.12173},
+  year = {2023},
+  url = {https://arxiv.org/abs/2302.12173},
+}
+
+@inproceedings{dettmers_qlora_2023,
+  author = {Dettmers, Tim and Pagnoni, Artidoro and Holtzman, Ari and Zettlemoyer, Luke},
+  title = {{QLoRA}: Efficient Finetuning of Quantized {LLMs}},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2023},
+  url = {https://arxiv.org/abs/2305.14314},
+}
+
+@inproceedings{liu_drgrpo_2025,
+  author = {Liu, Zichen and Chen, Changyu and Li, Wenjun and Qi, Penghui and Pang, Tianyu and Du, Chao and Lee, Wee Sun and Lin, Min},
+  title = {Understanding {R1-Zero}-Like Training: A Critical Perspective},
+  booktitle = {Conference on Language Modeling (COLM)},
+  year = {2025},
+  url = {https://arxiv.org/abs/2503.20783},
+}
+
+@article{flexer_agreement_2016,
+  author = {Flexer, Arthur and Grill, Thomas},
+  title = {The Problem of Limited Inter-rater Agreement in Modelling Music Similarity},
+  journal = {Journal of New Music Research},
+  volume = {45},
+  number = {3},
+  pages = {239--251},
+  year = {2016},
+  doi = {10.1080/09298215.2016.1200631},
+}
+
+@article{sturm_horse_2014,
+  author = {Sturm, Bob L.},
+  title = {A Simple Method to Determine if a Music Information Retrieval System is a ``Horse''},
+  journal = {IEEE Transactions on Multimedia},
+  volume = {16},
+  number = {6},
+  pages = {1636--1644},
+  year = {2014},
+}
+
+@inproceedings{gema_mmlu_2024,
+  author = {Gema, Aryo Pradipta and Leang, Joshua Ong Jun and Hong, Giwon and Devoto, Alessio and Mancino, Alberto Carlo Maria and Saxena, Rohit and He, Xuanli and Zhao, Yu and Du, Xiaotang and Madani, Mohammad Reza Ghasemi and others},
+  title = {Are We Done with {MMLU}?},
+  booktitle = {Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL)},
+  year = {2025},
+  url = {https://arxiv.org/abs/2406.04127},
+}
+
+@misc{meta_llama31_format_2024,
+  author = {{Meta}},
+  title = {{Llama 3.1} -- Prompt Formats},
+  howpublished = {meta-llama/llama-models repository, GitHub},
+  year = {2024},
+  url = {https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/prompt_format.md},
+}
+
+@article{mckinney_evaluation_2007,
+  author = {McKinney, Martin F. and Moelants, Dirk and Davies, Matthew E. P. and Klapuri, Anssi},
+  title = {Evaluation of Audio Beat Tracking and Music Tempo Extraction Algorithms},
+  journal = {Journal of New Music Research},
+  volume = {36},
+  number = {1},
+  pages = {1--16},
+  year = {2007},
+}
+
+@inproceedings{kojima_zeroshot_2022,
+  author = {Kojima, Takeshi and Gu, Shixiang Shane and Reid, Machel and Matsuo, Yutaka and Iwasawa, Yusuke},
+  title = {Large Language Models are Zero-Shot Reasoners},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2022},
+  url = {https://arxiv.org/abs/2205.11916},
+}
+
+@article{chen_chatgpt_2024,
+  author = {Chen, Lingjiao and Zaharia, Matei and Zou, James},
+  title = {How Is {ChatGPT}'s Behavior Changing over Time?},
+  journal = {Harvard Data Science Review},
+  volume = {6},
+  number = {2},
+  year = {2024},
+  doi = {10.1162/99608f92.5317da47},
+  url = {https://arxiv.org/abs/2307.09009},
+}
+
+@inproceedings{castellon_jukebox_2021,
+  author = {Castellon, Rodrigo and Donahue, Chris and Liang, Percy},
+  title = {Codified Audio Language Modeling Learns Useful Representations for Music Information Retrieval},
+  booktitle = {Proceedings of the International Society for Music Information Retrieval Conference (ISMIR)},
+  year = {2021},
+  url = {https://arxiv.org/abs/2107.05677},
+}
+
+@inproceedings{mehta_musicforall_2025,
+  author = {Mehta, Atharva and others},
+  title = {Music for All: Representational Bias and Cross-Cultural Adaptability of Music Generation Models},
+  booktitle = {Findings of the Association for Computational Linguistics: NAACL 2025},
+  year = {2025},
+  url = {https://arxiv.org/abs/2502.07328},
+}
+
+
+% ---------------------------------------------------------------------------
+% Chapter 3: Music Listening with LLMs
+% ---------------------------------------------------------------------------
+
+@inproceedings{doh_ttmrpp_2024,
+  title     = {Enriching Music Descriptions with a Finetuned-{LLM} and Metadata for Text-to-Music Retrieval},
+  author    = {Doh, SeungHeon and Lee, Minhee and Jeong, Dasaem and Nam, Juhan},
+  booktitle = {Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year      = {2024}
+}
+
+@inproceedings{he_zeroshot_crs_2023,
+  title     = {Large Language Models as Zero-Shot Conversational Recommenders},
+  author    = {He, Zhankui and Xie, Zhouhang and Jha, Rahul and Steck, Harald and Liang, Dawen and Feng, Yesu and Majumder, Bodhisattwa Prasad and Kallus, Nathan and McAuley, Julian},
+  booktitle = {Proceedings of the ACM International Conference on Information and Knowledge Management (CIKM)},
+  year      = {2023}
+}
+
+@inproceedings{rajput_tiger_2023,
+  title     = {Recommender Systems with Generative Retrieval},
+  author    = {Rajput, Shashank and Mehta, Nikhil and Singh, Anima and Keshavan, Raghunandan H. and Vu, Trung and Heldt, Lukasz and Hong, Lichan and Tay, Yi and Tran, Vinh Q. and Samost, Jonah and Kula, Maciej and Chi, Ed H. and Sathiamoorthy, Maheswaran},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023}
+}
+
+@article{palumbo_text2tracks_2025,
+  title   = {Text2Tracks: Prompt-based Music Recommendation via Generative Retrieval},
+  author  = {Palumbo, Enrico and Penha, Gustavo and Damianou, Andreas and Redondo Garc{\'\i}a, Jos{\'e} Luis and Heath, Timothy and Wang, Alice and Bouchard, Hugues and Lalmas, Mounia},
+  journal = {arXiv preprint arXiv:2503.24193},
+  year    = {2025}
+}
+
+@inproceedings{dong_musechat_2024,
+  title     = {{MuseChat}: A Conversational Music Recommendation System for Videos},
+  author    = {Dong, Zhikang and Liu, Xiulong and Chen, Bin and Polak, Pawel and Zhang, Peng},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2024}
+}
+
+@article{doh_talkplaydata2_2025,
+  title   = {{TalkPlayData 2}: An Agentic Synthetic Data Pipeline for Multimodal Conversational Music Recommendation},
+  author  = {Doh, Seungheon and Choi, Keunwoo and Nam, Juhan},
+  journal = {arXiv preprint arXiv:2509.09685},
+  year    = {2025}
+}
+
+@inproceedings{balog_scrutable_2019,
+  title     = {Transparent, Scrutable and Explainable User Models for Personalized Recommendation},
+  author    = {Balog, Krisztian and Radlinski, Filip and Arakelyan, Shushan},
+  booktitle = {Proceedings of the International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year      = {2019}
+}
+
+@inproceedings{wang_crs_simulator_2023,
+  title     = {Rethinking the Evaluation for Conversational Recommendation in the Era of Large Language Models},
+  author    = {Wang, Xiaolei and Tang, Xinyu and Zhao, Wayne Xin and Wang, Jingyuan and Wen, Ji-Rong},
+  booktitle = {Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2023}
+}
+
+@inproceedings{vandenoord_content_2013,
+  title     = {Deep Content-Based Music Recommendation},
+  author    = {van den Oord, A{\"a}ron and Dieleman, Sander and Schrauwen, Benjamin},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2013}
+}
+
+@inproceedings{hu2008collaborative,
+  title     = {Collaborative Filtering for Implicit Feedback Datasets},
+  author    = {Hu, Yifan and Koren, Yehuda and Volinsky, Chris},
+  booktitle = {Proceedings of the IEEE International Conference on Data Mining (ICDM)},
+  year      = {2008}
+}
+
+@article{koren2009matrix,
+  title   = {Matrix Factorization Techniques for Recommender Systems},
+  author  = {Koren, Yehuda and Bell, Robert and Volinsky, Chris},
+  journal = {Computer},
+  volume  = {42},
+  number  = {8},
+  pages   = {30--37},
+  year    = {2009}
+}
+
+@misc{doh2024connecting,
+  title        = {Connecting Music Audio and Natural Language},
+  author       = {Doh, SeungHeon and Manco, Ilaria and Novack, Zachary and Kim, Jong Wook and Chen, Ke},
+  howpublished = {Tutorial at the International Society for Music Information Retrieval Conference (ISMIR)},
+  year         = {2024},
+  url          = {https://mulab-mir.github.io/music-language-tutorial/}
+}
+
+@article{qiu_audiocapbench_2026,
+  title   = {{AudioCapBench}: Quick Evaluation on Audio Captioning across Sound, Music, and Speech},
+  author  = {Qiu, Jielin and Zhang, Jianguo and Chen, Zixiang and Yang, Liangwei and Zhu, Ming and Tan, Juntao and Chen, Haolin and Zhao, Wenting and Murthy, Rithesh and Ram, Roshan and Prabhakar, Akshara and Heinecke, Shelby and Xiong, Caiming and Savarese, Silvio and Wang, Huan},
+  journal = {arXiv preprint arXiv:2602.23649},
+  year    = {2026}
+}
+
+@inproceedings{chen_mllmjudge_2024,
+  author = {Chen, Dongping and Chen, Ruoxi and Zhang, Shilin and Liu, Yinuo and Wang, Yaochen and Zhou, Huichi and Zhang, Qihui and Wan, Yao and Zhou, Pan and Sun, Lichao},
+  title = {{MLLM}-as-a-Judge: Assessing Multimodal {LLM}-as-a-Judge with Vision-Language Benchmark},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  year = {2024},
+  url = {https://arxiv.org/abs/2402.04788},
+}
+@techreport{walshaw_abc_2011,
+  author      = {Walshaw, Chris},
+  title       = {The abc Music Standard 2.1},
+  institution = {abcnotation.com},
+  year        = {2011},
+  url         = {https://abcnotation.com/wiki/abc:standard:v2.1},
+}
+
+@inproceedings{wu_tunesformer_2023,
+  author    = {Wu, Shangda and Li, Xiaobing and Yu, Feng and Sun, Maosong},
+  title     = {{TunesFormer}: Forming Irish Tunes with Control Codes by Bar Patching},
+  booktitle = {Proceedings of the 2nd Workshop on Human-Centric Music Information Retrieval (HCMIR) at ISMIR},
+  year      = {2023},
+}
+
+@article{gupta_leaderboard_2020,
+  author  = {Gupta, Chitralekha and Li, Haizhou and Wang, Ye},
+  title   = {Automatic Leaderboard: Evaluation of Singing Quality Without a Standard Reference},
+  journal = {IEEE/ACM Transactions on Audio, Speech, and Language Processing},
+  volume  = {28},
+  pages   = {13--26},
+  year    = {2020},
+}
+
+@inproceedings{gupta_twin_2020,
+  author    = {Gupta, Chitralekha and Huang, Lin and Li, Haizhou},
+  title     = {Automatic Rank-Ordering of Singing Vocals with Twin-Neural Network},
+  booktitle = {Proceedings of the 21st International Society for Music Information Retrieval Conference (ISMIR)},
+  year      = {2020},
+}
+
+@inproceedings{zhang_singing_metric_2021,
+  author    = {Zhang, Huan and Jiang, Yiliang and Jiang, Tao and Peng, Hu},
+  title     = {Learn by Referencing: Towards Deep Metric Learning for Singing Assessment},
+  booktitle = {Proceedings of the 22nd International Society for Music Information Retrieval Conference (ISMIR)},
+  pages     = {825--832},
+  year      = {2021},
+}
+
+@article{pati_assessment_2018,
+  author  = {Pati, Kumar Ashis and Gururani, Siddharth and Lerch, Alexander},
+  title   = {Assessment of Student Music Performances Using Deep Neural Networks},
+  journal = {Applied Sciences},
+  volume  = {8},
+  number  = {4},
+  pages   = {507},
+  year    = {2018},
+}
+
+@inproceedings{seshadri_contrastive_2021,
+  author    = {Seshadri, Pavan and Lerch, Alexander},
+  title     = {Improving Music Performance Assessment with Contrastive Learning},
+  booktitle = {Proceedings of the 22nd International Society for Music Information Retrieval Conference (ISMIR)},
+  year      = {2021},
+}
+
+@inproceedings{gao_vocal_coaching_2026,
+  author    = {Gao, Tianyu and Dai, Shuqi and Dannenberg, Roger B. and Huang, Zhiyong and Dong, Jin Song and Dueck, Jocelyn},
+  title     = {Learning to Sing with Your Own Voice: Designing and Evaluating Generative {AI}-Assisted Vocal Coaching},
+  booktitle = {Proceedings of the 27th International Society for Music Information Retrieval Conference (ISMIR)},
+  year      = {2026},
+  url       = {https://ismir2026program.ismir.net/poster_26.html},
+}
+

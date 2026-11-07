@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 360" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">What a request contains, and who could read it</title>
+<desc id="d">Top: user 1024's query, 'Something for a late-night drive in the rain, no vocals, and not too old', and profile (female, aged 25 to 34, favorites Bill Evans and Nils Frahm, 10 recent plays and 1 skip). Below, a matrix of four kinds of information against four systems. Situation ('late-night drive in the rain'): tag retrieval does not read it, a joint audio-text embedding reads it loosely, collaborative filtering does not, conversational recommendation does. Constraints ('no vocals', 'not too old'): tags read them partly, the embedding does not, collaborative filtering does not, the LLM does. Taste (Bill Evans, Nils Frahm): only collaborative filtering reads it partly, and the LLM reads it. Behavior (this listener's plays and everyone else's logs): collaborative filtering reads it; the LLM reads it partly, since it can read this listener's history as text but not the logs of millions of others.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">QUERY</text>
+<rect x="0.8" y="26.75" width="470" height="62" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="52" font-size="13.5" font-style="italic" fill="#ab7827">“Something for a late-night drive in the rain,</text>
+<text x="16" y="72" font-size="13.5" font-style="italic" fill="#ab7827">no vocals, and not too old.”</text>
+<text x="490" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">USER</text>
+<rect x="490.8" y="26.75" width="280" height="62" rx="8" fill="#9a6a8f" fill-opacity="0.12" stroke="#9a6a8f" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="506" y="46" font-size="12" font-weight="700" fill="#9a6a8f">ID 1024 · female · 25–34</text>
+<text x="506" y="63" font-size="12" fill="#9a6a8f">favorites: Bill Evans, Nils Frahm</text>
+<text x="506" y="79" font-size="12" fill="#9a6a8f">history: 10 recent plays, 1 skip</text>
+<text x="0" y="126" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">KIND</text>
+<text x="112" y="126" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">IN USER 1024’S REQUEST</text>
+<rect x="668" y="102" width="106" height="224" rx="6" fill="#ab7827" fill-opacity="0.08"/>
+<text x="452" y="118" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">Tag</text>
+<text x="452" y="132" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">retrieval</text>
+<text x="540" y="118" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">Joint audio–</text>
+<text x="540" y="132" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">text embedding</text>
+<text x="632" y="118" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">Collaborative</text>
+<text x="632" y="132" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">filtering</text>
+<text x="722" y="118" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">Conversational</text>
+<text x="722" y="132" font-size="11.5" font-weight="700" text-anchor="middle" fill="#977a5d">recommendation</text>
+<line x1="0" y1="146" x2="770" y2="146" stroke="#977a5d" stroke-width="0.8" stroke-opacity="0.35"/>
+<rect x="0" y="155" width="96" height="24" rx="5" fill="#ab7827" fill-opacity="0.2" stroke="#ab7827" stroke-opacity="0.6" stroke-width="1"/>
+<text x="48" y="171.32" font-size="12" text-anchor="middle" fill="#ab7827">Situation</text>
+<text x="112" y="165" font-size="12.5" font-style="italic" fill="#3d3a35">“late-night drive in the rain”</text>
+<text x="112" y="181" font-size="11.5" fill="#77726a">implies a sound without naming one</text>
+<circle cx="452" cy="167" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="540" cy="167" r="6.5" fill="none" stroke="#607b9a" stroke-width="1.5"/>
+<path d="M540,160.5 A6.5,6.5 0 0 0 540,173.5 Z" fill="#607b9a"/>
+<circle cx="632" cy="167" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="722" cy="167" r="6.5" fill="#ab7827"/>
+<line x1="0" y1="190" x2="770" y2="190" stroke="#977a5d" stroke-width="0.8" stroke-opacity="0.35"/>
+<rect x="0" y="199" width="96" height="24" rx="5" fill="#3f78b5" fill-opacity="0.2" stroke="#3f78b5" stroke-opacity="0.6" stroke-width="1"/>
+<text x="48" y="215.32" font-size="12" text-anchor="middle" fill="#3f78b5">Constraints</text>
+<text x="112" y="209" font-size="12.5" font-style="italic" fill="#3d3a35">“no vocals”, “not too old”</text>
+<text x="112" y="225" font-size="11.5" fill="#77726a">facts the record holds</text>
+<circle cx="452" cy="211" r="6.5" fill="none" stroke="#607b9a" stroke-width="1.5"/>
+<path d="M452,204.5 A6.5,6.5 0 0 0 452,217.5 Z" fill="#607b9a"/>
+<circle cx="540" cy="211" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="632" cy="211" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="722" cy="211" r="6.5" fill="#ab7827"/>
+<line x1="0" y1="234" x2="770" y2="234" stroke="#977a5d" stroke-width="0.8" stroke-opacity="0.35"/>
+<rect x="0" y="243" width="96" height="24" rx="5" fill="#8f9066" fill-opacity="0.2" stroke="#8f9066" stroke-opacity="0.6" stroke-width="1"/>
+<text x="48" y="259.32" font-size="12" text-anchor="middle" fill="#8f9066">Taste</text>
+<text x="112" y="253" font-size="12.5" font-style="italic" fill="#3d3a35">Bill Evans, Nils Frahm</text>
+<text x="112" y="269" font-size="11.5" fill="#77726a">why the situation means sparse piano</text>
+<circle cx="452" cy="255" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="540" cy="255" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="632" cy="255" r="6.5" fill="none" stroke="#607b9a" stroke-width="1.5"/>
+<path d="M632,248.5 A6.5,6.5 0 0 0 632,261.5 Z" fill="#607b9a"/>
+<circle cx="722" cy="255" r="6.5" fill="#ab7827"/>
+<line x1="0" y1="278" x2="770" y2="278" stroke="#977a5d" stroke-width="0.8" stroke-opacity="0.35"/>
+<rect x="0" y="287" width="96" height="24" rx="5" fill="#9a6a8f" fill-opacity="0.2" stroke="#9a6a8f" stroke-opacity="0.6" stroke-width="1"/>
+<text x="48" y="303.32" font-size="12" text-anchor="middle" fill="#9a6a8f">Behavior</text>
+<text x="112" y="297" font-size="12.5" font-style="italic" fill="#3d3a35">her plays and skips; everyone else’s logs</text>
+<text x="112" y="313" font-size="11.5" fill="#77726a">who listened to what</text>
+<circle cx="452" cy="299" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="540" cy="299" r="6.5" fill="none" stroke="#607b9a" stroke-opacity="0.6" stroke-width="1.5"/>
+<circle cx="632" cy="299" r="6.5" fill="#607b9a"/>
+<circle cx="722" cy="299" r="6.5" fill="none" stroke="#ab7827" stroke-width="1.5"/>
+<path d="M722,292.5 A6.5,6.5 0 0 0 722,305.5 Z" fill="#ab7827"/>
+<line x1="0" y1="322" x2="770" y2="322" stroke="#977a5d" stroke-width="0.8" stroke-opacity="0.35"/>
+<circle cx="6" cy="340" r="6.5" fill="#77726a"/>
+<text x="18" y="344" font-size="12" fill="#77726a">reads it</text>
+<circle cx="86" cy="340" r="6.5" fill="none" stroke="#77726a" stroke-width="1.5"/>
+<path d="M86,333.5 A6.5,6.5 0 0 0 86,346.5 Z" fill="#77726a"/>
+<text x="98" y="344" font-size="12" fill="#77726a">reads it partly</text>
+<circle cx="202" cy="340" r="6.5" fill="none" stroke="#77726a" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="214" y="344" font-size="12" fill="#77726a">does not</text>
+<text x="770" y="344" font-size="11.5" font-style="italic" text-anchor="end" fill="#77726a">The LLM reads this listener’s plays as text, not the logs of millions of others.</text>
+</svg>
