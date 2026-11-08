@@ -9,7 +9,7 @@ Two things make the scoring harder than for a classifier. The answer is free
 text, so a program has to find the answer in it, or someone has to judge it. And
 the model picks each token by [sampling](#sec-next-token), so the same prompt
 can get a different answer on the next run. [Chapter
-2](../understanding/benchmarks.md) covers music benchmarks and listening checks
+2](../understanding/evaluation.md) covers music benchmarks and listening checks
 for audio LLMs, such as rerunning a test with noise in place of the audio to see
 whether the score drops.
 
@@ -98,7 +98,7 @@ effect.
 
 A text-only judge cannot hear the track and must be given the facts. It can then
 match wordings a program would miss, such as "brass section" for horns. On
-music, [Chapter 2](../understanding/benchmarks.md) reports a study in which an
+music, [Chapter 2](../understanding/evaluation.md) reports a study in which an
 LLM judge was unreliable at finding errors in MIR annotations, such as beat and
 chord labels.
 
@@ -162,7 +162,7 @@ A test for an MIR task starts from examples with answers you trust, such as
 annotated keys or tempi. Tracks that are not well known, file names and tags
 that do not give the answer, and examples kept offline guard against
 [contamination](#sec-eval-pitfalls). The model can hear the tracks itself, as an
-audio LLM does ([Chapter 2](../understanding/modalities.md)), or call MIR tools,
+audio LLM does ([Chapter 2](../understanding/interfaces_audio.md)), or call MIR tools,
 as the DJ agent does. By the interval above, a few dozen examples can show that
 a model falls far short, but telling apart two models a few points apart takes
 hundreds to thousands of questions. Running each question several times and
