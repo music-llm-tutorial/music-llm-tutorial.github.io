@@ -43,9 +43,7 @@ Music benchmarks are on the same climb. Questions derived from captions
 (WildScore, CSyMR), questions written by experts with musical training
 (HumMusQA), and complete scores (MSU-Bench). The next step has no benchmark yet:
 questions that only expert performers, composers, and analysts can write and
-grade, about why a passage works, how to play it, or what to change. A
-"PhD-level" music benchmark would test knowledge about music. A *master-level*
-benchmark would test musicianship.
+grade, about why a passage works, how to play it, or what to change.
 
 (sec-und-moat)=
 ## Good evaluation is becoming a moat
@@ -61,20 +59,18 @@ statements and solutions, "except for a 50-question holdout set"
 data curators' business relationships with their clients", when one company
 both sells training data to a lab and evaluates that lab's models.
 
-MIR has an answer older than LLMs. From its first plenary at ISMIR 2005, MIREX
+MIR thankfully has an answer older than LLMs. From its first plenary at ISMIR 2005, MIREX
 kept test data with the organizers: because "moving the data to
 participants is problematic, MIREX has the participants submit their algorithms
 to IMIRSEL for running against the collections" [@downie_mirex_dlib_2006;
-@downie_mirex_2008]. A community-run, private test set, where models come to
-the data, is exactly what evaluating LLMs now needs. Whoever holds a good music
-benchmark that has not leaked holds something labs will want.
+@downie_mirex_2008]. One could imagine a future with MIREX keeping its closed test tradition but embracing the modern scene of Agentic Music-Language systems.
 
 (sec-und-next)=
 ## What to measure next
 
 The evidence in this chapter points to six directions.
 
-1. **Deeper analysis.** Most questions ask for a label. Few ask why a
+1. **Deeper analysis.** Many questions ask for a label. Few ask why a
    progression works, how a form unfolds, or what an arrangement does, the
    questions of the reasoning level in the [overview](#sec-und-problem).
 2. **Answers tied to time.** A model should say *when* something happens and be
@@ -96,8 +92,7 @@ The evidence in this chapter points to six directions.
 (sec-und-segue)=
 ## From benchmarks to listeners
 
-A model that aces multiple choice is not yet useful to anyone. A listener does
-not ask which of four options describes a track; they ask for "something for a
+In this section, we've primarily considered Music LLMs in the context of broadly answering relatively simple questions about music. However, such a machine A is not yet particularly useful to anyone. A listener does not ask which of four options describes a track; they ask for "something for a
 late-night drive in the rain". The next chapters put music understanding to
 work. [Chapter 3](../listening/introduction.md) builds systems for listeners:
 annotation, search, and recommendation. [Chapter 4](../composers/00_overview.md)
