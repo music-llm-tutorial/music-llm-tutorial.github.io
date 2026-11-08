@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="290" viewBox="0 0 900 290" font-family="Helvetica, Arial, sans-serif">
+<rect width="900" height="290" fill="#ffffff"/>
+<text x="36" y="34" font-size="11.5" fill="#6b6b6b" font-weight="600">RUNG</text>
+<text x="150" y="34" font-size="11.5" fill="#6b6b6b" font-weight="600">WHERE THE POLICY LIVES</text>
+<text x="350" y="34" font-size="11.5" fill="#6b6b6b" font-weight="600">WHAT IT NEEDS</text>
+<text x="560" y="34" font-size="11.5" fill="#6b6b6b" font-weight="600">EXAMPLE: BAR 12 WRONG THE THIRD TIME</text>
+<line x1="36" y1="44" x2="864" y2="44" stroke="#1b1b1b" stroke-width="1.3"/>
+<g font-size="12.5" fill="#1b1b1b">
+<text x="36" y="68" font-weight="700">write it</text>
+<text x="150" y="68">prompt, tool returns,</text><text x="150" y="86">harness code</text>
+<text x="350" y="68" fill="#6b6b6b">a person who knows</text><text x="350" y="86" fill="#6b6b6b">how to teach</text>
+<text x="560" y="68">prompt: one correction per take</text>
+<text x="560" y="86">tool: bar 12, beat 3, F instead of F♯</text>
+<text x="560" y="104">code: no hands together before two clean takes</text>
+<text x="36" y="144" font-weight="700">optimise it</text>
+<text x="150" y="144">prompt text, rewritten</text><text x="150" y="162">by a model (GEPA)</text>
+<text x="350" y="144" fill="#6b6b6b">20 to 100 takes with teacher</text><text x="350" y="162" fill="#6b6b6b">feedback, and a judge score</text>
+<text x="560" y="144">agent named bar 14 where the aligner was</text>
+<text x="560" y="162">unsure; the teacher asked for another take</text>
+<text x="560" y="180">prompt gains: if unsure, ask for another take</text>
+<text x="36" y="220" font-weight="700">learn it</text>
+<text x="150" y="220">the weights, by training</text><text x="150" y="238">(RL, SDFT)</text>
+<text x="350" y="220" fill="#6b6b6b">RL: a reward</text><text x="350" y="238" fill="#6b6b6b">SDFT: teacher demonstrations</text>
+<text x="560" y="220">trained on teacher moves, the model sets</text>
+<text x="560" y="238">the slow drill on bars 11 to 13</text>
+<text x="560" y="256">with no rule in the prompt</text>
+</g>
+<g stroke="#c9c9c9" stroke-width="1"><line x1="36" y1="120" x2="864" y2="120"/><line x1="36" y1="196" x2="864" y2="196"/></g>
+<line x1="36" y1="272" x2="864" y2="272" stroke="#1b1b1b" stroke-width="1.3"/>
+</svg>
