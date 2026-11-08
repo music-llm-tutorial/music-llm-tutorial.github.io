@@ -15,7 +15,7 @@ The creative process is rarely a straight line. For example, you could start wit
 :alt: Illustration of a non-linear creative process: a musician moves between playing guitar, working at a computer, talking with friends, getting stuck, a eureka moment, mixing, and finishing a song.
 :width: 80%
 
-The creative process is non-linear, and mostly about getting unstuck.
+The creative process is non-linear, and mostly about getting unstuck. Figure hand-drawn by the author :)
 :::
 
 This chapter asks a simple question: **what can LLMs do to assist creators without replacing their creativity?** Instead of generating a finished song from a prompt, the systems in this chapter offer *AI support within an ongoing creative process*. 
