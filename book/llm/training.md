@@ -102,7 +102,7 @@ Some music LLMs start from a released base model and continue its pre-training.
 One study trained such a model further on a few billion tokens of music text and
 ABC tunes, mixed with general text, then fine-tuned it
 [@yuan_chatmusician_2024]. Audio LLMs ([Chapter
-2](../understanding/modalities.md)) start from a pre-trained LLM and go through
+2](../understanding/interfaces.md)) start from a pre-trained LLM and go through
 similar stages [@tang_salmonn_2024; @goel_af3_2025].
 
 :::{dropdown} Learning-rate decay and long context
@@ -218,7 +218,7 @@ plant skills earlier, in [mid-training](#sec-midtraining)
 
 The next example asks an *audio LLM* to describe a recording: an audio encoder
 turns the recording into a sequence of vectors, which the LLM reads alongside
-the prompt's tokens ([Chapter 2](../understanding/modalities.md)).
+the prompt's tokens ([Chapter 2](../understanding/interfaces_audio.md)).
 
 :::{figure} ../assets/llm/rl-describe.svg
 :label: fig-rl-describe

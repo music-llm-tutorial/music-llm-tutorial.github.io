@@ -20,8 +20,14 @@ project:
     - title: LLM-powered Music Understanding
       children:
         - file: book/understanding/overview.md
-        - file: book/understanding/modalities.md
-        - file: book/understanding/benchmarks.md
+        - file: book/understanding/interfaces.md
+          children:
+            - file: book/understanding/interfaces_audio.md
+            - file: book/understanding/interfaces_images.md
+            - file: book/understanding/interfaces_text.md
+        - file: book/understanding/perception_reasoning.md
+        - file: book/understanding/evaluation.md
+        - file: book/understanding/looking_ahead.md
     - title: Music Listening with LLMs
       children:
         - file: book/listening/introduction.md

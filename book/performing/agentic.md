@@ -8,11 +8,13 @@ authors:
 
 Single-session feedback answers *what just went wrong*. The next question is what a learner should work on *across weeks*. Educational surveys of LLM agents organise that longer horizon around **tool calling**, **memory**, and **planning**, together with decisions about when to instruct, when to ask, and when to step back {cite}`chu_llm_agents_education_2025`. Chapter 1 introduces these ingredients for general agents.
 
-Music systems so far cover pieces of the picture: analysers and score-audio controllers for one take, query-based coaches for dialogue. What is missing is coaching as an *agent* that continues a thread, calling perceptual tools, carrying learner state, and adapting a practice plan over time. Music practice makes this harder than most classroom tutoring. Perception is multimodal and breaks on imperfect play, skill is embodied, and human teachers are absent between lessons.
+Music systems so far cover pieces of the picture: analysers and score-audio controllers for one take, query-based coaches for dialogue. What is missing is coaching as an *agent* that continues a thread, calling perceptual tools, carrying learner state, and adapting a practice plan over time. 
 
-## Practice apps in 2026
+## Music Education / Performance applications in 2026
 
-:::{table} Practice apps as of October 2026, compiled from help centres, store listings, patents and published reviews. The last seven rows add a language model.
+<!-- what does it mean for notes, live? the 'what it keeps' part is a bit confusing -->
+
+:::{table} A rough survey table as of October 2026, compiled from help centres, store listings, patents and published reviews. The last seven rows add a language model.
 :label: tbl-practice-apps
 :class: col-body-outset-right
 

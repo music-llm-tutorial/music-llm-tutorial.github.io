@@ -50,7 +50,7 @@ as checking math results or running code against tests [@deepseek_r1_2025]. On
 competition math, one lab reports that accuracy rises both with more
 reinforcement learning and with more time spent thinking [@openai_o1_2024].
 
-[Chapter 2](../understanding/overview.md) covers reasoning in audio LLMs.
+[Chapter 2](../understanding/perception_reasoning.md) covers reasoning in audio LLMs.
 
 (sec-tool-calls)=
 ## Tool calls

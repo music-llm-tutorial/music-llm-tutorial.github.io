@@ -153,4 +153,4 @@ requests below show an assistant's range, with the section that covers each one:
 | Follow instructions | "Transpose C–Am–F–G up a whole step. Reply with chord symbols only." | [Supervised fine-tuning](#sec-sft) and [reinforcement learning](#sec-rl) |
 | Reason | "Which chord in C–Am–Fm–G is borrowed, and why?", answered after writing out the steps | [Reasoning](#sec-reasoning) |
 | Act | "What's the tempo of track.wav?", answered by calling a tempo estimator | [Tool calls](#sec-tool-calls) and [agents](#sec-agents) |
-| Listen | Given a clip: "Which instruments do you hear?" | [Chapter 2](../understanding/modalities.md): an audio encoder joined to the LLM and trained on paired audio and text makes an *audio LLM* [@tang_salmonn_2024; @gardner2023llark; @goel_af3_2025; @ghosh_musicflamingo_2026; @tian_ualm_2026] |
+| Listen | Given a clip: "Which instruments do you hear?" | [Chapter 2](../understanding/interfaces_audio.md): an audio encoder joined to the LLM and trained on paired audio and text makes an *audio LLM* [@tang_salmonn_2024; @gardner2023llark; @goel_af3_2025; @ghosh_musicflamingo_2026; @tian_ualm_2026] |
