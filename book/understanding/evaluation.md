@@ -14,27 +14,28 @@ answered without the music, and what to check when you build one.
 ## Four ways to grade
 
 **Captions.** The model describes a clip, and the description is compared with
-a reference caption. Word-overlap metrics reward matching words, not matching
+a reference caption. Word-overlap metrics reward matching words, but not matching
 facts: in {numref}`tbl-caption-metrics` of Chapter 1, a description with no
 correct facts gets the same BLEU-4 score as one with two. An LLM judge can compare meaning instead, but it must
-be given the facts, because it cannot hear the clip.
+be given the facts itself.
 
-**Multiple choice.** The model picks one of a few options. This is the dominant
-format, because a program can grade it. MuChoMusic asks 1,187 four-option
+**Multiple choice.** Here the model picks one of a few options. This is the dominant
+format, because it is gradable by construction. For example, MuChoMusic asks 1,187 four-option
 questions about 644 tracks from MusicCaps and the Song Describer Dataset, in a
 knowledge category (melody, harmony, metre and rhythm, instrumentation, and
 more) and a reasoning category (mood, genre, lyrics, cultural context, and more)
 [@weck_muchomusic_2024]. The weak point of the format is the options: if the
-wrong ones are implausible, the question answers itself.
+wrong ones are implausible or leak information about the right answer, strong performance
+here cannot disentangle the scenario when LLMs are able to exploit this.
 
-**Labels.** The model outputs a label, such as a genre, a set of instruments, or
+**Labels/Classes.** The model outputs a label, such as a genre, a set of instruments, or
 a time signature, and the label is scored against an annotation with precision,
 recall, and F1 [@lin_factual_2026]. CMI-Bench recasts 14 MIR tasks on 20
 datasets as instructions in this way, so audio LLMs can be compared with
 specialist MIR models on the same annotations [@ma_cmibench_2025].
 
-**Downstream tasks.** The model does something people need, and the result is
-judged. MusiCRS links 477 Reddit threads asking for music recommendations, with
+**Downstream tasks.** The model does some other task people need, and the result is
+directly on the task. MusiCRS links 477 Reddit threads asking for music recommendations, with
 3,589 musical entities, to the tracks discussed, and tests models with the
 audio only, the query only, or both [@surana_musicrs_2025]. It finds "optimal
 performance frequently occurring in single-modality settings rather than
@@ -74,16 +75,15 @@ recommendation and search.
 :::
 
 Two trends stand out. Benchmarks are moving from questions derived from existing
-captions and annotations toward questions written or curated by people with
-musical training, and toward questions generated from symbolic data, whose
-answers can be computed.
-Each move answers a weakness of the one before.
+captions and annotations toward questions written or curated by people **with
+musical training**, and toward questions generated from symbolic data, whose
+answers can be computed and vertified.
 
 (sec-und-score-findings)=
 ## What the score benchmarks show
 
 Any VLM can be given a score image ([](#sec-und-score-images)), and the score
-benchmarks in {numref}`tbl-und-benchmarks` agree that reading the notation is
+benchmarks in {numref}`tbl-und-benchmarks` show that reading the notation is
 the weak step.
 
 - **MusiXQA** renders synthetic scores with MusiXTeX and asks questions about
@@ -117,7 +117,7 @@ the model answers from the question alone.
 (sec-und-needs-music)=
 ## Does the question need the music?
 
-A benchmark for music understanding should contain questions that cannot be
+A benchmark for music understanding, theoretically, should contain questions that cannot be
 answered without the music. In the notation of the
 [overview](#sec-und-problem), a good question has
 
@@ -125,10 +125,10 @@ $$
 p_\theta(a \mid m, q) \gg p_\theta(a \mid q),
 $$
 
-where $a$ is the correct answer. Many questions fail this test. A question such
+where $a$ is the correct answer (that is, conditioning on the music should make the chance of getting the answer correct higher). Many questions fail this test. A question such
 as "Which instrument starts the piece?" with the options *acoustic guitar*,
 *synthesizer*, *rueful tune*, and *vocals* can be narrowed down without hearing
-anything: "rueful tune" is not an instrument at all.
+anything, as "rueful tune" is not an instrument at all, and a non-hearing LLM can use its general world knowledge to guess that many songs start with acoustic guitar, which would be correct!
 
 "Are you really listening?" measured this for MuChoMusic
 [@zang_listening_2025]. Text-only LLMs, given only the question and the options,
@@ -145,7 +145,7 @@ question and options. Values are read from the figures of
 @zang_listening_2025.
 :::
 
-The paper then rebuilds the options. It defines a *perceptual index* (PI) for a
+This paper then shows how to rebuild the benchmark, particular in terms of answer options. It defines a *perceptual index* (PI) for a
 question $q$ with correct answer $Y$ and distractors $D$,
 
 $$
@@ -193,11 +193,7 @@ perceptual_index("Which instrument starts the piece?",
                  "acoustic guitar", ["synthesizer", "rueful tune", "vocals"])
 ```
 
-A sum of token log-probabilities favors short options, which have fewer tokens
-to pay for; dividing by the number of tokens is a common alternative. This
-sketch shows the idea, not the paper's exact implementation.
-
-The same problem appears in other modalities. WildScore's open VLMs often score
+The same problem appears in other representations. WildScore's open VLMs often score
 higher *without* the score image (above), and HumMusQA
 reports that a model "exploits cues in the questions", with Gemini 2.5 Flash
 reaching 42.7% with no audio against 25% chance [@weck_hummusqa_2026]. For
@@ -223,17 +219,10 @@ too, and on music it should be validated against expert labels before its
 verdicts are trusted ([Chapter 1](#sec-eval-judges)).
 
 (sec-und-shortcuts)=
-## Shortcuts, contamination, and size
+##  Contamination
 
-**Shortcuts.** A model can score well by learning a correlate of the target.
-An ISMIR 2026 study of SongEval, a model that rates the aesthetic quality of
-songs, finds that its predictions track how close a song is to pop: the Spearman
-correlation between predicted scores and a pop-proximity measure is 0.88 on one
-dataset and 0.81 on MTG-Jamendo, and pop is overrated relative to other genres
-[@zhang_genrebias_2026]. The authors reduce the bias with a training objective
-that reweights hard samples and regularizes performance across genre groups.
 
-**Contamination.** Many music benchmarks draw on public sources, such as Reddit
+Many music benchmarks draw on public sources, such as Reddit
 threads, published captions, and well-known recordings, and a model may have
 read the questions, or discussions of them, during pre-training
 ([Chapter 1](#sec-eval-pitfalls)). The GPT-3 paper already found that some
@@ -242,12 +231,6 @@ benchmark test sets overlapped with its training data
 cutoff deserve the most care. The [next page](./looking_ahead.md) returns to
 this.
 
-**Size.** Small benchmarks give wide confidence intervals. MusICA-MetaBench
-generates questions from MusicXML with templates, so it can
-make a benchmark for almost any piece in audio, notation images, or symbolic
-form [@sourada_musica_2026]. Its authors estimate that "a size of s=300
-suffices for a 6% effect size", and find that "most performance variation
-across models stems from the symbolic modality".
 
 (sec-und-checklist)=
 ## A checklist for a music benchmark
