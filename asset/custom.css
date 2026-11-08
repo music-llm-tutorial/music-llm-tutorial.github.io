@@ -271,7 +271,7 @@ body {
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Overview of Large Language Models and Agents"]),
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="LLM-powered Music Understanding"]),
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Music Listening with LLMs"]),
-.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Composition & Co-Creation"]),
+.myst-toc > div[data-state]:has(> .myst-toc-item > div[title="LLMs for Creators"]),
 .myst-toc > div[data-state]:has(> .myst-toc-item > div[title="Feedback & Music Education"]) {
   counter-increment: ml-chapter;
   --ml-chapter-label: counter(ml-chapter);
