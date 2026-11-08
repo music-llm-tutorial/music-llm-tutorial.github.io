@@ -14,11 +14,11 @@ authors:
 :align: center
 :::
 
-The systems in Parts [1](part1-suggestions.md) and [2](part2-realtime.md) *generate music*. A large part of music making, however, is *operating tools*: building a synth patch, arranging clips in a DAW, choosing and tuning audio effects. This part looks at LLM **agents** that take actions in the software musicians already use, and at music post-production as a first domain where such agents are being studied systematically.
+So far, we have looked at systems that suggest musical material or respond during a performance. Making music also involves working with software: building a synth patch, arranging clips, or adjusting effects. In this part, we turn to LLM agents that carry out these tasks in music tools. We begin with examples in Pure Data and Ableton Live, then look at research on agents for post-production.
 
-## Agents + music tools
+## Connecting agents to music tools
 
-An LLM agent works in a loop. Given a goal, it **plans the next step**, **calls a tool**, **reads the result**, and repeats until the goal is met ([](#fig-creators-agent-loop)). What makes an agent useful for music is the set of tools it can call.
+An LLM agent can work through a task in several steps. It chooses an action, calls a tool, reads the result, and decides what to do next (). The tools available to it determine what it can inspect and change. In a music application, those tools might expose tracks, notes, patches, or effect parameters.
 
 ::::{grid} 1 1 2 2
 
@@ -38,45 +38,43 @@ MCP (Model Context Protocol): one standard plug between agents and apps.
 
 ::::
 
-The **Model Context Protocol (MCP)** is an open standard for connecting agents to applications. An app exposes its capabilities once, as an MCP server, and any MCP-capable agent can use them. For music, this means the same agent (e.g., Claude) can work with a visual audio programming environment such as Pure Data, a DAW such as Ableton Live or REAPER, or a notation editor such as MuseScore.
+The Model Context Protocol (MCP) provides a standard way to expose tools and data to compatible AI applications. An MCP server describes the available operations and handles requests to use them. For music software, an integration can let an agent inspect a session or make changes without requiring the musician to leave the application. What the agent can do depends on the operations that each integration exposes.
 
-## Agents are learning to use the tools musicians already use
+## Working inside music software
 
-Two open-source projects illustrate the idea. In both, the musician stays in their usual environment and can see, play, and edit everything the agent creates.
+Two open-source projects illustrate this approach. Both let musicians describe a task in words and inspect the resulting work in their usual editing environment.
 
-### Pure Vibes: Pure Data ↔ MCP ↔ AI agent
+### Pure Vibes: building patches in Pure Data
 
-[Pure Vibes](https://github.com/gclef-cmu/pure-vibes) connects **Pure Data**, a visual programming language for audio, to AI agents through MCP. The musician describes the sound or behavior they want in words, and the agent builds and edits the patch, with the result immediately audible and inspectable in Pure Data.
+[Pure Vibes](https://github.com/gclef-cmu/pure-vibes) connects Pure Data, a visual programming environment for audio, to AI agents through MCP. A musician describes a sound or behaviour, and the agent builds or edits the patch. The musician can then inspect its structure, listen to it, and continue editing in Pure Data.
 
-:::{figure} ../assets/composers/part3/pure-vibes.jpg
+:::{figure} ../assets/composers/part3/pure-vibes.png
 :label: fig-pure-vibes
 :alt: Screen recording of Pure Vibes: a Claude chat window next to a Pure Data window showing that an MCP server has started.
 :width: 85%
 
-Pure Vibes: an agent working in Pure Data through MCP. ▶ [Watch the demo video](https://drive.google.com/file/d/1U0t1jxJtrdrqDziJJbOa4Ir9BkEjjYT8/view).
+Pure Vibes: an agent working in Pure Data through MCP. Image from the [Pure Vibes repository](https://github.com/gclef-cmu/pure-vibes).
 :::
 
-### Ableton MCP: Ableton Live ↔ MCP ↔ AI agent
+### Ableton MCP: working with a DAW session
 
-[ableton-mcp](https://github.com/ahujasid/ableton-mcp) connects **Ableton Live** to Claude through MCP, with two-way communication: the agent can read the session and create or modify MIDI and audio tracks, clips, instruments, and effects. Users have shared their experiences of producing music this way, for example in this [Reddit post](https://www.reddit.com/r/ClaudeAI/comments/1q00ll4/ok_i_have_a_job_for_you_you_have_an_ableton_mcp/).
+[ableton-mcp](https://github.com/ahujasid/ableton-mcp) connects Ableton Live to Claude through MCP. The agent can inspect the session and use the exposed tools to make changes, such as creating MIDI clips and working with instruments. The resulting session remains available for the musician to play and edit. This [Reddit post](https://www.reddit.com/r/ClaudeAI/comments/1q00ll4/ok_i_have_a_job_for_you_you_have_an_ableton_mcp/) offers an example of using the integration in music production.
 
 :::{figure} ../assets/composers/part3/ableton-mcp.jpg
 :label: fig-ableton-mcp
 :alt: Screen recording of a chat with an agent describing a planned electronic track structure next to an Ableton Live arrangement with colored clips across tracks.
 :width: 85%
 
-Ableton MCP: the agent plans a track and builds it in Ableton Live. ▶ [Watch the demo video](https://drive.google.com/file/d/1XZV92dmAtIQs_Rcso1uU-9wbt9rQp36E/view).
-:::
-
-:::{tip} Why acting in the creator's tools matters
-When an agent's output is a patch, a session, or an effects chain rather than a rendered audio file, every decision it made is still **editable**. The creator can undo a step, tweak a parameter, or take over entirely. This keeps the principles from [Part 1](part1-suggestions.md) (control and ownership in particular) intact even when the agent does many steps at once.
+Ableton MCP: the agent plans a track and builds it in Ableton Live. Image from a [Reddit post](https://www.reddit.com/r/ClaudeAI/comments/1q00ll4/ok_i_have_a_job_for_you_you_have_an_ableton_mcp/) using [ableton-mcp](https://github.com/ahujasid/ableton-mcp).
 :::
 
 ---
 
 ## Music post-production with agents
 
-Post-production (applying equalization, compression, reverb, delay, and other effects, and balancing tracks in a mix) is a natural fit for agents. It is done with well-defined tools, it involves long sequences of decisions, and the result can be listened to and checked. Recent work frames post-production as an agent loop with four steps [@doh2026llm2fxtools; @koo2026agenticpostproduction; @schaffer2026rime]:
+Post-production involves many linked decisions: balancing tracks, choosing effects, and adjusting parameters such as EQ, compression, or reverb. These operations can be exposed as tools, making them useful tasks for studying agents. The harder question is how the agent judges whether its changes achieve the intended sound.
+
+Recent work explores different parts of this process [@doh2026llm2fxtools; @koo2026agenticpostproduction; @schaffer2026rime]. We use the following loop to organise the discussion:
 
 :::{figure} ../assets/composers/part3/post-production-loop.png
 :label: fig-post-production-loop
@@ -91,9 +89,9 @@ An agent loop for music post-production.
 3. **Act:** call the effects with parameters.
 4. **Critique:** compare the result to the original goal, and fix it if needed. Then repeat.
 
-### LLM2Fx-Tools: effects chains as tool calls
+### LLM2Fx-Tools: generating an effects chain
 
-**LLM2Fx-Tools** uses an LLM to generate an executable chain of audio effects (an *Fx-chain*): which effects to use, in what order, and with what parameters [@doh2026llm2fxtools].
+LLM2Fx-Tools uses an LLM to specify an executable audio effects chain: which effects to apply, in what order, and with what parameters [@doh2026llm2fxtools]. The chain can then be applied to the creator’s audio.
 
 :::{figure} ../assets/composers/part3/llm2fx-tools.png
 :label: fig-llm2fx-tools
@@ -103,25 +101,28 @@ An agent loop for music post-production.
 The LLM2Fx-Tools framework. Figure from Doh et al. (2026).
 :::
 
-Reading the figure from left to right, all three steps happen at inference time:
+The figure shows three steps at inference time:
 
-1. **Input.** An instruction (e.g., "Please provide an audio effect similar to the reference audio, which features piano sounds."), the list of available tools (EQ, distortion, gain, compressor, reverb, delay, limiter, …), a **reference** audio clip with the desired sound, and a **dry** version of that clip without effects. When no dry version exists, a *pseudo-dry* version is produced automatically by removing effects from the reference (Fx-Removal) and normalizing it (Fx-Norm).
-2. **Output.** The LLM first writes a **chain-of-thought** (identify the category and order of the effects, then plan), then a sequence of **tool calls** with parameters (e.g., `pan`, then `delay` with its delay time, feedback, and mix), and finally a natural-language **response** explaining the chain.
-3. **Apply to a user's track.** Because the output is an executable Fx-chain rather than audio, the same chain can be run on the creator's *own* track, transferring the style of the reference to new material.
+1. **Prepare the inputs.** The model receives an instruction, a list of available effects, reference audio with the desired sound, and a dry version without effects. If a dry version is unavailable, Fx-Removal and Fx-Norm estimate a pseudo-dry version from the reference.
+2. **Generate the chain.** The model produces a written rationale, a sequence of tool calls with parameters, and an explanation of the proposed processing. A chain might include panning, delay, EQ, and limiting.
+3. **Apply to a user's track.** The effects chain can be run on the musician’s own track to approximate the processing heard in the reference.
 
-To train the model, the authors built LP-Fx, an instruction-following dataset of about 101K conversational examples with chain-of-thought annotations and tool calls [@doh2026llm2fxtools].
+The authors train the model using LP-Fx, an instruction-following dataset of about 101K conversational examples with reasoning annotations and tool calls [@doh2026llm2fxtools].
 
-In terms of the loop, LLM2Fx-Tools covers **Inspect** (reasoning about the reference audio), **Plan** (choosing the chain and its order), and **Act** (tool calls). The output is interpretable and editable: a producer can read why an effect was chosen and adjust its parameters.
+In the loop above, LLM2Fx-Tools mainly addresses inspection, planning, and action. Its output gives the producer a concrete chain to examine and adjust. The explanation can help them understand the proposed choices, though the processed audio still needs to be evaluated by listening.
 
-### Beyond a single effects chain
+### Extending the workflow to critique and revision
 
-Two recent systems extend the loop to full mixes and to the **Critique** step.
+A proposed effects chain is a starting point. Processing one track can change how it sits against the others, and an instruction such as “make the vocals clearer” leaves room for several interpretations. Two recent projects examine broader workflows that include evaluating and revising a mix.
 
-- **Agentic Music Post-Production** (MixAgent) splits the work across agents: a grouping agent organizes the tracks of a session, a planning agent decides the processing, and a **critic** model, trained on MixCritic (a dataset of 45,657 critiques), evaluates the result and feeds corrections back into the loop. The authors report a 19% reduction in errors [@koo2026agenticpostproduction].
-- **RIME** (Rule-based Instructions for Music Editing) formalizes *agentic post-production* as an iterative task: starting from a mixed track and a production intent, an agent targets individual elements, refines them, and recombines them into a finished mix. RIME generates realistic paired edit-instruction data from existing music datasets, grounded in patterns from real production workflows, and comes with POEMS, a toolkit of studio operators (stem separation, mixing, common effects) exposed through MCP for tool-calling agents. Evaluating current multimodal LLMs as agents on this data shows that post-production remains challenging for them [@schaffer2026rime].
+Agentic Music Post-Production (MixAgent) distributes the work across agents. A grouping agent organises session tracks, a planning agent selects processing, and a critic evaluates the result and provides feedback. The critic is trained on MixCritic, a dataset of 45,657 critiques. The authors report a 19% reduction in errors in their evaluation [@koo2026agenticpostproduction].
 
-:::{important} Takeaways
-- Agents shift the creator's role from *making every edit* to *stating goals and reviewing steps*. Working through standard protocols such as MCP lets them act inside tools musicians already know.
-- Post-production is an early testbed because effects are well-defined tools and results can be listened to and checked. The **Critique** step, judging whether audio actually matches a goal, remains the hardest part.
-- Because agents act through editable tools, their work can stay transparent and reversible. Interfaces that let creators inspect, approve, and undo agent actions will matter as much as model quality.
+RIME (Rule-based Instructions for Music Editing) studies post-production as an iterative editing task. Given a mixed track and a production intent, an agent edits individual elements and recombines them. RIME creates paired music-editing instructions from existing datasets using patterns drawn from production workflows. It also provides POEMS, a toolkit that exposes operations such as stem separation, mixing, and effects through MCP. Evaluations of multimodal LLM agents on these tasks show that carrying out the requested edits remains challenging [@schaffer2026rime].
+
+:::{important} Designing useful music agents
+- **Delegate steps, retain decisions.** Agents can carry out sequences of operations, while creators set goals, review changes, and decide when to take over.
+- **Keep changes accessible.** Working in patches and sessions lets creators inspect and revise the result. Clear action histories and undo support make that access more useful.
+- **Evaluate the sound as well as the actions.** A valid tool call does not establish that an edit sounds right. Critique and revision are needed to assess whether the processing meets the creator’s intent.
 :::
+
+These examples bring the question of control down to individual actions: what an agent can change, how the creator reviews those changes, and what happens when the result misses the goal. Alongside better models, music agents need interfaces that make this exchange manageable during creative work.

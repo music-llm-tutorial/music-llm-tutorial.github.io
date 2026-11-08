@@ -14,21 +14,21 @@ authors:
 :align: center
 :::
 
-In [Part 1](part1-suggestions.md), the creator and the model take turns: ask, receive, edit, ask again. Music, however, is often made by *playing*. This part looks at systems that respond to a musician **while the music is happening**, and at the engineering needed to make large generative models fast enough to play along.
+In [Part 1](part1-suggestions.md), creators listen to suggestions and decide what to do next. During improvisation, those decisions happen while the music continues. A musician might change the melody, hold a note, or introduce a new rhythm, and an AI partner needs to respond in time. This part examines systems designed for that exchange and the technical choices that make it possible.
 
-## Why real-time improvisation?
+## Making music through improvisation
 
-People brainstorm musical ideas by playing instruments or by singing [@kim2025amuse]. A system that can join in at that moment opens up new roles for AI. A real-time improvisation AI could be:
+Playing an instrument or singing can be a way to work out an idea before knowing exactly where it will go [@kim2025amuse]. An AI system that joins this process could provide:
 
-- **a jam partner at 3 am**, when no one else is around;
-- **a mirror of your own playing style**, for reflection and growth [@blanchard2025jambot]; and
-- someday, **a partner that responds faster than any human**, opening up new ways to make music [@kim2026designspace].
+- a partner to practise or improvise with when other musicians are unavailable,
+- responses that reflect aspects of the musician’s own style, offering a way to hear it differently [@blanchard2025jambot], and
+- opportunities to explore forms of interaction beyond human performance capabilities, including unusually fast responses [@kim2026designspace].
 
-A review of 184 live music agent systems found that only about 6% of them use generative transformers [@kim2026designspace]. Bringing modern generative models into live performance is still a young area, and it comes with constraints that turn-based suggestion systems never face.
+Applying LLMs to live performance remains an emerging area [@kim2026designspace]. Alongside musical quality, developers must consider when a response arrives and how it fits the ongoing performance.
 
-## How does real-time music AI work? Frame-based processing
+## Processing music as it arrives
 
-Real-time audio software does not process a whole song at once. It processes the signal in short **frames** (also called blocks or buffers). While one frame is playing, the system computes the next one. The rule is simple: **each frame must be ready before the current frame finishes playing.** If it is late, the listener hears a gap or a glitch [@donahue2026pcm].
+Real-time audio software typically processes sound in short frames, also called blocks or buffers. In a simple pipeline, the system computes the next output frame while the current one plays. If that output is not ready in time, playback may contain a gap or glitch [@donahue2026pcm].
 
 :::{figure} ../assets/composers/part2/frame-based-processing.gif
 :label: fig-frame-based
@@ -38,34 +38,33 @@ Real-time audio software does not process a whole song at once. It processes the
 Frame-based processing. Each colored frame of user input (top) is turned into a frame of output (bottom) that plays one frame later. Animation from Chris Donahue, *Principles of Computer Music*, [§10.6 Real-time Processing](https://www.cs.cmu.edu/~15322/book/ch10/06.html) (CMU 15-322).
 :::
 
-Two quantities follow from this picture. The **latency** of the system is at least one frame: the output for a frame of input can only start after that frame has been fully received and processed. The **compute budget** for each frame is the frame's duration: if the model takes longer than that to produce the next frame, the system falls behind. Smaller frames mean lower latency but less time to compute each one.
+This example separates two timing constraints. *Latency* is the delay between input and its corresponding output; the illustrated pipeline introduces one frame of delay. *Compute budget* is the time available to prepare each output frame. To sustain playback, processing must keep pace with the frame duration. Smaller frames can reduce buffering delay, but leave less time to compute each one. Actual systems may introduce additional delay through audio hardware, buffering, and communication.
 
-For generative music models, a "frame" might be a block of audio samples, a chunk of codec tokens, or a beat of chords, but the same rule applies.
+Generative models may work with audio blocks, codec tokens, or beat-level musical events. These units differ, but each system needs to deliver its output before the scheduled playback time.
 
 ## What makes real-time generation hard?
 
-1. **Tight latency budget.** Playing together requires latency below roughly 100 ms, which large generative models rarely meet. Bigger models sound better but need server GPUs, which add network delay; local hardware avoids that delay but caps model size and quality [@kim2026designspace; @blanchard2025jambot; @lyria2025livemusicmodels].
-2. **No future context.** A human accompanist listens and adapts, but also anticipates. The model must commit to its output *before* hearing what the human plays next. A chord chosen for beat 4 is already sounding when the melody note for beat 4 arrives.
-3. **Responsiveness vs. throughput.** Generating larger chunks at once is more efficient on a GPU, but it reduces how often the model can react to the musician.
+1. **Tight latency budget.** Closely coordinated playing can require responses on the order of tens of milliseconds, with less than roughly 100 ms often used as a design target. The acceptable delay depends on the interaction. Server GPUs can support larger models but introduce network delay; local inference avoids that communication cost but has fewer computing resources [@kim2026designspace; @blanchard2025jambot; @lyria2025livemusicmodels].
+2. **No future context.** The model must choose what to play before hearing everything it will accompany. A chord scheduled for the next beat may already be committed when the musician’s melody note arrives.
+3. **Responsiveness and throughput.** Generating larger chunks can be more efficient, but the model then has fewer opportunities to adjust to new (and unexpected) input.
 
-## How systems meet the latency budget
+## Designing for live interaction
 
-The systems in this part combine techniques at three stages of the pipeline [@blanchard2025jambot; @wu2024realchords; @novack2026lmdm; @wu2026streaming].
-
+Meeting these constraints involves both model design and the software around it. The examples below make changes at training, inference, and deployment [@blanchard2025jambot; @wu2024realchords; @novack2026lmdm; @wu2026streaming].
 :::{table} Where real-time systems save time.
 :label: tbl-latency-budget
 
 | Stage | Techniques | Examples in this part |
 | --- | --- | --- |
-| **Training time** | Compact tokens; training the model to *predict ahead*; post-training for robustness to its own mistakes | ReaLchords learns to anticipate from an offline teacher; LMDM's ARC-Forcing reduces error accumulation over long rollouts |
-| **Inference time** | KV caching; asynchronous generation (generate ahead, schedule early, keep regenerating) | LMDM's block-wise KV caching; ReaLJam's lookahead and commit window; jam_bot's generate-ahead scheduling |
-| **Deployment time** | Quantization; compiled, lightweight runtimes | jam_bot's move to a ggml runtime |
+| **Training** | Compact representations; learning to anticipate; training on model-generated context | ReaLchords learns from an offline teacher; LMDM uses ARC-Forcing to reduce error accumulation |
+| **Inference** | Reuse computation; generate ahead; schedule output before playback | LMDM’s block-wise KV caching; ReaLJam’s lookahead and commit window; jam_bot’s scheduling |
+| **Deployment** | Quantization and efficient runtimes | jam_bot’s use of ggml |
+
 :::
 
 ## Overview: real-time music co-creation
 
-Real-time systems split naturally by the kind of music data they handle.
-
+We consider two groups of systems, based on whether they generate symbolic music or audio.
 :::{table} Real-time music co-creation systems discussed in this part.
 :label: tbl-realtime-overview
 
@@ -73,36 +72,32 @@ Real-time systems split naturally by the kind of music data they handle.
 | --- | --- | --- |
 | **Symbolic music** | Listens to a player's notes and responds with notes or chords (e.g., accompaniment, call-and-response) | jam_bot (ISMIR'25), [ReaLchords](https://arxiv.org/abs/2506.14723) (ICML'24), [ReaLJam](https://arxiv.org/abs/2502.21267) (CHI EA'25) |
 | **Audio** | Streams audio continuously, steered by text or by what a user plays | [LMDM](https://arxiv.org/abs/2605.22717) (2026), [Streaming Generation](https://arxiv.org/abs/2510.22105) (ISMIR'26), [Magenta RT](https://arxiv.org/abs/2508.04651) (NeurIPS'25) |
-:::
 
-Symbolic models are small and fast, and their output (MIDI) can be played on any instrument. Audio models can produce any sound, but they must generate tens of thousands of samples per second of music, which makes the latency budget much harder to meet.
+:::
+Symbolic systems generate notes or chords that can be played through a synthesizer or other MIDI-compatible instrument. Audio systems generate the sound itself, including timbre and performance details. This gives them different expressive possibilities, but also increases the amount of information they must produce in time.
 
 ---
 
 ## Symbolic music accompaniment: ReaLchords and ReaLJam
 
-**ReaLchords** improvises chord accompaniment to a user's melody in real time [@wu2024realchords]. **ReaLJam** is the interface and protocol that turns it into a live jamming system [@scarlatos2025realjam]. We first look at how the model is trained, then at what ReaLJam adds to make it playable.
+ReaLchords generates chord accompaniment to a melody as it is played [@wu2024realchords]. ReaLJam builds on this work with an interface and communication protocol for live interaction [@scarlatos2025realjam]. Together, they illustrate two parts of the problem: learning to accompany without future context, and delivering those predictions in a playable system.
 
 :::{figure} ../assets/composers/part2/realchords-online-accompaniment.png
 :label: fig-realchords-online
 :alt: Online accompaniment: the user's melody arrives as orange notes up to a dashed "now" line; AI chords C, G, Am have been played, and the model predicts the next chord F just after "now", before hearing the melody that goes with it.
 :width: 80%
 
-Online accompaniment. At "now", the model must choose the next chord (F) without hearing the melody note it will accompany.
-:::
-
-:::{note} Watch
-▶ [ReaLJam demo video](https://drive.google.com/file/d/1zYEBxZiWzks_U-R1FPLBSMEapDcjdhpy/view)
+Online accompaniment. The model must choose the next chord (in this example, F) without hearing the melody note it will accompany.
 :::
 
 ### Training ReaLchords: an online student and an offline teacher
 
-The core difficulty is the second challenge above: there is no future context. An **online policy** (the student) predicts the next chord from the *past* melody and chords only. Trained only by imitation (maximum likelihood) on existing songs, such a model tends to produce chords that do not fit the melody, because in the training data the chord and the melody note were written together, but at performance time the model never sees the note before it commits.
+ReaLchords must choose chords without knowing the upcoming melody. Its online model (the student) uses only past melody notes and chords. Learning from existing songs alone does not fully solve this problem: the harmonies in those songs were composed with knowledge of the melody, while the live model has only partial information.
 
-ReaLchords fine-tunes the online model with reinforcement learning, using two signals ([](#fig-realchords-training)):
+To improve accompaniment under this constraint, ReaLchords fine-tunes the student with reinforcement learning using two sources of guidance
 
-- **An offline teacher.** A second model sees the *whole* melody, including the future. A KL-divergence term keeps the student close to the teacher's chord distribution, so the student learns to *anticipate* where the melody is going.
-- **Reward models.** Contrastive and discriminative reward models learn to tell real melody–chord pairs (blue in the figure) from mismatched ones (pink), and are then used to score the student's chords for harmonic fit.
+- **An offline teacher** has access to the complete melody. A KL-divergence term encourages the student’s chord predictions to stay close to the teacher’s distribution, even though the student has less information.
+- **Reward models** score how well the generated chords fit the melody. Contrastive and discriminative models learn from real melody–chord pairs and mismatched examples.
 
 ```{math}
 :label: eq-realchords
@@ -121,11 +116,11 @@ ReaLchords training. The online policy (student) is fine-tuned with a KL term to
 
 ### ReaLJam: making it playable
 
-A well-trained model is not yet a jam partner. The model runs on a server, the musician plays in a browser, and both need to know what the other is about to do. ReaLJam adds three ideas [@scarlatos2025realjam]:
+ReaLJam connects a server-side model (ReaLchords) to a musician playing in a browser. It needs to account for computation and communication delays while keeping the accompaniment responsive. Three features help manage this [@scarlatos2025realjam]:
 
-1. **Plan ahead.** The agent continually generates the next **4 beats** of both melody (its guess of what the user will play, dashed in [](#fig-realjam-plan)) and chords, so a chord is always ready before it is needed.
-2. **Commit window.** Because human performance can change, only the chords near "now" are locked in. The rest of the plan is regenerated every frame as new melody notes arrive.
-3. **Show the plan.** Upcoming chords are displayed in the interface, so the musician can anticipate the agent the same way the agent anticipates the musician.
+1. **Plan ahead.** The agent continually predicts four beats of melody and chords. The predicted melody is its estimate of what the musician will play, giving it a basis for preparing the accompaniment.
+2. **Commit near playback.** Chords within a short commit window are fixed so they can be scheduled reliably. Later chords remain open to revision as new notes arrive.
+3. **Show upcoming chords.** The interface displays the plan, helping the musician anticipate the accompaniment and respond to it.
 
 :::{figure} ../assets/composers/part2/realjam-plan-and-commit.png
 :label: fig-realjam-plan
@@ -143,21 +138,25 @@ ReaLchords learns to anticipate *implicitly*, inside its training objective. Rea
 
 ## Symbolic co-performance: jam_bot
 
-**jam_bot** is a live music agent that supports human–AI free improvisation on stage [@blanchard2025jambot]. It was developed at the MIT Media Lab with keyboardist Jordan Rudess and debuted in a sold-out concert in 2024.
+Jam_bot supports live human–AI improvisation and was developed at the MIT Media Lab with keyboardist Jordan Rudess [@blanchard2025jambot]. It debuted in concert in 2024, bringing model design, personalisation, and performance software into the same project.
 
-:::{figure} ../assets/composers/part2/jambot-stage.jpg
-:label: fig-jambot-stage
-:alt: Dark concert stage with a performer at a keyboard surrounded by an installation of illuminated leaf-shaped lights.
-:width: 80%
-
-jam_bot on stage. ▶ [Watch the performance video](https://drive.google.com/file/d/1BJYvs6OAnlMJ9PfnjxV1lnz0YF1ilHtt/view).
+:::{card} Official jam_bot project page
+:link: https://jam-bot-ismir-2025.media.mit.edu/
+Musical examples by the authors [@blanchard2025jambot]: jam-bot-ismir-2025.media.mit.edu
 :::
 
-Three design decisions turn a symbolic music language model into a stage-ready partner:
+:::{iframe} https://www.youtube.com/embed/7Lzz2jvto38
+:label: vid-jambot-performance
+:width: 100%
 
-- **Several interaction modes from one model.** Call-and-response (user and agent trade bars), AI accompaniment (the agent accompanies the user's melody), and AI melody lead (the agent improvises over the user's chords). Rather than training a separate model for each, jam_bot changes the *context and conditioning signals* given to the music language model.
-- **Personalization.** The models are fine-tuned on Rudess's own recordings, which he deliberately structured so the agent could learn the style needed for each piece.
-- **Efficient inference.** A low-latency, multi-threaded system listens, prompts the model, and schedules its generations ahead of time. A follow-up [@blanchard2026jambotnime] moved inference from ONNX Runtime to the lightweight ggml runtime, reducing generation time from about 4 to about 2 ms per token for a 170M-parameter model on an RTX 4090 (about 10 ms per token on an M3 Max laptop) with a 120-token context, and generates notes ahead of time so they can be scheduled early.
+Jordan Rudess performing with jam_bot ("Jordan Rudess + jam_bot: A Human-AI Musical Dialogue").
+:::
+
+Its design combines several forms of interaction with training and inference choices tailored to live use:
+
+- **Interaction modes.** The musician and agent can trade phrases, the agent can accompany a melody, or it can play a melody over the musician’s chords. These modes use different context and conditioning signals for the music language model.
+- **Personalization.** Models are fine-tuned on Rudess’s recordings, which he structured to demonstrate the playing styles needed for particular pieces.
+- **Inference and scheduling.** Separate threads handle listening, model requests, and playback scheduling. Notes are generated ahead of time so they are ready to play on schedule. A follow-up implementation moved from ONNX Runtime to ggml [@blanchard2026jambotnime]. For a 170M-parameter model with a 120-token context, it reduced generation time from about 4 to 2 ms per token on an RTX 4090; inference on an M3 Max laptop took about 10 ms per token.
 
 :::{figure} ../assets/composers/part2/jambot-interaction-modes.png
 :label: fig-jambot-modes
@@ -171,7 +170,7 @@ jam_bot interaction modes: trading bars, accompanying the user's melody, and imp
 
 ## Audio co-performance
 
-Audio models can produce any sound, including timbres that no MIDI instrument can, but meeting the latency budget is much harder. Recent *live music models* generate audio continuously in short chunks and can be steered while they play. From a creator's point of view, they support three kinds of co-performance.
+Audio generation brings timbre and texture into the interaction, alongside notes and rhythm. Streaming models produce sound in chunks and allow users to influence the music as it plays. The examples here support three overlapping forms of interaction:
 
 :::{figure} ../assets/composers/part2/audio-co-performance.png
 :label: fig-audio-coperformance
@@ -181,34 +180,33 @@ Audio models can produce any sound, including timbres that no MIDI instrument ca
 Three ways to co-perform with an audio model.
 :::
 
-1. **Text control.** Change the prompt while the model plays, and the music morphs into the new style (e.g., Magenta RT, LMDM). ▶ [Prompt-mixing demo](https://drive.google.com/file/d/1-55Lw7v2HfeWYvmv1Hse27yHFkhcuofU/view)
+1. **Text control.** Change the prompt while the model plays, and the music morphs into the new style (e.g., Magenta RT, LMDM).
 2. **Respond to your playing.** The model hears the musician's live audio and answers or varies it (e.g., Magenta RT's audio injection, LMDM's generative delay).
-3. **Accompaniment.** The model generates a matching part for another instrument's live audio or MIDI (e.g., streaming accompaniment, LMDM, applications built on Magenta RT 2). ▶ [Accompaniment demo](https://drive.google.com/file/d/1zeIMZ_RSKnm_FW3nkXIlFyyDEjtHB7ij/view)
+3. **Accompaniment.** The model generates a matching part for another instrument's live audio or MIDI (e.g., streaming accompaniment, LMDM, applications built on Magenta RT 2).
 
 :::{iframe} https://www.youtube.com/embed/7UXvea7gcps
 :label: vid-respond
 :width: 100%
 
-A guitarist playing with a live audio model that responds to their playing.
+Guitarist Sebastian Franjou playing with LMDM's generative delay, which responds to their playing. Video from Novack et al. (2026) [@novack2026lmdm].
 :::
 
-### How these systems meet the budget
+### Approaches to streaming audio
 
-**Magenta RT / Live Music Models.** Magenta RealTime is an open live music model (750M parameters in its first version) that generates audio continuously in chunks and can be steered with text and audio prompts, including *audio injection*, where the musician's live audio is mixed into the audio the model conditions on, so the model responds to it [@lyria2025livemusicmodels]. Magenta RealTime 2 adds smaller models (2.4B and 230M parameters) designed to run locally, for example on a laptop, with MIDI, text, and audio control [@magenta2026mrt2].
+**Magenta RT / Live Music Models.** Magenta RealTime generates audio continuously and accepts text and audio prompts [@lyria2025livemusicmodels]. Its first version uses a 750M-parameter model. With audio injection, live input is mixed into the audio context used for generation, allowing the musician’s playing to influence what comes next. Magenta RealTime 2 includes 2.4B- and 230M-parameter models designed for local use, with MIDI, text, and audio controls [@magenta2026mrt2].
 
-**Live Music Diffusion Models (LMDM).** Most open-source audio generators are diffusion models, which normally generate a whole clip at once rather than streaming. LMDM repurposes such a model (Stable Audio Open Small) into a streaming generator [@novack2026lmdm]:
+**Live Music Diffusion Models (LMDM).** Diffusion-based music generators commonly produce a complete clip in one pass through the generation process. LMDM adapts Stable Audio Open Small for streaming [@novack2026lmdm], with changes to inference, training, and live interaction:
 
-- *Inference time:* block-wise **KV caching** lets each new block of audio reuse computation from previous blocks, recovering and then exceeding the efficiency of autoregressive live music models. The paper reports a time to first frame of about 0.03 s, compared with about 4 s for Magenta RT measured in the same setting.
-- *Training time:* **ARC-Forcing**, an adversarial post-training recipe, trains the model on its own rollouts so errors do not accumulate over long performances, without explicit reinforcement learning or reward models.
-- *Deployment:* LMDM runs locally on a consumer gaming laptop as a **generative delay**. The system buffers $S$ seconds of the musician's input, runs inference in $\tau$ seconds, and writes an $S$-second output block, giving a fixed delay $\Delta = S + \tau$. Real time only requires $\tau < S$, so instead of fighting for 100 ms the system turns a roughly one-second delay into a musical effect that transforms the musician's improvisation.
+- **Reuse earlier computation.** Block-wise KV caching lets new audio blocks reuse computation from previous blocks. In the paper’s comparison, time to first frame was about 0.03 seconds for LMDM and 4 seconds for Magenta RT.
+- **Train on generated context.** ARC-Forcing uses adversarial post-training on the model’s own rollouts to reduce error accumulation during long generations, without explicit reinforcement learning or reward models.
+- **Use delay as part of the interaction.** LMDM runs on a consumer gaming laptop as a generative delay. It buffers $S$ seconds of input, computes for $\tau$ seconds, and produces an $S$-second output block. The resulting delay is $\Delta = S + \tau$. Sustained streaming requires $\tau < S$; the roughly one-second delay becomes an audible transformation of the musician’s playing, rather than an attempt at immediate accompaniment.
 
-**Streaming generation for accompaniment.** Here the model listens to a live audio stream (e.g., a singer) and must emit an accompanying stream (e.g., a guitar part) at the same time. @wu2026streaming formalize this with two design variables: the **future visibility** $t_f$, the offset between the output's playback time and the latest input the model can condition on (a negative $t_f$ means the model predicts ahead to compensate for system latency), and the **chunk size** $k$, the amount of audio emitted per model call. Training transformer decoders across a grid of $(t_f, k)$ shows exactly the trade-offs from the start of this part: more effective future visibility improves coherence but demands faster inference, and larger chunks improve throughput but degrade the accompaniment because the model updates less often. The authors also find that naive maximum-likelihood streaming training is not enough for coherent accompaniment without future context, which motivates anticipatory training objectives like those of ReaLchords.
+**Streaming generation for accompaniment.** Here, the model must generate an accompanying part while listening to a live input, such as a singer. @wu2026streaming study two variables: future visibility $t_f$, which specifies how far the available input extends relative to output playback, and chunk size $k$, the amount generated per call. Negative future visibility means the model must predict ahead to compensate for system delay.
 
-:::{important} The common pattern
-Whether symbolic or audio, real-time systems trade some *responsiveness* for *time to think*: they plan ahead (ReaLJam), schedule early (jam_bot), accept a fixed musical delay (LMDM), or limit how much of the partner they can see (streaming accompaniment). Deciding which trade-off feels musical is as much an interaction design question as an engineering one.
+Their experiments with transformer decoders show a trade-off. Access to later input improves coherence, but leaves less time to compute before playback. Larger chunks improve throughput, but reduce how often the accompaniment can respond. The study also finds that maximum-likelihood training alone struggles to produce coherent accompaniment without future context, motivating approaches that explicitly train anticipation.
+
+:::{important} Timing is part of the interaction
+
+These systems make different choices about when to listen, generate, and commit. ReaLJam revises a plan until playback approaches; jam_bot schedules notes in advance; LMDM makes a longer delay part of the musical interaction. Low latency matters, but so does choosing a timing structure that suits the way the musician and system play together.
+
 :::
-
-## Further reading
-
-- A design space for live music agents, covering 184 systems across research and artistic practice [@kim2026designspace].
-- The Ghost in the Keys, a Disklavier demo of human–AI musical co-creativity [@bradshaw2025ghost].

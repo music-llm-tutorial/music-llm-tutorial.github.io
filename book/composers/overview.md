@@ -8,7 +8,7 @@ authors:
 
 (creators-overview)=
 
-The creative process is rarely a straight line. A songwriter hums a phrase on the way home, sketches a chord progression at the piano, abandons it, comes back a week later with a new idea from a film they watched, and finally finishes the track in a DAW. Much of this time is not spent executing a plan but **getting unstuck**: finding the next idea, trying a variation, or turning a rough sketch into something that sounds right.
+The creative process is rarely a straight line. For example, you could start with a few chords on a guitar which become a rough recording, but after hours at the computer, the song still doesn’t feel right. Some ideas get thrown out and others sit unfinished until a conversation with a friend gives them a new direction. Then it’s back to the guitar, or back to the mix, to try again. Much of making music happens in this back and forth: listening for what’s missing, rethinking a choice, and finding a way to move forward when you’re stuck.
 
 :::{figure} ../assets/composers/overview/creative-process.png
 :label: fig-creative-process
@@ -18,19 +18,12 @@ The creative process is rarely a straight line. A songwriter hums a phrase on th
 The creative process is non-linear, and mostly about getting unstuck.
 :::
 
-This chapter asks a simple question: **what can LLMs do to assist creators without replacing their creativity?** Instead of generating a finished song from a prompt, the systems in this chapter offer *AI support within an ongoing creative process*. They meet creators at the moments they actually get stuck, which often sound like the questions in [](#fig-creator-questions).
+This chapter asks a simple question: **what can LLMs do to assist creators without replacing their creativity?** Instead of generating a finished song from a prompt, the systems in this chapter offer *AI support within an ongoing creative process*. 
 
-:::{figure} ../assets/composers/overview/questions-from-creators.png
-:label: fig-creator-questions
-:alt: Four questions creators ask, arranged around the label "AI support within an ongoing creative process": "I have a feeling in mind, but no chords yet", "I like this phrase, what could come next?", "Can you help me make this change?", and "Can you play something that responds to me?"
-:width: 75%
 
-Questions that creators ask in the middle of their work. Each one asks the AI to support a process the creator is already leading.
-:::
+## Three ways of working together
 
-## Three ways creators work with LLMs
-
-We organize the chapter around three ways music creators can work with LLMs and other language-model-style generative systems. They differ in *what the creator gives the model*, *what comes back*, and *how fast the exchange has to happen*.
+We follow three kinds of interaction: asking for suggestions, playing together in real time, and delegating tasks in music software. The chapter covers both LLMs and related generative systems, including models that work directly with musical events or audio.
 
 :::{figure} ../assets/composers/overview/three-ways.png
 :label: fig-three-ways
@@ -40,48 +33,20 @@ We organize the chapter around three ways music creators can work with LLMs and 
 Three ways to support music creators.
 :::
 
-:::{table} The three parts of this chapter.
+:::{table} Three kinds of interaction explored in this chapter.
 :label: tbl-three-ways
 
-| Part | The creator… | The model returns… | Pace |
-| --- | --- | --- | --- |
-| [**1 · Music making through suggestions**](part1-suggestions.md) | asks for ideas, or hands over material to rework: a mood, an image, a phrase, a tapped rhythm, a recording | editable options (chords, MIDI, audio, or building blocks such as drum hits and code) to keep, edit, or discard | Turn by turn, between edits |
-| [**2 · Real-time music co-creation**](part2-realtime.md) | plays or sings | a musical response (chords, notes, or audio) that sounds while the creator keeps playing | Continuous, within ~100 ms |
-| [**3 · Agentic music making**](part3-agentic.md) | describes a goal in words | a sequence of actions inside the creator's own tools (a Pure Data patch, an Ableton Live session, an effects chain), with its reasoning | Multi-step: the agent plans, acts, and checks |
+| Part | What the creator does | What the system contributes |
+| --- | --- | --- |
+| [1 · Music making through suggestions](part1-suggestions.md) | Shares an idea, a prompt, or material to develop | Suggestions to listen to, edit, and build on |
+| [2 · Real-time music co-creation](part2-realtime.md) | Plays instruments or sings | A musical response while the performance continues |
+| [3 · Agentic music making](part3-agentic.md) | Describes a task or a desired change | Actions carried out in music software |
 :::
 
-**[Part 1](part1-suggestions.md)** covers the most common pattern today: the creator asks, and the model *suggests*. We look at three families of suggestion systems: generating compositional ideas in symbolic form (Amuse, MIDI-LLM), generating audio under time-varying controls such as a tapped rhythm (TRIA), and recovering editable structure from existing material (D-Composer, Decomposer).
+**[Part 1](part1-suggestions.md)** covers systems that suggest musical material for creators to use or edit. The suggestions might be notes and chords, as in Amuse and MIDI-LLM, or audio guided by a rhythm or other time-varying input, as in TRIA. We also look at D-Composer and Decomposer, which recover editable structure from existing material. We examine what creators can provide as input, what each system produces, and how the results can be used in further work.
 
-**[Part 2](part2-realtime.md)** removes the pause between turns. When a musician improvises, the model has to respond *while* the music is happening, under a latency budget of roughly a tenth of a second. We explain how real-time systems work (frame-based processing), why this is hard for large generative models, and how symbolic systems (ReaLchords, ReaLJam, jam_bot) and audio systems (Magenta RT, Live Music Diffusion Models, streaming accompaniment) meet the budget.
+**[Part 2](part2-realtime.md)** covers systems that respond while a musician plays or sings. These systems must process incoming music and generate a response quickly enough to keep up with the performance. We explain frame-based processing and the challenges of generating music with low latency. Examples include symbolic systems such as ReaLchords, ReaLJam, and jam_bot, and audio systems such as Magenta RT, Live Music Diffusion Models, and streaming accompaniment.
 
-**[Part 3](part3-agentic.md)** moves from suggestions to *actions*. LLM agents can now operate the software musicians already use, such as Pure Data and Ableton Live, through a standard protocol (MCP). We close the part with music post-production, where agents inspect tracks, plan an effects chain, apply it, and critique the result (LLM2Fx-Tools, agentic mixing, RIME).
+**[Part 3](part3-agentic.md)** covers LLM agents that carry out tasks in music software. We look at how agents use the Model Context Protocol (MCP) to interact with tools such as Pure Data and Ableton Live. We then examine music post-production through LLM2Fx-Tools, agentic mixing, and RIME, focusing on how agents inspect tracks, choose and apply effects, and evaluate the results.
 
 **[Looking ahead](looking-ahead.md)** brings the three parts together and lists open questions for building AI for *human* creativity.
-
-## A common thread: keeping the creator at the center
-
-The three parts use very different technology, but they are evaluated against the same question: does the system leave the creator in charge? In [Part 1](#what-matters-to-creators) we introduce four dimensions of human creativity that recur throughout the chapter.
-
-::::{grid} 1 2 2 4
-
-:::{card} Agency
-*Am I driving the creative direction?*
-:::
-
-:::{card} Control
-*Can I make the changes I want?*
-:::
-
-:::{card} Exploration
-*Can I try out different ideas and discover new possibilities?*
-:::
-
-:::{card} Ownership
-*Do I feel that this work is truly mine?*
-:::
-
-::::
-
-:::{note} About the systems in this chapter
-Each part presents a few representative systems in depth, with a shared "recipe" that generalizes beyond them. They are not an exhaustive survey. More system overviews are collected on the tutorial website.
-:::
