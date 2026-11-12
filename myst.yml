@@ -70,7 +70,8 @@ project:
     - README.md
 
 site:
-  template: book-theme
+  # Pinned: the unpinned book-theme now resolves to a release that the locked mystmd (1.10.1) cannot load.
+  template: https://github.com/jupyter-book/myst-theme/releases/download/myst-to-react%401.4.1/book-theme.zip
   title: LLMs × Music
   options:
     favicon: asset/favicon.ico

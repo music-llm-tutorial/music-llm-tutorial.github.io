@@ -29,7 +29,7 @@ picks one of a few options. An annotator is not handed options. It has to
 decide on its own what is worth saying about a track, and every statement it
 adds is a chance to be wrong. A model can score well on multiple choice and
 still write a poor row, so annotation needs its own evaluation, described
-[below](#evaluation-of-llm-powered-annotation).
+[below](#sec-annotation-evaluation).
 
 ## LLM-powered annotation
 
@@ -211,6 +211,7 @@ as instructions, where the supervised baselines are thirteen separate models
 each column can be more useful than thirteen models that are better on one,
 because the database is never finished.
 
+(sec-annotation-capabilities)=
 ## Beyond the multitask model: more LLM capabilities
 
 A model that answers many instructions uses only some of what Chapter 1
@@ -269,7 +270,7 @@ the candidate chords, then checks them against the bass and the key
 the chord recognizer alone on three test sets (for example, from 80.07 to
 81.13 on UsPop2002). The LLM never hears the audio here. It reasons over what
 the tools measured, which is one answer to the time-aligned limitation
-[below](#limitations-and-opportunities).
+[below](#sec-annotation-limitations).
 
 :::{figure} img/annotation-chord-cot.png
 :label: fig-annotation-chord
@@ -315,6 +316,7 @@ row. The more fields it is given, the less it has to guess.
 Audio-to-caption-to-tag (baseline) against audio-to-tag-to-caption (proposed). Figure from [@bukey_metadata_2026].
 :::
 
+(sec-annotation-evaluation)=
 ## Evaluation of LLM-powered annotation
 
 Annotation is evaluated differently from understanding. Chapter 2 asks what a
@@ -468,6 +470,7 @@ Before the limitations, a summary of what the sections above showed.
    exists and on what it knows about artists and eras, so the fields it fills
    are consistent with the rest of the row.
 
+(sec-annotation-limitations)=
 ## Limitations and opportunities
 
 - **Time-aligned measurements.** On tasks whose answer is a sequence of
@@ -499,7 +502,7 @@ Before the limitations, a summary of what the sections above showed.
 - **Most LLM capabilities are still unused.** Most work stops at one model
   that answers many instructions. Chain-of-thought reasoning, in-context
   learning, and agentic pipelines have only begun to reach annotation, as the
-  examples [above](#beyond-the-multitask-model-more-llm-capabilities) show. *Challenge:* decide
+  examples [above](#sec-annotation-capabilities) show. *Challenge:* decide
   which capability each kind of field needs.
 - **Audio is not the only input.** Today's annotators mostly read audio,
   sometimes with lyrics or metadata. *Challenge:* decode from audio, MIDI or
