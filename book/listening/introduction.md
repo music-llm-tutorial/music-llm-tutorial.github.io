@@ -6,14 +6,40 @@ authors:
 
 # Music listening with LLMs
 
-Take a listener, user 1024: female, aged 25–34, with Bill Evans and Nils
-Frahm among her favorites. She asks for *"something for a late-night drive in
-the rain, no vocals, and not too old."* The request describes the music: a
-sound ("no vocals"), a release date ("not too old"), and a situation ("a
-late-night drive in the rain"). The profile describes the person, and it
-changes what a good answer is. For this listener, a late-night drive probably
-means sparse piano and slow jazz; for someone whose favorites are synthwave,
-the same words point somewhere else entirely.
+A music listening application is where listeners and artists meet
+({numref}`fig-intro-application`). Artists release music into it, and
+listeners open it to find something to hear. The application connects the
+two. It stores the music, learns what each listener likes, and decides which
+of millions of tracks to show to which person. Streaming services, radio
+apps, and the search bar of a music library are all listening applications.
+
+:::{figure} img/intro-listening-application.png
+:label: fig-intro-application
+:width: 100%
+:alt: A listener with headphones on the left, labeled User, and a musician at a workstation on the right, labeled Artists. Arrows from both point to phones showing a music player in the middle, labeled Listening Applications.
+
+A music listening application connects users and artists.
+:::
+
+This chapter looks at how the capabilities of LLMs have changed music
+listening applications. Chapter 1 introduced those capabilities, among them
+language understanding and generation, world knowledge, instruction
+following, in-context learning, and tool calling. Here we ask what each one
+changes in a listening application: how the catalog is described, how a
+listener asks for music, and how the system answers.
+
+Imagine a listener who opens the application and types: *"something for a
+late-night drive in the rain, no vocals, and not too old."* The request
+describes the music she wants: a sound ("no vocals"), a release date ("not
+too old"), and a situation ("a late-night drive in the rain"). The
+application also has her listening history. Her recent plays are mostly Bill
+Evans and Nils Frahm. The history describes the person, and it changes what a
+good answer is. For this listener, a late-night drive probably means sparse
+piano and slow jazz. For someone whose history is full of synthwave, the same
+words point somewhere else entirely. We return to this listener and her
+request throughout the chapter.
+
+## Tasks for music listening applications
 
 The two halves correspond to the two tasks a listening system performs.
 **Search/Retrieval** maps a query to music: the listener says what they want,
@@ -42,7 +68,7 @@ The three tasks. Annotation maps music to information, search/retrieval maps a q
 | Search/Retrieval | query → music | the listener says what they want |
 | Recommendation | user → music | the system suggests the next track for this user |
 
-## Previous approaches
+## Previous approaches: annotation, search, and recommendation
 
 Search/retrieval improved by widening what could be written about a track. Early
 catalogs held a title, an artist, and a year, so a query was an exact match
@@ -87,10 +113,26 @@ tutorial, *Connecting Music Audio and Natural Language* [@doh2024connecting].
 Previous approaches. Annotation is tagging with a fixed vocabulary, search/retrieval is nearest-neighbor search in a joint text-audio embedding, and recommendation factorizes the user-by-track play matrix. Each task has its own model and its own representation.
 :::
 
-## What LLMs change
+## LLM-powered listening applications
 
 LLMs change all three tasks, and the change is the same in each: the input
 becomes language.
+
+{numref}`fig-intro-models` shows the change at the level of the system. A
+listening application has three parts: an interface that takes the request,
+models that answer it, and a database of music and users. Previous systems
+used a separate model for each kind of request: a recommender for a user, a
+text search model for a text query, and an audio search model for an audio
+example. An LLM-powered application puts one model, or one LLM that calls the
+earlier models, behind all three.
+
+:::{figure} img/intro-application-models.png
+:label: fig-intro-models
+:width: 90%
+:alt: Two diagrams of a music listening application with an interface, models, and a database of music and users. Top: three kinds of request (query by user ID and listening history, query by text, query by audio example) each go to a separate model: recommender models, text search models, and audio search models. Bottom: the same three kinds of request go to a single block labeled LLMs x Models.
+
+A music listening application before and with LLMs. Top: one model per kind of request. Bottom: LLMs take the place of the separate models.
+:::
 
 **Annotation.** An LLM can write a description for every track from whatever
 signals exist, such as tags, metadata, or the outputs of MIR models, so the
@@ -108,13 +150,17 @@ for the sound, a filter over the record for the date
 [@doh_talkplaytools_2025]. "Not too old" becomes a condition rather than a
 phrase the embedding cannot place.
 
-**Recommendation.** The user no longer has to be an ID. A listening history
-can be written as a list of tracks and a stated taste as a sentence, and an
-LLM given both can return tracks and say why it chose them
-[@he_zeroshot_crs_2023; @palumbo_text2tracks_2025; @doh_talkplay_2025]. A
-profile written in text can be read and corrected by the listener
-[@balog_scrutable_2019], and a new track can be recommended as soon as it has
-a description.
+**Recommendation.** The recommender can now take an explicit query as well.
+Matrix factorization learned what a listener usually plays, but it had no
+input for what she wants right now. An LLM-based recommender accepts both.
+The listening history goes in as a list of tracks, the request goes in as a
+sentence, and the model returns tracks and says why it chose them
+[@he_zeroshot_crs_2023; @palumbo_text2tracks_2025]. The collaborative signal
+is not thrown away. It can be built into the track tokens the model
+generates, or kept as a matrix factorization model that the LLM calls as a
+tool [@doh_talkplay_2025; @doh_talkplaytools_2025]. The system then uses
+what millions of listeners played and what this listener just asked for in
+the same answer.
 
 Once query and user are both language, they can sit in the same context.
 Search/retrieval and recommendation then become one problem, *(user, query) → music*:
@@ -124,13 +170,6 @@ upbeat" refines the query, a skip updates what the system knows about the
 user, and both enter the same loop
 [@chaganty2023beyond; @doh_talkplaytools_2025]. This convergence is the main
 claim of the chapter.
-
-:::{figure} ../assets/listening-after.svg
-:label: fig-listening-after
-:alt: What LLMs change. On the left, annotation: an audio-language LLM takes an audio track and its metadata row, where genre (jazz) and year (2019) come for free and mood and instruments are empty, and a system prompt naming the columns to add ("write a caption; add mood and instruments"). It goes beyond tagging, writing a caption ("A sparse piano trio, brushed drums.") and imputing the new columns (mood nocturnal, instruments piano trio). The information is stored in a database table with columns track, genre, year, mood, and instruments, where the mood and instruments cells are marked as added by the LLM; the table feeds the model on the right. On the right, search/retrieval and recommendation merge into conversational recommendation: the query and the user (ID 1024, female, aged 25–34, favorites Bill Evans and Nils Frahm) both feed into one LLM or agent that maps (user, query) to music and a response. It answers with slow piano tracks after 2015, close to the user's Nils Frahm plays; asked for something more upbeat, it swaps in brighter tracks that still have no vocals.
-
-What LLMs change. Annotation extends from tagging to captioning and metadata imputation. Search/retrieval and recommendation merge: the query and the user enter one LLM or agent, which returns music and a response, and the two tasks become conversational recommendation.
-:::
 
 The rest of the chapter follows the late-night-drive request through this
 shift: how LLMs annotate a catalog, how they search and recommend from it, how

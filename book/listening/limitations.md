@@ -1,10 +1,10 @@
 ---
-title: Limitations
+title: Limitations and Open Problems
 authors:
   - name: Seungheon Doh
 ---
 
-# Limitations and directions
+# Limitations and open problems
 
 The previous pages described what works, and the evaluation section of the
 last one described how badly we measure it. This page collects what does not
@@ -15,22 +15,16 @@ the directions we think are worth the next few years.
 
 - **Anything with a time axis.** The conditioned models of the annotation
   page are at parity with captioners and close on categories, but on tasks
-  whose answer is a sequence of events aligned to the audio they are not yet
-  usable. In CMI-Bench the best audio-text LLM reaches an F-measure of 23.7
-  on beat tracking against 88.3 for a supervised tracker, and 9.5 against
-  74.3 on key detection, with melody extraction and lyrics transcription in
-  the same range [@ma_cmibench_2025]. Chord recognition and structure
-  analysis, the two time-aligned tasks a listener would most want in a record
-  ("where is the chorus?", "what does the bridge do harmonically?"), are not
-  in the instruction benchmarks at all, and we know of no audio-text LLM that
-  reports them at a usable level. The reason is structural rather than a
-  matter of scale: an LLM emits one token at a time from a pooled audio
-  representation, and beats, chords, and section boundaries are dense
-  outputs that need to be placed on the waveform at frame resolution. This
-  is the one part of annotation where the supervised MIR models are not a
-  stopgap but the only option, and a record that asks the conditioned model
-  for them will be wrong in exactly the fields that make a track more than
-  a mood.
+  whose answer is a sequence of events aligned to the audio they are still
+  far behind. In CMI-Bench2 the best audio-text LLM reaches an F-measure of
+  30.3 on beat tracking against 88.3 for a supervised tracker, 7.2 against
+  72.3 on melody extraction, and 33.8 against 70.3 on structure boundaries
+  within 0.5 seconds [@ma_cmibench2_2026]. Chord recognition is not in the
+  instruction benchmarks at all. One likely reason is the output format: an
+  LLM emits one token at a time from a pooled audio representation, while
+  beats, chords, and section boundaries are dense outputs that need to be
+  placed on the waveform at frame resolution. For these fields the
+  supervised MIR models are still the better source.
 - **One entry per track.** Tags, captions, and the fields in the record
   describe a whole track, which is a direct consequence of the limitation
   above: without reliable structure analysis, there is no segment to attach
@@ -86,6 +80,82 @@ the directions we think are worth the next few years.
 - **The state is not yet a product.** Listener state is held in a context
   window and lost at the end of the session. Memory across sessions, and the
   listener's control over it, are open design problems.
+
+## Open problems from the RecSys Challenge 2026
+
+The RecSys Challenge 2026 evaluated many submitted systems on the same
+conversations. Its analysis shows four problems that the systems share
+[@doh_recsyschallenge_2026].
+
+### Open problem 1: Multi-turn understanding
+
+Ranking quality rises over the first few turns, as the system learns what the
+listener wants, and peaks around the third
+({numref}`fig-limits-multiturn`). It then falls, and by the eighth turn the
+median system has lost about half of its peak score. Systems use the first
+turns of context and lose track of later ones.
+
+:::{figure} img/limits-multiturn.png
+:label: fig-limits-multiturn
+:width: 60%
+:alt: Line chart of nDCG at 20 by target turn index from 1 to 8 for the 16 challenge systems. The median system rises from about 0.1 at turn 1 to about 0.57 at turn 3, then declines to about 0.27 at turn 8. A BM25 plus Llama baseline stays below 0.3 throughout.
+
+Ranking quality by conversation turn in the RecSys Challenge 2026. Figure from [@doh_recsyschallenge_2026].
+:::
+
+### Open problem 2: User query understanding
+
+The analysis sorts queries by how specific the wording is and how specific
+the target is ({numref}`fig-limits-query`). Systems do best when both are
+specific ("Windup by Hayoung Lyou, the jazz composer and pianist"; median
+nDCG@20 0.47). They do worst when the wording is vague but only a few tracks
+are correct ("What was the popular song from a recent musical movie?"; 0.27).
+That case needs world knowledge and reasoning before any retrieval.
+
+:::{figure} img/limits-query-table.png
+:label: fig-limits-query-table
+:alt: Four query types. LL, low query specificity and low target specificity: Play some chill music. HL, high query specificity and low target specificity: Find bebop jazz with saxophone, 1950s to 60s. LH, low query specificity and high target specificity: What was the popular song from a recent musical movie? HH, high on both: Windup by Hayoung Lyou, the jazz composer and pianist.
+
+Four query types by the specificity of the wording and of the target. Table from [@doh_recsyschallenge_2026].
+:::
+
+:::{figure} img/limits-query-specificity.png
+:label: fig-limits-query
+:width: 60%
+:alt: nDCG at 20 of each challenge system on the four query types. Medians: LL 0.35, HL 0.39, LH 0.27, HH 0.47.
+
+Ranking quality by query type. Vague wording with a specific target (LH) is the hardest. Figure from [@doh_recsyschallenge_2026].
+:::
+
+### Open problem 3: Cold start
+
+When the listener's profile is hidden, most systems score about the same as
+when it is shown ({numref}`fig-limits-coldstart`). Either the profile is
+rarely needed, or systems are not yet using it. The second reading would mean
+personalization is largely unsolved.
+
+:::{figure} img/limits-cold-start.png
+:label: fig-limits-coldstart
+:width: 65%
+:alt: For each challenge system, nDCG at 20 with the user profile visible (warm) and masked (cold), and the cold-minus-warm difference with 95% bootstrap intervals. For almost every system the interval includes zero.
+
+Warm against cold nDCG@20 per system. Figure from [@doh_recsyschallenge_2026].
+:::
+
+### Open problem 4: Generalizing multitask modeling
+
+The introduction argued that the two tasks merge, but the representations
+resist. Semantic IDs built for search perform poorly on recommendation and
+the reverse, and IDs trained on both tasks land between the two specialists
+({numref}`fig-limits-joint`) [@penha_semanticids_2025].
+
+:::{figure} img/limits-joint-ids.png
+:label: fig-limits-joint
+:width: 60%
+:alt: Scatter plot of recommendation recall at 30 against search recall at 30 for semantic ID strategies. Recommendation-based IDs are highest on recommendation and lowest on search, search-based IDs the reverse. A multi-task strategy lies on the Pareto frontier between them; fused, separate, and prefix-share strategies lie below it.
+
+Search and recommendation quality for different semantic ID strategies. Figure from [@penha_semanticids_2025].
+:::
 
 ## Directions
 

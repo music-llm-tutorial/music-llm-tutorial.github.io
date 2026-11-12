@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 478" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">One dialogue from TalkPlayData 2</title>
+<desc id="d">A listener profile (twenties, Argentina, prefers gothic and industrial music) and a first user turn asking for an electronic band with a powerful, almost anthemic sound are read together: unified search and recommendation. The assistant returns the track Perpetual by VNV Nation and a response that says why it was chosen: interpretable response. The user confirms and asks for earlier tracks with an epic, introspective feel: multi-turn refinement.</desc>
+<rect x="0.8" y="0.75" width="500" height="96" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="22" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#607b9a">LISTENER PROFILE</text>
+<text x="16" y="41" font-size="11" fill="#607b9a" font-family="Menlo, Consolas, monospace">age_group: 20s</text>
+<text x="16" y="57" font-size="11" fill="#607b9a" font-family="Menlo, Consolas, monospace">country_name: Argentina</text>
+<text x="16" y="73" font-size="11" fill="#607b9a" font-family="Menlo, Consolas, monospace">gender: female</text>
+<text x="16" y="89" font-size="11" fill="#607b9a" font-family="Menlo, Consolas, monospace">preferred_musical_culture: Gothic/Industrial</text>
+<rect x="0.8" y="108.75" width="500" height="62" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="130" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">USER</text>
+<text x="16" y="148" font-size="12" fill="#ab7827" font-style="italic">“I’m trying to remember an electronic band with a really powerful,</text>
+<text x="16" y="164" font-size="12" fill="#ab7827" font-style="italic">almost anthemic sound.”</text>
+<rect x="60.8" y="182.75" width="440" height="78" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="76" y="204" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">ASSISTANT · MUSIC</text>
+<rect x="76" y="214" width="36" height="36" rx="4" fill="#8f9066" fill-opacity="0.35"/>
+<path d="M89,224 L101,232 L89,240 Z" fill="#8f9066"/>
+<text x="124" y="228" font-size="13" fill="#8f9066" font-weight="700">Perpetual — VNV Nation</text>
+<text x="124" y="246" font-size="11" fill="#8f9066" font-family="Menlo, Consolas, monospace">tags: loved · perpetual change · +86 more</text>
+<rect x="60.8" y="272.75" width="440" height="98" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="76" y="294" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">ASSISTANT · RESPONSE</text>
+<text x="76" y="312" font-size="12" fill="#8f9066" font-style="italic">“Gotcha! When you say ‘powerful, almost anthemic sound’ and</text>
+<text x="76" y="328" font-size="12" fill="#8f9066" font-style="italic">given your love for VNV Nation, a track that immediately comes</text>
+<text x="76" y="344" font-size="12" fill="#8f9066" font-style="italic">to mind is ‘Perpetual’ by VNV Nation. It’s got that epic, driving</text>
+<text x="76" y="360" font-size="12" fill="#8f9066" font-style="italic">energy that really fits the bill.”</text>
+<rect x="0.8" y="382.75" width="500" height="78" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="404" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">USER</text>
+<text x="16" y="422" font-size="12" fill="#ab7827" font-style="italic">“Yes! VNV Nation, that’s definitely the band I was thinking of! Do you</text>
+<text x="16" y="438" font-size="12" fill="#ab7827" font-style="italic">know of any other tracks by them that have that really epic,</text>
+<text x="16" y="454" font-size="12" fill="#ab7827" font-style="italic">introspective feel, maybe from their earlier work?”</text>
+<path d="M510,4 L516,4 L516,167 L510,167" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="516" y1="85.5" x2="528" y2="85.5" stroke="#977a5d" stroke-width="1.5"/>
+<circle cx="540" cy="57.5" r="9" fill="#977a5d"/>
+<text x="540" y="61.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="556" y="61.5" font-size="13" fill="#977a5d" font-weight="700">Unified search and</text>
+<text x="556" y="77.5" font-size="13" fill="#977a5d" font-weight="700">recommendation</text>
+<text x="556" y="95.5" font-size="11" fill="#977a5d" >Who the listener is and what</text>
+<text x="556" y="110.5" font-size="11" fill="#977a5d" >they want now are read</text>
+<text x="556" y="125.5" font-size="11" fill="#977a5d" >in one prompt.</text>
+<path d="M510,186 L516,186 L516,367 L510,367" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="516" y1="276.5" x2="528" y2="276.5" stroke="#977a5d" stroke-width="1.5"/>
+<circle cx="540" cy="240.5" r="9" fill="#977a5d"/>
+<text x="540" y="244.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="556" y="244.5" font-size="13" fill="#977a5d" font-weight="700">Interpretable response</text>
+<text x="556" y="262.5" font-size="11" fill="#977a5d" >The reply names the track and</text>
+<text x="556" y="277.5" font-size="11" fill="#977a5d" >says why: the request, the</text>
+<text x="556" y="292.5" font-size="11" fill="#977a5d" >listener’s taste, and the</text>
+<text x="556" y="307.5" font-size="11" fill="#977a5d" >track’s sound.</text>
+<path d="M510,386 L516,386 L516,457 L510,457" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="516" y1="421.5" x2="528" y2="421.5" stroke="#977a5d" stroke-width="1.5"/>
+<circle cx="540" cy="393.5" r="9" fill="#977a5d"/>
+<text x="540" y="397.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="556" y="397.5" font-size="13" fill="#977a5d" font-weight="700">Multi-turn refinement</text>
+<text x="556" y="415.5" font-size="11" fill="#977a5d" >The next turn narrows the</text>
+<text x="556" y="430.5" font-size="11" fill="#977a5d" >request, and the session</text>
+<text x="556" y="445.5" font-size="11" fill="#977a5d" >stays in view.</text>
+</svg>
