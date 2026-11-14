@@ -31,6 +31,7 @@ adds is a chance to be wrong. A model can score well on multiple choice and
 still write a poor row, so annotation needs its own evaluation, described
 [below](#sec-annotation-evaluation).
 
+(sec-annotation-llm)=
 ## LLM-powered annotation
 
 Three capabilities of LLMs, each introduced in Chapter 1, change what

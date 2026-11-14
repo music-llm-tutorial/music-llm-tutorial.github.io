@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 346" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The tool environment</title>
+<desc id="d">Two sources of data, the catalog of 6,761 tracks (metadata, tags, lyrics, tempo and key, audio, cover art) and the listening logs, are turned in advance into five kinds of index: a SQL table, BM25 indices over five text fields, embeddings of six views of each track, listener vectors from collaborative filtering, and semantic IDs of four codes per view. Six tools read these indices: sql, bm25, text_to_item_similarity, item_to_item_similarity, user_to_item_similarity and semantic_id_matching. Every tool searches only the current pool of candidates.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">DATA</text>
+<rect x="0.8" y="26.75" width="170" height="190" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="50" font-size="12" font-weight="700" fill="#ab7827">Catalog</text>
+<text x="16" y="68" font-size="12" fill="#ab7827">6,761 tracks</text>
+<text x="16" y="92" font-size="11" font-family="Menlo, Consolas, monospace" fill="#ab7827">metadata, tags</text>
+<text x="16" y="110" font-size="11" font-family="Menlo, Consolas, monospace" fill="#ab7827">lyrics</text>
+<text x="16" y="128" font-size="11" font-family="Menlo, Consolas, monospace" fill="#ab7827">tempo, key</text>
+<text x="16" y="146" font-size="11" font-family="Menlo, Consolas, monospace" fill="#ab7827">audio, cover art</text>
+<rect x="0.8" y="226.75" width="170" height="50" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="247" font-size="12" font-weight="700" fill="#ab7827">Listening logs</text>
+<text x="16" y="265" font-size="11" font-family="Menlo, Consolas, monospace" fill="#ab7827">18,090 listeners</text>
+<text x="212" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">COMPUTED IN ADVANCE</text>
+<rect x="212.8" y="26.75" width="290" height="40" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="228" y="43.75" font-size="12" font-weight="700" fill="#607b9a">SQL table</text>
+<text x="228" y="58.75" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#607b9a">title, artist, album, year, tempo, key</text>
+<rect x="212.8" y="76.75" width="290" height="40" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="228" y="93.75" font-size="12" font-weight="700" fill="#607b9a">BM25</text>
+<text x="228" y="108.75" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#607b9a">title · artist · album · lyrics · tags</text>
+<rect x="212.8" y="126.75" width="290" height="40" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="228" y="143.75" font-size="12" font-weight="700" fill="#607b9a">Embeddings</text>
+<text x="228" y="158.75" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#607b9a">text 1024 · audio 512 · image 768 · cf 128</text>
+<rect x="212.8" y="176.75" width="290" height="40" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="228" y="193.75" font-size="12" font-weight="700" fill="#607b9a">Semantic IDs</text>
+<text x="228" y="208.75" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#607b9a">embeddings quantized to 4 codes</text>
+<rect x="212.8" y="226.75" width="290" height="40" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="228" y="243.75" font-size="12" font-weight="700" fill="#607b9a">Listener vectors</text>
+<text x="228" y="258.75" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#607b9a">collaborative filtering, 128</text>
+<line x1="171" y1="46" x2="212" y2="46" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M206.0,49.6 L212,46 L206.0,42.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="171" y1="96" x2="212" y2="96" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M206.0,99.6 L212,96 L206.0,92.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="171" y1="146" x2="212" y2="146" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M206.0,149.6 L212,146 L206.0,142.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="171" y1="196" x2="212" y2="196" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M206.0,199.6 L212,196 L206.0,192.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="171" y1="246" x2="212" y2="246" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M206.0,249.6 L212,246 L206.0,242.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="544" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">TOOLS</text>
+<rect x="544.8" y="26.75" width="224" height="240" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="560" y="50" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">sql()</text>
+<text x="560" y="100" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">bm25()</text>
+<text x="560" y="140" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">text_to_item_similarity()</text>
+<text x="560" y="162" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">item_to_item_similarity()</text>
+<text x="560" y="200" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">semantic_id_matching()</text>
+<text x="560" y="250" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">user_to_item_similarity()</text>
+<line x1="503" y1="46" x2="552" y2="46" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M546.0,49.6 L552,46 L546.0,42.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="503" y1="96" x2="552" y2="96" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M546.0,99.6 L552,96 L546.0,92.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="503" y1="196" x2="552" y2="196" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M546.0,199.6 L552,196 L546.0,192.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="503" y1="246" x2="552" y2="246" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M546.0,249.6 L552,246 L546.0,242.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="503" y1="146" x2="552" y2="136" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M546.8,140.7 L552,136 L545.4,133.7" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="503" y1="146" x2="552" y2="158" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M545.3,160.1 L552,158 L547.0,153.1" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="0" y="312" font-size="12" font-style="italic" fill="#77726a">Indices are built once; at query time a tool only looks up, filters or takes a dot product.</text>
+<text x="544" y="288" font-size="11" font-style="italic" fill="#8f9066">each searches only the current pool</text>
+</svg>
