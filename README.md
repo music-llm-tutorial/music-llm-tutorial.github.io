@@ -1,6 +1,9 @@
 # LLMs × Music
 
-> ISMIR 2026 Tutoiral: https://ismir2026.ismir.net/tutorials
+> ISMIR 2026 Tutorial: https://ismir2026.ismir.net/tutorials
+
+- **Book:** <https://music-llm-tutorial.github.io/>
+- **Slides:** [Google Slides](https://docs.google.com/presentation/d/11NZC6dDes6Qe4lpQp6BqSkB-9UwRjBNuaAlBjSav3XE/edit?usp=sharing)
 
 Collaborative Jupyter Book for the ISMIR tutorial **LLMs × Music: Scalable Language Modeling Unlocks Music Applications**. Pages may be written in MyST Markdown (`.md`) or Jupyter Notebook (`.ipynb`) format.
 
