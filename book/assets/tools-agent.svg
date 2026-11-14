@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 376" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The tool-calling agent</title>
+<desc id="d">Each turn makes two LLM calls. The system prompt is assembled from a role, the listener profile (demographics, and for a returning listener five tracks from the last session with their semantic IDs) and a goal. Call 1, with the tool-calling goal, the conversation memory and the six tool schemas, thinks and then writes tool calls as JSON. The executor runs them as in the workflow figure and returns the top track. Call 2, with the response goal, the memory and the top track's description, writes the reply. The user message and the recommended track with the reply are appended to the memory for the next turn.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">SYSTEM PROMPT</text>
+<rect x="0.8" y="26.75" width="200" height="40" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="44" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">role</text>
+<text x="16" y="59" font-size="11" font-style="italic" fill="#8f9066">an expert music recommender</text>
+<rect x="0.8" y="76.75" width="200" height="76" rx="8" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="94" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#ab7827">listener profile</text>
+<text x="16" y="110" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#ab7827">user_type, age, gender</text>
+<text x="16" y="125" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#ab7827">last session: 5 tracks</text>
+<text x="16" y="140" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#ab7827">  with semantic IDs</text>
+<rect x="0.8" y="162.75" width="200" height="56" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="180" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">goal</text>
+<text x="16" y="196" font-size="11" font-style="italic" fill="#8f9066">call 1: plan retrieval → rerank</text>
+<text x="16" y="211" font-size="11" font-style="italic" fill="#8f9066">call 2: reply about the top track</text>
+<rect x="0.8" y="236.75" width="200" height="56" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="16" y="254" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#607b9a">memory</text>
+<text x="16" y="270" font-size="11" font-style="italic" fill="#607b9a">user turns, and each</text>
+<text x="16" y="285" font-size="11" font-style="italic" fill="#607b9a">recommended track + reply</text>
+<text x="250" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">CALL 1 · PLAN</text>
+<rect x="250.8" y="26.75" width="250" height="126" rx="8" fill="#8f9066" fill-opacity="0.06" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="266" y="48" font-size="11" font-style="italic" fill="#8f9066">+ tool schemas from docstrings</text>
+<text x="266" y="72" font-size="11" font-family="Menlo, Consolas, monospace" fill="#77726a">&lt;think&gt;</text>
+<text x="266" y="88" font-size="11" font-family="Menlo, Consolas, monospace" fill="#77726a"> slow → filter; calm piano → rerank</text>
+<text x="266" y="104" font-size="11" font-family="Menlo, Consolas, monospace" fill="#77726a">&lt;/think&gt;</text>
+<text x="266" y="124" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">&lt;tool_call&gt;{"name": "sql", …}</text>
+<text x="266" y="140" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#8f9066">&lt;tool_call&gt;{"name": "text_to_…</text>
+<text x="544" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">EXECUTOR</text>
+<rect x="544.8" y="26.75" width="224" height="126" rx="8" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="560" y="48" font-size="11.5" fill="#607b9a">run calls in order</text>
+<text x="560" y="66" font-size="11.5" fill="#607b9a">each result = next pool</text>
+<text x="560" y="84" font-size="11.5" fill="#607b9a">skip failed or empty calls</text>
+<text x="560" y="112" font-size="11" font-family="Menlo, Consolas, monospace" fill="#607b9a">→ ranked track_ids</text>
+<text x="560" y="130" font-size="11" font-family="Menlo, Consolas, monospace" fill="#607b9a">→ describe(top 1)</text>
+<line x1="501" y1="90" x2="542" y2="90" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M536.0,93.6 L542,90 L536.0,86.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="250" y="186" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">CALL 2 · REPLY</text>
+<rect x="250.8" y="198.75" width="518" height="94" rx="8" fill="#8f9066" fill-opacity="0.06" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="266" y="220" font-size="11" font-style="italic" fill="#8f9066">+ the top track's description, as the assistant's last message</text>
+<text x="266" y="244" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#77726a">track_id: 30jC…, title: week no. 10, artist: fabrizio paterlini,</text>
+<text x="266" y="260" font-size="10.5" font-family="Menlo, Consolas, monospace" fill="#77726a">tags: calm, classical, piano, tempo: 77.9, …</text>
+<text x="266" y="282" font-size="11.5" font-style="italic" fill="#3d3a35">→ “I've found a calm piano piece … would you like more like it?”</text>
+<line x1="656" y1="153" x2="656" y2="196" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M652.4,190.0 L656,196 L659.6,190.0" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M201,47 L224,47" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M201,115 L224,115" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M201,191 L224,191" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M201,265 L224,265" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M224,47 L224,265" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="224" y1="90" x2="248" y2="90" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M242.0,93.6 L248,90 L242.0,86.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="224" y1="245" x2="248" y2="245" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M242.0,248.6 L248,245 L242.0,241.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M500,293 L500,318 L100,318 L100,300" fill="none" stroke="#977a5d" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="100" y1="305" x2="100" y2="294" stroke="#977a5d" stroke-width="1.5" stroke-dasharray="4 3"/>
+<path d="M103.6,300.0 L100,294 L96.4,300.0" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="300" y="336" font-size="11.5" font-style="italic" text-anchor="middle" fill="#77726a">both turns are appended to the memory for the next request</text>
+</svg>

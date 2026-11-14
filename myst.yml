@@ -34,6 +34,10 @@ project:
         - file: book/listening/annotation.md
         - file: book/listening/search-recommendation.md
         - file: book/listening/limitations.md
+        - file: book/listening/annotation_demo.ipynb
+          title: "Code Practice - LLM-based Music Annotation"
+        - file: book/listening/recommendation_demo.ipynb
+          title: "Code Practice - Agent-based Music Recommendation"
     - title: LLMs for Creators
       children:
         - file: book/composers/overview.md

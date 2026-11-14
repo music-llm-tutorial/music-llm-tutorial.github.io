@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 786 316" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The tool workflow</title>
+<desc id="d">The whole catalog of 6,761 tracks enters a retrieval tool, here sql with tempo under 80, which keeps 1,000 tracks. Those become the pool of a reranking tool, here text_to_item_similarity with the query calm piano over the tags, which returns a ranked list of 20. The top track goes to the reply. A call that fails or returns nothing is skipped and the pool is kept. Reversing the order changes the result: the dense tool first keeps only 20 tracks, and the filter then returns 13 of them in table order, losing the ranking.</desc>
+<text x="0" y="14" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">RETRIEVE, THEN RERANK</text>
+<polygon points="0,30 150,30 150,180 0,180" fill="#ab7827" fill-opacity="0.12" stroke="#ab7827" stroke-opacity="0.55" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="75" y="92" font-size="12" font-weight="700" text-anchor="middle" fill="#ab7827">catalog</text>
+<text x="75" y="110" font-size="12" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#ab7827">6,761</text>
+<line x1="151" y1="105" x2="196" y2="105" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M190.0,108.6 L196,105 L190.0,101.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="198.8" y="66.75" width="170" height="76" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="214" y="88" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">1 · retrieval</text>
+<text x="214" y="106" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">sql</text>
+<text x="214" y="122" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">tempo &lt; 80</text>
+<line x1="369" y1="105" x2="404" y2="105" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M398.0,108.6 L404,105 L398.0,101.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<polygon points="406,55 476,70 476,140 406,155" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="441" y="100" font-size="11" font-weight="700" text-anchor="middle" fill="#607b9a">pool</text>
+<text x="441" y="116" font-size="11" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#607b9a">1,000</text>
+<line x1="477" y1="105" x2="506" y2="105" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M500.0,108.6 L506,105 L500.0,101.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<rect x="508.8" y="66.75" width="170" height="76" rx="8" fill="#8f9066" fill-opacity="0.12" stroke="#8f9066" stroke-opacity="0.55" stroke-width="1.5"/>
+<text x="524" y="88" font-size="11" font-weight="700" letter-spacing="0.08em" fill="#8f9066">2 · reranking</text>
+<text x="524" y="106" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">text_to_item</text>
+<text x="524" y="122" font-size="11" font-family="Menlo, Consolas, monospace" fill="#8f9066">“calm piano”, tags</text>
+<line x1="679" y1="105" x2="704" y2="105" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M698.0,108.6 L704,105 L698.0,101.4" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<polygon points="706,80 770,90 770,120 706,130" fill="#607b9a" fill-opacity="0.12" stroke="#607b9a" stroke-opacity="0.55" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="738" y="102" font-size="10.5" font-weight="700" text-anchor="middle" fill="#607b9a">top 20</text>
+<text x="738" y="116" font-size="10.5" text-anchor="middle" fill="#607b9a">ranked</text>
+<path d="M738,131 L738,160" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<line x1="738" y1="160" x2="738" y2="172" stroke="#977a5d" stroke-width="1.5"/>
+<path d="M734.4,166.0 L738,172 L741.6,166.0" fill="none" stroke="#977a5d" stroke-width="1.5"/>
+<text x="738" y="188" font-size="11" font-family="Menlo, Consolas, monospace" text-anchor="middle" fill="#3d3a35">#1 → reply</text>
+<text x="198" y="168" font-size="11.5" font-style="italic" fill="#77726a">A call that fails or returns nothing is skipped; the pool is kept.</text>
+<text x="0" y="228" font-size="12" font-weight="700" letter-spacing="0.08em" fill="#977a5d">THE ORDER MATTERS</text>
+<text x="0" y="252" font-size="11.5" font-family="Menlo, Consolas, monospace" fill="#3d3a35">text_to_item(“calm piano”) → 20  →  sql(tempo &lt; 80) → 13, in table order</text>
+<text x="0" y="276" font-size="12" font-style="italic" fill="#77726a">The filter can only remove tracks, and it has no notion of relevance: the ranking from step 1 is lost.</text>
+</svg>
