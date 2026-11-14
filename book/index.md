@@ -113,8 +113,3 @@ musically meaningful systems.
   recent work explores unified audio-language models that jointly support
   understanding, generation, and reasoning across sound, music, and speech.
 :::
-
-:::{note}
-This site is under active development. Text marked **TODO** is a writing prompt,
-not finalized tutorial content.
-:::
