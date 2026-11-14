@@ -103,10 +103,10 @@ does.
   with every cited work collected in [References](references.md).
 - **Code practice:** the notebooks in the application chapters, including
   [LLM-based music annotation](listening/annotation_demo.ipynb) and
-  [agent-based music recommendation](listening/recommendation_demo.ipynb)
+  [agentic music recommendation](listening/recommendation_demo.ipynb)
   from Chapter 3, and the [feedback](performing/feedback_demo.ipynb) and
-  [agentic coaching](performing/agentic_demo.ipynb) notebooks from Chapter 5.
-- **Slides:** to be linked here after the tutorial.
+  [teaching agent](performing/agentic_demo.ipynb) notebooks from Chapter 5.
+- **Slides:** [tutorial slides on Google Slides](https://docs.google.com/presentation/d/11NZC6dDes6Qe4lpQp6BqSkB-9UwRjBNuaAlBjSav3XE/edit?usp=sharing).
 
 ## Q&A and discussion
 

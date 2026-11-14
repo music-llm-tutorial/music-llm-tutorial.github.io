@@ -443,6 +443,67 @@ because it is the only one that keeps both the record and the collaborative
 signal outside the model, where each can be updated on its own schedule. That
 is a prediction, not yet a survey result.
 
+## Datasets for conversational recommendation
+
+Training or testing any of these systems needs conversations: a request in a
+listener's own words, the tracks that were accepted, and what the listener
+said next. Listening logs have none of this, so the conversations have to be
+collected from people or written by a model. The datasets fall into those two
+groups.
+
+| Dataset | Who wrote the requests | Conversations | Turns | Tracks |
+|---|---|---|---|---|
+| CPCD [@chaganty2023beyond] | people: 110 users paired with 10 expert curators | 917 | 5.8 | 106,736 |
+| MusiCRS [@surana_musicrs_2025] | people: Reddit threads from seven music subreddits | 477 | 1 | 3,589 entities |
+| TtWMusic [@leszczynski2023talk] | a language model, over random walks through expert playlists | over 1M | 5.6 | — |
+| LP-MusicDialog [@doh2024music] | an LLM, over attribute sequences from the Million Song Dataset | 288K | 5.0 | 319K |
+| TalkPlayData 1 [@doh_talkplay_2025] | an LLM, over playlists | 532K | 7.0 | 406K |
+| TalkPlayData 2 [@doh_talkplaydata2_2025] | LLM agents, over listening sessions from LFM-2b | 16.2K | 8 | 47K |
+| Spotify [@palumbo_bootstrapping_2026] | an LLM, from real single-turn requests, talking to the live agent | not released | 2 or more | production catalog |
+
+**Conversations from people.** The Conversational Playlist Curation Dataset
+(CPCD) paired a user with a human curator who had a music search tool. The
+user listened to the playlist, rated tracks, and said how to improve it, which
+gives 24.5 ratings per conversation [@chaganty2023beyond]. MusiCRS takes
+requests people posted without being asked. It keeps 477 Reddit threads from
+r/classicalmusic, r/hiphopheads, r/electronicmusic, r/metal, r/popheads,
+r/indieheads, and r/jazz, takes the music named in the replies as the answer,
+ranked by upvotes, and attaches audio through YouTube links
+[@surana_musicrs_2025]. Each thread has about 8 answers and is tested against
+100 candidates. These requests are the closest to how listeners actually ask,
+but a thread is one request and its replies. Nobody says "more upbeat" in the
+next turn, and upvotes favor what the subreddit already likes.
+
+**Conversations from a model.** Synthetic datasets start from music that
+already belongs together, such as a playlist or a listening session, and have
+a model write the conversation that would lead to it. TalkTheWalk walks
+through an embedding space of expert playlists and has a language model fill
+in the user's turns [@leszczynski2023talk]. LP-MusicDialog and TalkPlayData 1
+have an LLM write both sides
+[@doh2024music; @doh_talkplay_2025]. TalkPlayData 2 separates the roles into
+four LLMs: one writes a listener profile, one sets a conversation goal, one
+plays the listener, and one plays the recommender. The recommender is not
+shown the goal and has to find it through the conversation, and the listener
+hears the audio of each recommended track before replying
+[@doh_talkplaydata2_2025]. Its test split is chronological, with cold-start
+users and tracks held out.
+
+Spotify used the same idea before launching a conversational agent, when no
+multi-turn traffic existed yet [@palumbo_bootstrapping_2026]. The seeds are
+real single-turn requests from product traffic, with synthetic ones added for
+uses the product did not support yet. An LLM turns each seed into a dialog
+plan that tests one of five abilities: refining the content, retaining an
+instruction, resolving a reference such as "the third artist," following a
+shift of intent, and accepting a task split over two turns. A second LLM then
+plays the user against the live agent and adapts the plan to what the agent
+actually returns. Annotators judged 93% of the conversations realistic. The
+data is used to test the agent and improve its prompt, not to train it, and it
+showed that the agent holds up to four turns and degrades from the fifth.
+
+The trade is size for origin. The datasets written by people have hundreds of
+conversations, and the ones written by models have up to a million, with every
+request in a model's phrasing.
+
 ## Evaluation of conversational recommendation
 
 Each role is evaluated the way its predecessors were, and each inherits the
