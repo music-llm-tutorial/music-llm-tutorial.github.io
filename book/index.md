@@ -12,6 +12,11 @@ thumbnail: ../asset/social-card.png
 
 Welcome to the online supplement for the tutorial on "LLMs × Music: Scalable Language Modeling Unlocks Music Applications," presented at the [27th International Society for Music Information Retrieval (ISMIR) Conference](https://ismir2026.ismir.net/) in 2026 in Abu Dhabi, UAE.
 
+## Quick Start
+
+- **Slides:** [Tutorial slides (Google Slides)](https://docs.google.com/presentation/d/11NZC6dDes6Qe4lpQp6BqSkB-9UwRjBNuaAlBjSav3XE/edit?usp=sharing)
+- **Code examples:** [LLM-based Music Annotation](listening/annotation_demo.ipynb), [Agentic Music Recommendation](listening/recommendation_demo.ipynb), [Teaching Agent](performing/agentic_demo.ipynb)
+
 ## Motivation & Aim
 
 Large language models (LLMs) are rapidly becoming a foundation for user-facing
